@@ -1,0 +1,40 @@
+
+
+<hr>
+<ul class="pagination">
+    {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+            <li>
+              <a href="/">
+                Previous
+              </a>
+            </li>
+        {% else %}
+            <li>
+              <a href="/page{{ paginator.previous_page }}">
+                Previous
+              </a>
+            </li>
+        {% endif %}
+    {% else %}
+        <li class="pagination__disabled">
+          <a href="/">
+            Previous
+          </a>
+        </li>
+    {% endif %}
+
+    {% if paginator.next_page %}
+        <li>
+          <a href="/page{{ paginator.next_page }}">
+            Next
+          </a>
+        </li>
+    {% else %}
+        <li class="pagination__disabled">
+          <a href="/">
+            Next
+          </a>
+        </li>
+    {% endif %}
+</ul>
