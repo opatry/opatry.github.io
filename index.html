@@ -31,17 +31,8 @@ Methods
 * Running
 * Reading
 
-<ul>
+## Notes
 {% for post in paginator.posts %}
-<li>
-  	<div>
-  	{{ post.date | date_to_long_string  }}
-  	</div>
-  	<h2>
-  	<a href="{{ post.url }}">
-  	{{ post.title }}
-  	</a>
-  	</h2>
-  </li>
+* ### [{{ post.title }}]({{ post.url }})
+{{ post.date | date_to_long_string  }}
 {% endfor %}
-</ul>
