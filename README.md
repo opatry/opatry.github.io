@@ -1,4 +1,3 @@
-opatry.github.com
-=================
+# Olivier Patry
 
-opatry's home page
+Personal home page source control based on [GitHub Pages](http://pages.github.com/) based on [Jekyll](https://github.com/mojombo/jekyll).
