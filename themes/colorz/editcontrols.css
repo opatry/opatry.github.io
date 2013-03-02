@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+kbd {
+	padding: 0.1em 0.6em;
+	border: 1px solid #ccc;
+	font-size: 11px;
+	font-family: Arial,Helvetica,sans-serif;
+	background-color: #f7f7f7;
+	color: #333;
+	-moz-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px white inset;
+	-webkit-box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px white inset;
+	box-shadow: 0 1px 0px rgba(0, 0, 0, 0.2),0 0 0 2px white inset;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	display: inline-block;
+	margin: 0 0.1em;
+	text-shadow: 0 1px 0 white;
+	line-height: 1.4;
+	white-space: nowrap;
+}
+
+.editcontrol {
+	border-radius: 50%;
+	border: 2px solid white;
+	padding: 5px;
+	margin: 5px;
+	font-weight: bold;
+	color: white;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	line-height: 1em;
+	text-align: center;
+	text-shadow: 0 2px rgba(0,0,0,.5);
+	box-shadow: 0 0 2px 2px rgba(0,0,0,.25);
+}
+
+.inlinelist, .inlinelist li {
+	margin: 0; padding: 0;	
+}
+
+.inlinelist li {
+	float: left;
+	list-style-type: none;
+}
+
+.toolbar {
+	font-size: 2em;
+	
+	position: absolute;
+	right: 0;
+	top: 0;
+	
+	/* hot corner */
+	min-height: 50px;
+	min-width: 50px;
+}
+
+.toolbar > li {
+	display: none;
+}
+
+.toolbar:hover > li,
+.toolbar:focus > li {
+	display: list-item;
+}
+
+.toolbar .editcontrol {
+	box-shadow: 0 0 5px 5px rgba(0,0,0,.15);
+	border-width: 5px;
+}
+
+.toolbar a {
+	color: inherit;
+}
+
+.new {
+	background-color: rgb(0,90,213);
+}
+
+.del {
+	background-color: rgb(171,0,0);
+}
+
+.edit {
+	background-color: rgb(14,150,49);
+}
+
+.hide {
+	background-color: rgb(255,138,0);
+}
