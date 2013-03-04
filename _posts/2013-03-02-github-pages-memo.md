@@ -2,6 +2,8 @@
 title: GitHub Pages Memo
 layout: markdown
 comments: false
+tags:
+	- Olivier Patry
 ---
 # [Development Seed](http://developmentseed.org/) use case
 Development Seed presents [useful tips for GitHub Pages](http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/):

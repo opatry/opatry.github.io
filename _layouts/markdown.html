@@ -7,6 +7,12 @@
 <section>
 {{ content | markdownify }}
 </section>
+<footer>
+
+{% for post in page.tags %}
+* {{tag}}
+{% endfor %}
+</footer>
 </article>
 </section>
  
