@@ -7,12 +7,6 @@
 <section>
 {{ content | markdownify }}
 </section>
-<footer>
-
-{% for tag in page.tags %}
-* [{{tag}}]({{tag.url}})
-{% endfor %}
-</footer>
 </article>
 </section>
  
