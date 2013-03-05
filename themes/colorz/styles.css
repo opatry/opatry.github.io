@@ -3,11 +3,12 @@
 html {
 	height: 100%;
 	/*http://lukeroberts.us/2008/12/wallpaper-colourful-wood/*/
-	background-image: url("1920x1200-colour-wood-flip.jpg");
 	/*
-	background-image: url("Nantes-Tour-LU-7_2.jpg");
+	background-image: url("1920x1200-colour-wood-flip.jpg");
 	*/
-	background-color: black;
+	
+	background-color: #1e427e; /*fallback*/
+	background-image: url("Nantes-Tour-LU-7_2.jpg");
 	background-position: left bottom;
 	background-attachment: fixed;
 	background-repeat: no-repeat;
@@ -151,17 +152,15 @@ pre {
 
 .credits {
 	left: 15%;
-	bottom: 30%;
+	bottom: 15%;
 }
 
 .author {
 	padding: .5em;
 	margin: 1em;
-	/*
 	background-color: rgba(0,0,0,.5);
 	border-radius: 5px;
 	box-shadow: inset 0 0 5px rgba(0,0,0,.7);
-	*/
 	text-align: center;
 	
 	font-style: italic;
@@ -179,7 +178,7 @@ pre {
 	font-weight: bold;
 	font-style: italic;
 	cursor: help;
-	background: rgba(0, 0, 0, .25);
+	background: rgba(0, 0, 0, .33);
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	border-radius: 50%;
