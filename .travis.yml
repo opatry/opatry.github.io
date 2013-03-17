@@ -1,0 +1,8 @@
+before_script:
+    - gem install jekyll
+
+script:
+    - jekyll --safe
+    
+notifications:
+    - email: false
