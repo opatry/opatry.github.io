@@ -24,7 +24,7 @@ body {
 	padding: 0;
 	padding-top: 1em;
 	
-	font: 140%/1.5 sans-serif;
+	font: 120%/1.5 sans-serif;
 	
 	/*
 	color: rgb(255, 255, 255);
@@ -84,24 +84,25 @@ nav li:not(:last-child)::after{
 	content: "\2022\00A0";
 }
 
-h2, h3, dt {
-	text-transform: uppercase;
-	text-shadow: 1px 1px 0px #f2f2f2, 1px 2px 0px #b1b1b1;
-}
-
 a {
     text-decoration: none;
     color: #08c;
     transition: all 0.3s ease-out;
-    position: relative;
     
     /* useful for tablet and "pointer-based device" but makes wired stuff when around "body" borders (extra padding)
+    position: relative;
     padding: .5em;
     margin: -.5em;
     */
 }
  
-a:hover, a:focus { color: #0af; }
+a:hover, a:focus { color: #0af;
+	/*
+	color: #111;
+	border-bottom: 1px solid #999;
+	background-color: #fbeec2;
+	*/
+}
 
 .break {
     -ms-word-break: break-all;
@@ -135,6 +136,30 @@ pre {
     white-space: -pre-wrap;      /* Opera 4-6 */
     white-space: -o-pre-wrap;    /* Opera 7 */
     word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    
+    background: rgb(235, 232, 226);
+	border-top: 1px solid rgb(199, 197, 181);
+	border-bottom: 1px solid rgb(199, 197, 181);
+}
+
+/* same style as twitter bootstrap */
+code, pre {
+	padding: 0 3px 2px;
+	font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+	font-size: 12px;
+	color: #333;
+}
+code {
+	padding: 2px 4px;
+	color: #d14;
+	background-color: #f7f7f9;
+	border: 1px solid rgb(187, 187, 187);
+	border-radius: 3px;
+}
+pre code {
+	color: inherit;
+	background: transparent;
+	border: 0 none;
 }
 
 .ellipsis {
@@ -147,12 +172,13 @@ pre {
 }
 
 .content {
-	margin: 1em;
 }
 
 .credits {
-	left: 15%;
 	bottom: 15%;
+	left: 0;
+	/* displays nothing until a clean solution is found */
+	display: none;
 }
 
 .author {
