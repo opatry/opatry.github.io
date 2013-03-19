@@ -8,7 +8,9 @@ Using `git branch` we can retrieve the current git branch if any.
 
 You can use the following `PS1` definition (by editing your `~/.bashrc` file for instance):
 
-	export PS1='\n\[\033[0;36m\w/\033[m \033[0;33m`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`\033[m\]\n\033[0;35m⌘\033[m  '
+{% highlight bash %}
+export PS1='\n\[\033[0;36m\w/\033[m \033[0;33m`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\(\\\\\1\)\ /`\033[m\]\n\033[0;35m⌘\033[m  '
+{% endhighlight %}
 
 Displays something like that:
 
@@ -24,15 +26,17 @@ Another [demonstration which add an extra `*`](http://nathanhoad.net/git-bash-ta
 
 Here is my current one:
 	
-	function parse_git_dirty {
-	  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
-	}
-	
-	function parse_git_branch {
-	  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(parse_git_dirty))/"
-	}
-	
-	export PS1='\n\[\033[0;36m\w/\033[m \033[0;33m$(parse_git_branch)\033[m\]\n\033[0;35m\$\033[m '
+{% highlight bash %}
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(parse_git_dirty))/"
+}
+
+export PS1='\n\[\033[0;36m\w/\033[m \033[0;33m$(parse_git_branch)\033[m\]\n\033[0;35m\$\033[m '
+{% endhighlight %}
 
 <div style="font-family: monospace;">
 <pre><code>	
