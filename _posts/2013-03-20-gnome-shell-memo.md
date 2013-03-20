@@ -19,4 +19,16 @@ comments: false
 * antisocial menu &mdash; (remove useless informations about yourself)
 * __user themes__ &mdash; (allows you to add new manage Gnome Shell themes)
 * advanced settings &mdash; in user menu (place a shortcut to Gnome Tweak Tool after the default System Settings)
-* __panel settings__ &mdash; (allows you to place panel to bottom, auto hide, &#8230;)
+* __panel settings__ &mdash; (allows you to place panel to bottom, auto hide, &#8230;) [see after](#panelSettings-setup)
+
+## <a id="panelSettings-setup"></a>Panel Settings Special Case
+It seems that the panel settings extension doesn't work out of the box using the [Gnome Shell Extensions site](https://extensions.gnome.org/) (at least on Ubuntu 12.10).
+Moreover, the search for *panel* doesn't returns anything relevant despite the actual extension name&#8230;
+
+You can access it through a direct URL: [extension/208/panel-settings/](https://extensions.gnome.org/extension/208/panel-settings/)
+
+The install switch seems to be not working certainly due to Gnome Shell version restrictions. The procedure is explained in comments:
+
+1. `git clone git://github.com/eddiefullmetal/gnome-shell-extensions.git`
+2. `cp -r ./gnome-shell-extensions/panelSettings@eddiefullmetal.gr ~/.local/share/gnome-shell/extensions` (ensures `metadata.json` contains a compatible Gnome Shell version)
+3. restart Gnome Shell
