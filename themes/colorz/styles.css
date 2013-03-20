@@ -104,6 +104,18 @@ a:hover, a:focus { color: #0af;
 	*/
 }
 
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+h3 {
+	font-size: 1em;
+}
+
 .break {
     -ms-word-break: break-all;
     word-break: break-all;
