@@ -1,9 +1,10 @@
-before_script:
-    - gem install jekyll
-    - gem install rdiscount
+# TODO nanoc build + deploy FTP
+# before_script:
+#     - gem install jekyll
+#     - gem install rdiscount
 
-script:
-    - jekyll --safe
+# script:
+#     - jekyll --safe
     
-notifications:
-    - email: false
+# notifications:
+#     - email: false
