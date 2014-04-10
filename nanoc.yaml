@@ -22,6 +22,7 @@ data_sources:
     items_root: /assets/
 
 site:
+  lang: "en"
   name: "Olivier Patry"
   description: "Personal website of Olivier Patry."
-  paginate: 8
+  url: "http://opatry.net"

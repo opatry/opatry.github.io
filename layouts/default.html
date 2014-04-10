@@ -10,6 +10,8 @@
 </article>
 </section>
  
+<% unless item[:kind] != 'note' %>
 <%= render '_pagination' %>
+<% end %>
 <%= render '_credits' %>
 <%= render '_footer' %>

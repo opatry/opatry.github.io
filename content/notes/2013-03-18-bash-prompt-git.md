@@ -1,7 +1,7 @@
 ---
 title: Bash Prompt with Git Support
-layout: markdown
-comments: false
+kind: note
+created_at: 2013-03-18 12:00:00 +0200
 ---
 # Display current git branch in bash prompt
 Using `git branch` we can retrieve the current git branch if any.
@@ -17,7 +17,7 @@ Displays something like that:
 <div style="font-family: monospace;">
 <pre><code>	
 	<span style="color: #06989A;">~/work/opatry.net/opatry.github.com/</span> <span style="color: #C4A000;">(master)</span> 
-	<span style="color: #75507B;">&#8984;</span>  <span title="Your cursor" style="cursor: help; text-decoration: blink;">&#166;</span></pre></code>
+	<span style="color: #75507B;">&#8984;</span>  <span title="Your cursor" style="cursor: help; text-decoration: blink;">&#166;</span></code></pre>
 </div>
 
 [via](http://markdotto.com/2013/01/13/improved-terminal-hotness/)

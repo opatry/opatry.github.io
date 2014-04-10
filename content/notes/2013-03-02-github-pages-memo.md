@@ -1,7 +1,7 @@
 ---
 title: GitHub Pages Memo
-layout: markdown
-comments: false
+kind: note
+created_at: 2013-03-02 12:00:00 +0200
 ---
 # [Development Seed](http://developmentseed.org/) use case
 Development Seed presents [useful tips for GitHub Pages](http://developmentseed.org/blog/2011/09/09/jekyll-github-pages/):
