@@ -2,15 +2,6 @@ include Nanoc::Helpers::Rendering
 include Nanoc::Helpers::LinkTo
 include Nanoc::Helpers::Blogging
 
-def age(dob)
-  unless dob.nil?
-    date = Date.today
-    day_diff = date.day - dob.day
-    month_diff = date.month - dob.month - (day_diff < 0 ? 1 : 0)
-    date.year - dob.year - (month_diff < 0 ? 1 : 0)
-  end
-end
-
 def get_pretty_date(note)
   # dimanche 9 mars 2014, 17h40
   attribute_to_time(note[:created_at]).strftime('%A %-d %B %Y, %kh%M')

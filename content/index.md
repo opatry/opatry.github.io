@@ -2,15 +2,11 @@
 title: Home & Resume
 kind: resume
 ---
-Welcome here! You are on the personal website of Olivier Patry, software engineer working for [MyScript](http://www.myscript.com/) (handwriting recognition).
+You are on the personal website of Olivier Patry (<olivier.patry@gmail.com>), software engineer working for [MyScript](http://www.myscript.com/) (handwriting recognition).
 
 ##About
 
-<%= age(Date.new(1985, 1, 31)) %> years old.
-
 Software engineer specialized in software **architecture** and **object oriented** programming for **mobile/embedded devices**.
-
-email address: <olivier.patry@gmail.com>
 
 ##Knowledge
 Languages & frameworks
