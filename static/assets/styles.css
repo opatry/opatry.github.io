@@ -1,0 +1,108 @@
+@CHARSET "UTF-8";
+
+/* flat UI colors
+cloud #ecf0f1
+silver #bdc3c7
+alizarin #e74c3c
+pomegranate #c0392b
+midnightblue #2c3e50
+wet asphalt #34495e
+amethyst #9b59b6
+wisteria #8e44ad
+concrete #95a5a6
+abestos #7f8c8d
+*/
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  color: #2c3e50;
+  font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+}
+
+.site {
+  width: 800px;
+  margin: 2em auto;
+}
+
+.navinfos {
+  text-align: center;
+}
+
+hr {
+  background-color: #bdc3c7;
+  height: 1px;
+  border: 0 none;
+}
+
+h1, h2, h3 {
+  color: #34495e;
+  font-weight: 300;
+}
+
+.author {
+  color: #c0392b;
+  font-size: 1.5em;
+}
+
+a, a:link {
+  text-decoration: none;
+  color: #c0392b;
+}
+
+a:visited,
+a:hover,
+a:active {
+  text-decoration: underline;
+  color: #e74c3c;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+dd {
+  margin: .5em 2em 1em;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+blockquote {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+pre {
+  white-space: pre-wrap;       /* Chrome & Safari */
+  white-space: -moz-pre-wrap;  /* Mozilla since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+
+  padding: .5em;
+
+  color: #2c3e50;
+  background-color: #ecf0f1;
+}
+
+code, pre {
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 15px;
+}
+code {
+  padding: 2px 4px;
+  color: #8e44ad;
+}
+
+pre code {
+  color: inherit;
+  background: transparent;
+}
