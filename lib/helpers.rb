@@ -38,10 +38,10 @@ def previous_link
   notes_ = notes
   prev_article = notes_[notes_.index(@item) + 1]
   if prev_article.nil?
-    '&laquo;&nbsp;&empty;'
+    '&#9667;&nbsp;'
   else
     title = prev_article[:title]
-    html = "&laquo;&nbsp;#{title}"
+    html = "&#9666;&nbsp;#{title}"
     link_to(html, prev_article.reps[0], :class => "prev", :title => title)
   end
 end
@@ -50,11 +50,11 @@ def next_link
   notes_ = notes
   idx = notes_.index(@item) - 1
   if idx < 0
-    '&empty;&nbsp;&raquo;'
+    '&nbsp;&#9657;'
   else
     next_article = notes_[idx]
     title = next_article[:title]
-    html = "#{title}&nbsp;&raquo;"
+    html = "#{title}&nbsp;&#9656;"
     link_to(html, next_article.reps[0], :class => "next", :title => title)
   end
 end
