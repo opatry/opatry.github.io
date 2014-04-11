@@ -106,3 +106,7 @@ pre code {
   color: inherit;
   background: transparent;
 }
+
+.disabled {
+  color: #bdc3c7;
+}

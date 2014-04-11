@@ -23,11 +23,11 @@ module NotesHelper
   end
 
   def notes
-    all_notes.sort_by { |note| attribute_to_time(note[:created_at]) }
+    reverse_notes.reverse
   end
 
   def reverse_notes
-    notes.reverse
+    all_notes.sort_by { |note| attribute_to_time(note[:created_at]) }
   end
 end
 
@@ -38,7 +38,7 @@ def previous_link
   notes_ = notes
   prev_article = notes_[notes_.index(@item) + 1]
   if prev_article.nil?
-    '&laquo;&nbsp;&empty;'
+    '<span class="disabled">&laquo;&nbsp;&empty;</span>'
   else
     title = prev_article[:title]
     html = "&laquo;&nbsp;#{title}"
@@ -50,7 +50,7 @@ def next_link
   notes_ = notes
   idx = notes_.index(@item) - 1
   if idx < 0
-    '&empty;&nbsp;&raquo;'
+    '<span class="disabled">&empty;&nbsp;&raquo;</span>'
   else
     next_article = notes_[idx]
     title = next_article[:title]
