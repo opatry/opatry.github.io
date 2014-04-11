@@ -76,6 +76,10 @@ ul {
   list-style-type: circle;
 }
 
+li > p {
+  margin: 0;
+}
+
 blockquote {
   color: #7f8c8d;
   font-style: italic;
