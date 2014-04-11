@@ -53,14 +53,14 @@ h1, h2, h3 {
 
 a, a:link {
   text-decoration: none;
-  color: #c0392b;
+  color: #e74c3c;
 }
 
 a:visited,
 a:hover,
 a:active {
   text-decoration: underline;
-  color: #e74c3c;
+  color: #c0392b;
 }
 
 p {
