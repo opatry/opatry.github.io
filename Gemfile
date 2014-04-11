@@ -28,3 +28,6 @@ gem 'html_compressor'
 # syntax highlighting
 gem 'htmlentities'
 gem 'systemu'
+
+# string utils
+gem 'stringex'
