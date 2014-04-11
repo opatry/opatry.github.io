@@ -27,10 +27,9 @@ Methods
 * Running
 * Reading
 
-<hr>
-<h2>Notes</h2>
-<ul>
+----
+
+## Notes
 <% notes.each do |note| %>
-<li><a href="<%= note.path %>"><%= note[:title] %></a></li>
+* [<%= note[:title] %>](<%= note.path %>)
 <% end %>
-</ul>
