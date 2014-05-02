@@ -2,6 +2,9 @@
 
 BASE_DIR=$(cd $(dirname "$0") && pwd)
 
+source bash-utils/colors.sh
+source bash-utils/status.sh
+
 ftp_host="ftp.cluster015.ovh.net"
 remote_dir="/www"
 ftp_user="opatry"
@@ -13,11 +16,11 @@ bundle install
 
 nanoc compile || exit $?
 
+#  html \
 nanoc check \
   ilinks \
   elinks \
   css \
-  html \
   stale \
 || exit $?
 
@@ -26,12 +29,12 @@ nanoc check \
 
 # user specific parameters must be set in calling environment to allow several ftp users to use it and to avoid password storage
 if [[ -z "${ftp_user}" ]]; then
-  echo -e " \e[1;31m✗\e[0m '\e[36mftp_user\e[0m' must be set"
+  error_msg "'${CYAN}ftp_user${RESET}' must be set"
   exit 1;
 fi
 
 if [[ -z "${ftp_password}" ]]; then
-  echo -e "!! \e[33m please give the ftp password\e[0m !!"
+  echolor "!! ${YELLOW}Please give the ftp password${RESET} !!"
   read -s ftp_password
 fi
 
