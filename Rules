@@ -9,8 +9,8 @@ compile '/assets/*' do
   # don’t filter or layout
 end
 
-route '/htaccess/' do
-  '/.htaccess'
+compile '/htaccess/' do
+  filter :erb
 end
 
 compile '/notes/*' do
@@ -49,6 +49,10 @@ end
 route '/assets/*' do
   # /assets/foo.html/ -> /foo.html
   item.identifier[7..-2]
+end
+
+route '/htaccess/' do
+  '/.htaccess'
 end
 
 route '/rss/|/sitemap/' do
