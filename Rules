@@ -9,6 +9,10 @@ compile '/assets/*' do
   # don’t filter or layout
 end
 
+route '/htaccess/' do
+  '/.htaccess'
+end
+
 compile '/notes/*' do
   filter :fenced_code_block
   filter :erb

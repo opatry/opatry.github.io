@@ -1,0 +1,4 @@
+---
+layout: none
+---
+ErrorDocument 404 /error/404/
