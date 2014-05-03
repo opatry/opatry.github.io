@@ -9,12 +9,14 @@
 <section>
 <%= yield %>
 </section>
+<% unless item[:kind] != 'note' %>
+<footer>
+<%= render '_pagination' %>
+</footer>
+<% end %>
 </article>
 </section>
  
-<% unless item[:kind] != 'note' %>
-<%= render '_pagination' %>
-<% end %>
 
 <footer>
 An error? You can fix it directly by sending a Pull Request on 
