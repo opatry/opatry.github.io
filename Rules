@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+preprocess do
+  # ignore unpublished items
+  @items.delete_if { |item| item[:published] == false }
+end
+
 compile '/assets/*' do
   # don’t filter or layout
 end
