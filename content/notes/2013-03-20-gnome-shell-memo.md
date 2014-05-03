@@ -2,6 +2,7 @@
 title: Gnome Shell Memo
 kind: note
 created_at: 2013-03-20 12:00:00 +0200
+published: false
 ---
 # Post Installation Configuration
 * Remove overlay scrollbars (`sudo apt-get remove overlay-scrollbar*`)
