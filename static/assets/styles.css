@@ -115,3 +115,7 @@ pre code {
 .disabled {
   color: #bdc3c7;
 }
+
+footer {
+  font-size: .8em;
+}
