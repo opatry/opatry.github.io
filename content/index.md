@@ -11,8 +11,8 @@ Specialized in software **architecture** and **object oriented** programming for
 
 <div class="special-links" markdown="1">
 [<span class="icon-github"></span>](https://github.com/opatry)
-[<span class="icon-linkedin"></span>](https://www.linkedin.com/profile/view?id=209972497)
 [<span class="icon-feed"></span>](http://opatry.net/rss.xml)
+[<span class="icon-linkedin"></span>](https://www.linkedin.com/in/opatry)
 </div>
 
 ----
