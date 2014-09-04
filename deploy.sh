@@ -14,10 +14,10 @@ pushd $BASE_DIR
 
 bundle install
 
-nanoc compile || exit $?
+bundle exec nanoc compile || exit $?
 
 #  html \
-nanoc check \
+bundle exec nanoc check \
   ilinks \
   elinks \
   css \
