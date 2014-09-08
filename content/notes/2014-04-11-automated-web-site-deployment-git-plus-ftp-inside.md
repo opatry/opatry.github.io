@@ -33,11 +33,6 @@ if [[ -z "${ftp_password}" ]]; then
   exit 1;
 fi
 
-# if you use composer, ensures the Jenkins workspace contains up to date dependencies
-pushd $BASE_DIR
-composer update || exit $?
-popd
-
 # use lftp to synchronize the source with the FTP server for only modified files.
 lftp -c "
 #debug;
