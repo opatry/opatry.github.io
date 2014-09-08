@@ -1,41 +1,42 @@
-#!/bin/bash
+#!/usr/bin/env sh
+
+set -e
 
 BASE_DIR=$(cd $(dirname "$0") && pwd)
 
-source bash-utils/colors.sh
-source bash-utils/status.sh
+. bash-utils/colors.sh
+. bash-utils/status.sh
 
 ftp_host="ftp.cluster015.ovh.net"
 remote_dir="/www"
 ftp_user="opatry"
 local_dir=$BASE_DIR/output
 
-pushd $BASE_DIR
+cd $BASE_DIR
 
 bundle install
 
-bundle exec nanoc compile || exit $?
+bundle exec nanoc compile
 
-#  html \
 bundle exec nanoc check \
   ilinks \
   elinks \
   css \
-  stale \
-|| exit $?
+  stale
 
-# until the nanoc deployment through ftp (or even better lftp) is available, do it by hand
-#nanoc deploy --target ovh || exit $?
+# until `nanoc deploy` through ftp (or even better lftp) is available, do it by hand
 
 # user specific parameters must be set in calling environment to allow several ftp users to use it and to avoid password storage
-if [[ -z "${ftp_user}" ]]; then
+if test -z "${ftp_user}"; then
   error_msg "'${CYAN}ftp_user${RESET}' must be set"
   exit 1;
 fi
 
-if [[ -z "${ftp_password}" ]]; then
+if test -z "${ftp_password}"; then
   echolor "!! ${YELLOW}Please give the ftp password${RESET} !!"
-  read -s ftp_password
+  stty -echo
+  read ftp_password
+  stty echo
 fi
 
 # use lftp to synchronize the source with the FTP server for only modified files.
@@ -52,6 +53,6 @@ mirror --only-newer \
        --verbose \
        --exclude .git/ \
        --exclude .gitignore \
-       --exclude-glob *.sh" || exit $?
+       --exclude-glob *.sh"
 
-popd
+cd -
