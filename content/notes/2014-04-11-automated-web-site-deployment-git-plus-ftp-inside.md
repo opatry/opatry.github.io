@@ -12,8 +12,10 @@ My Git source control contains two main branches `master` and `prod`. The first 
 
 My Jenkins job only polls on the `prod` branch and invokes the following script to synchronize the Web site state and the current sources.
 
-``` bash
-#!/bin/bash
+``` sh
+#!/usr/bin/env sh
+
+set -e
 
 # retrieve the absolute path of this script in a portable manner
 BASE_DIR=$(cd $(dirname "$0") && pwd)
@@ -23,13 +25,13 @@ remote_dir="/ftp/remote/directory"
 local_dir=$BASE_DIR; # we consider here that the web site sources are sibling of this script
 
 # user specific parameters must be set in calling environment to allow several ftp users to use it and to avoid password storage
-if [[ -z "${ftp_user}" ]]; then
-  echo -e " \e[1;31m✗\e[0m '\e[36mftp_user\e[0m' must be set"
+if test -z "${ftp_user}"; then
+  printf " \033[1;31m✗\033[0m '\033[36mftp_user\033[0m' must be set\n"
   exit 1;
 fi
 
-if [[ -z "${ftp_password}" ]]; then
-  echo -e " \e[1;31m✗\e[0m '\e[ftp_password\e[0m' must be set"
+if test -z "${ftp_password}"; then
+  printf " \033[1;31m✗\033[0m '\033[ftp_password\033[0m' must be set\n"
   exit 1;
 fi
 
@@ -47,7 +49,7 @@ mirror --only-newer \
        --exclude .git/ \
        --exclude .gitignore \
        --exclude-glob composer.* \
-       --exclude-glob *.sh" || exit $?
+       --exclude-glob *.sh"
 
 ```
 
