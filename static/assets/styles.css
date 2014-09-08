@@ -112,6 +112,23 @@ pre code {
   background: transparent;
 }
 
+.code-container {
+  position: relative;
+}
+
+.langspec {
+  text-align: right;
+  text-transform: lowercase;
+  background: white;
+  border-radius: 3px;
+  padding: .25em;
+  font-size: .55em;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .disabled {
   color: #bdc3c7;
 }
