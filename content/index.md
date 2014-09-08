@@ -1,5 +1,5 @@
 ---
-title: Home & Resume
+title: Home
 kind: resume
 ---
 You are on the personal website of Olivier Patry (<olivier.patry@gmail.com>), software engineer working for [MyScript](http://dev.myscript.com/) (handwriting recognition).
