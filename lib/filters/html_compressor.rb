@@ -7,6 +7,9 @@ class HtmlCompressorFilter < Nanoc::Filter
 
   def run(content, params = {})
     case params.delete(:type)
+      when 'txt'
+        # do nothing
+        content
       when 'xml'
         XmlCompressor.new(params).compress(content)
       else
