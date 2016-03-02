@@ -2,19 +2,21 @@
 <%= render '_title' %>
 
 <section class="content">
-<article>
-<header>
-<h1><%= item[:title] %></h1>
-</header>
-<section>
-<%= yield %>
-</section>
-<% unless item[:kind] != 'note' %>
-<footer>
-<%= render '_pagination' %>
-</footer>
-<% end %>
-</article>
+  <article>
+    <header>
+    <h1><%= item[:title] %></h1>
+    </header>
+
+    <section>
+    <%= yield %>
+    </section>
+
+  <% unless item[:kind] != 'note' %>
+    <footer>
+    <%= render '_pagination' %>
+    </footer>
+  <% end %>
+  </article>
 </section>
 
 <%= render '_footer' %>
