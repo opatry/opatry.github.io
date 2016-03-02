@@ -3,4 +3,6 @@
 /crash.log
 /output/*
 
+.bundle
+
 *~
