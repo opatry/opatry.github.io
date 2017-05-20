@@ -2,7 +2,7 @@
 
 set -e
 
-BASE_DIR=$(cd $(dirname "$0") && pwd)
+BASE_DIR=$(cd "$(dirname "$0")" && pwd)
 
 . bash-utils/colors.sh
 . bash-utils/status.sh
@@ -10,19 +10,21 @@ BASE_DIR=$(cd $(dirname "$0") && pwd)
 ftp_host="ftp.cluster015.ovh.net"
 remote_dir="/www"
 ftp_user="opatry"
-local_dir=$BASE_DIR/output
+local_dir="$BASE_DIR/output"
 
-cd $BASE_DIR
+cd "$BASE_DIR"
 
-bundle install
+(
+  bundle install
 
-bundle exec nanoc compile
+  bundle exec nanoc compile
 
-bundle exec nanoc check \
-  ilinks \
-  elinks \
-  css \
-  stale
+  # elinks disabled because of linked in link wrongly marked as invalid
+  bundle exec nanoc check \
+    ilinks \
+    css \
+    stale
+)
 
 # until `nanoc deploy` through ftp (or even better lftp) is available, do it by hand
 
@@ -35,7 +37,7 @@ fi
 if test -z "${ftp_password}"; then
   echolor "!! ${YELLOW}Please give the ftp password${RESET} !!"
   stty -echo
-  read ftp_password
+  read -r ftp_password
   stty echo
 fi
 
@@ -54,5 +56,3 @@ mirror --only-newer \
        --exclude .git/ \
        --exclude .gitignore \
        --exclude-glob *.sh"
-
-cd -
