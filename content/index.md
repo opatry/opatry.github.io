@@ -18,6 +18,12 @@ I'm currently working as a team leader on [Nebo](http://myscript.com/nebo/), MyS
 <div class="special-links" markdown="1">
 [<span class="icon-github"></span>](https://github.com/opatry)
 [<span class="icon-linkedin"></span>](https://www.linkedin.com/in/opatry)
+[<span class="icon-feed"></span>](/rss.xml)
 </div>
 
 ----
+
+## Notes
+<% notes.each do |note| %>
+* [<%= note[:title] %>](<%= note.path %>)
+<% end %>
