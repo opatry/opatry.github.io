@@ -116,6 +116,10 @@ pre code {
   background: transparent;
 }
 
+img {
+  max-width: 100%;
+}
+
 .code-container {
   position: relative;
 }

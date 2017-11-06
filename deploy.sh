@@ -1,18 +1,15 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
-set -e
+set -eu
 
-BASE_DIR=$(cd "$(dirname "$0")" && pwd)
-
-. bash-utils/colors.sh
-. bash-utils/status.sh
+cur_dir=$(cd "$(dirname "$0")" && pwd)
 
 ftp_host="ftp.cluster015.ovh.net"
 remote_dir="/www"
-ftp_user="opatry"
-local_dir="$BASE_DIR/output"
+ftp_user=${1:-"opatry"}
+local_dir="${cur_dir}/output"
 
-cd "$BASE_DIR"
+cd "$cur_dir"
 
 (
   bundle install
@@ -28,18 +25,10 @@ cd "$BASE_DIR"
 
 # until `nanoc deploy` through ftp (or even better lftp) is available, do it by hand
 
-# user specific parameters must be set in calling environment to allow several ftp users to use it and to avoid password storage
-if test -z "${ftp_user}"; then
-  error_msg "'${CYAN}ftp_user${RESET}' must be set"
-  exit 1;
-fi
-
-if test -z "${ftp_password}"; then
-  echolor "!! ${YELLOW}Please give the ftp password${RESET} !!"
-  stty -echo
-  read -r ftp_password
-  stty echo
-fi
+echo "Please give the ftp password"
+stty -echo
+read -r ftp_password
+stty echo
 
 # use lftp to synchronize the source with the FTP server for only modified files.
 # see https://coderwall.com/p/zqs1nw for further details
