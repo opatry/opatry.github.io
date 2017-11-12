@@ -17,13 +17,15 @@ data_sources:
     items_root: /
     layouts_root: /
     allow_periods_in_identifiers: false
+    encoding: utf-8
   -
     type: static
     items_root: /assets/
+    encoding: utf-8
 
 site:
   lang: "en"
   name: "Olivier Patry"
   description: "Personal website of Olivier Patry."
-  url: "https://opatry-website.firebaseapp.com/"
+  url: "https://opatry.net/"
   repo: "https://bitbucket.org/opatry/opatry.net"
