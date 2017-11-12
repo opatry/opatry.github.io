@@ -1,0 +1,30 @@
+image: ruby:2.4.0
+
+pipelines:
+  branches:
+    master:
+    - step:
+        caches:
+          - npm
+          - bundler
+        script:
+          - npm install --prefix .npm firebase-tools
+          - bundle install --path=.bundler
+          - bundle exec nanoc compile
+          - bundle exec nanoc check ilinks elinks css stale
+          - firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
+
+  custom:
+    check:
+      - step:
+          caches:
+            - bundler
+          script:
+            - bundle install --path=.bundler
+            - bundle exec nanoc compile
+            - bundle exec nanoc check ilinks elinks css stale
+
+definitions:
+  caches:
+    bundler: .bundler
+    npm: .npm
