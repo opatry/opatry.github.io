@@ -8,6 +8,8 @@ pipelines:
           - npm
           - bundler
         script:
+          - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+          - apt-get install -y nodejs
           - npm install --prefix .npm firebase-tools
           - bundle install --path=.bundler
           - bundle exec nanoc compile
@@ -20,6 +22,8 @@ pipelines:
           caches:
             - bundler
           script:
+            - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+            - apt-get install -y nodejs
             - bundle install --path=.bundler
             - bundle exec nanoc compile
             - bundle exec nanoc check ilinks elinks css stale
