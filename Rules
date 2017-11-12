@@ -20,12 +20,12 @@ compile '/notes/*' do
   filter :colorize_syntax, :default_colorizer => :pygmentize  # syntax highlighting
   layout 'default'
   # FIXME do it unless debug
-  filter :html_compressor, :type => item[:extension]
+  # filter :html_compressor, :type => item[:extension]
 end
 
 compile '/rss/|/sitemap/' do
   filter :erb
-  filter :html_compressor, :type => item[:extension]
+  # filter :html_compressor, :type => item[:extension]
 end
 
 compile '*' do
