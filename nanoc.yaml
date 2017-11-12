@@ -25,5 +25,5 @@ site:
   lang: "en"
   name: "Olivier Patry"
   description: "Personal website of Olivier Patry."
-  url: "http://opatry.net"
-  repo: "https://github.com/opatry/opatry.github.io"
+  url: "https://opatry-website.firebaseapp.com/"
+  repo: "https://bitbucket.org/opatry/opatry.net"
