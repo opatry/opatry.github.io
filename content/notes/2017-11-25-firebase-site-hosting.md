@@ -80,7 +80,12 @@ pipelines:
           - bundler
         script:
           - curl -sL https://deb.nodesource.com/setup_8.x | bash -
-          - apt-get install -y nodejs python-pygments
+          - apt-get update -qq && apt-get install -y nodejs python-pygments locales
+          - echo "en_US UTF-8" > /etc/locale.gen
+          - locale-gen en_US.UTF-8
+          - export LANG=en_US.UTF-8
+          - export LANGUAGE=en_US:en
+          - export LC_ALL=en_US.UTF-8
           - npm install --prefix .npm firebase-tools
           - bundle install --path=.bundler
           - bundle exec nanoc compile
@@ -94,7 +99,12 @@ pipelines:
             - bundler
           script:
             - curl -sL https://deb.nodesource.com/setup_8.x | bash -
-            - apt-get install -y nodejs python-pygments
+            - apt-get update -qq && apt-get install -y nodejs python-pygments locales
+            - echo "en_US UTF-8" > /etc/locale.gen
+            - locale-gen en_US.UTF-8
+            - export LANG=en_US.UTF-8
+            - export LANGUAGE=en_US:en
+            - export LC_ALL=en_US.UTF-8
             - bundle install --path=.bundler
             - bundle exec nanoc compile
             - bundle exec nanoc check ilinks elinks css stale
