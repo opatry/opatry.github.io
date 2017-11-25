@@ -59,3 +59,9 @@
 .highlight .vg { color: #003333 } /* Name.Variable.Global */
 .highlight .vi { color: #003333 } /* Name.Variable.Instance */
 .highlight .il { color: #FF6600 } /* Literal.Number.Integer.Long */
+
+
+/* YAML */
+.highlight .p-Indicator {}
+.highlight .l-Scalar-Plain { color: #330099; font-weight: bold }
+.highlight .p-Indicator + .l-Scalar-Plain { color: #CC3300 }

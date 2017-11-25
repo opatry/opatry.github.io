@@ -4,6 +4,12 @@ kind: note
 created_at: 2014-04-11 14:08:42 +0200
 ---
 
+---
+
+**⚠️** _This how to is outdated. Still relevant if you want to use `lftp` but you have now much more convenient solution like <%= link_to_item('Firebase hosting', '/notes/2017-11-25-firebase-site-hosting/') %>._
+
+---
+
 There are plenty of ways to automate the deployment of a website (GitHub pages with Jekyll, Maven, Git commit hooks…). 
 Unfortunately some configurations (cheap ones, most of the time) don't allow easy source control interaction on server side.
 

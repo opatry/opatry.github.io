@@ -34,9 +34,7 @@ compile '*' do
   else
     filter :erb
     filter :kramdown
-    unless item[:layout] == 'none'
-      layout item[:layout] || 'default'
-    end
+    layout item[:layout] || 'default' unless item[:layout] == 'none'
   end
 end
 

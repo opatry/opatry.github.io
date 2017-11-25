@@ -58,3 +58,8 @@ def next_link
     link_to(html, next_article.reps[0], :class => "next", :title => title)
   end
 end
+
+def link_to_item(title, identifier)
+  item = @items.find { |i| i.identifier == identifier }
+  link_to(title, item.path)
+end
