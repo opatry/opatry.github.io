@@ -39,5 +39,5 @@
  - Migrated from Jekyll to Nanoc
 
 ## [1.0.0](/../tree/v1.0.0) - 2014-04-10:
-### Addded
+### Added
  - Jekyll version
