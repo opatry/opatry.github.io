@@ -6,13 +6,14 @@ cache:
   - .bundler
 
 before_script:
+  - curl -sL https://deb.nodesource.com/setup_8.x | bash -
+  - apt-get update -qq && apt-get install -y nodejs python-pygments
   - gem install bundler --no-ri --no-rdoc
   - bundle install --path=.bundler --jobs $(nproc)  "${FLAGS[@]}"
 
 compile:
   stage: build
   script:
-    - apt-get update -qq && apt-get install -y python-pygments
     - bundle exec nanoc compile
   artifacts:
     paths:
@@ -26,8 +27,6 @@ check:
 deploy:
   stage: deploy
   script:
-    - curl -sL https://deb.nodesource.com/setup_8.x | bash -
-    - apt-get update -qq && apt-get install -y nodejs
     - npm install --prefix .npm firebase-tools
     - .npm/node_modules/firebase-tools/bin/firebase deploy -m "GitLab Pipeline#$CI_PIPELINE_ID Build#$CI_BUILD_ID" --token "$FIREBASE_TOKEN" --non-interactive
   only:
