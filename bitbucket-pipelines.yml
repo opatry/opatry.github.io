@@ -14,7 +14,7 @@ pipelines:
           - bundle install --path=.bundler
           - bundle exec nanoc compile
           - bundle exec nanoc check ilinks elinks css stale
-          - .npm/node_modules/firebase-tools/bin/firebase deploy --token "$FIREBASE_TOKEN" --non-interactive
+          - .npm/node_modules/firebase-tools/bin/firebase deploy -m "BitBucket build#$BITBUCKET_BUILD_NUMBER" --token "$FIREBASE_TOKEN" --non-interactive
 
   custom:
     check:
