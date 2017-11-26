@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.5.0](/../tree/v2.5.0) - 2017-11-26:
+### Changed
+ - Migrated to Nanoc 4
+
 ## [2.4.0](/../tree/v2.4.0) - 2017-11-26:
 ### Added
  - Changelog
