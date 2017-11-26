@@ -106,9 +106,10 @@ code, pre {
   font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
   font-size: 15px;
 }
-code {
-  padding: 2px 4px;
-  color: #8e44ad;
+
+:not(pre) > code {
+  color: #e74c3c;
+  padding: .05em .25em;
 }
 
 pre code {
