@@ -4,7 +4,7 @@ kind: note
 created_at: 2017-11-25 20:51:00 +0200
 ---
 
-I used to host this website on a cheap FTP server and <%= link_to_item('deploy it using `lftp`', '/notes/2014-04-11-automated-web-site-deployment/') %>.
+I used to host this website on a cheap FTP server and <%= link_to_item('deploy it using `lftp`', '/notes/2014-04-11-automated-web-site-deployment.*') %>.
 It seems now a bit archaic, I use Firebase to host it these days.
 Here follows the setup to automatically deploy the website using hosted Continuous Integration services such as BitBucket or GitLab Pipelines.
 

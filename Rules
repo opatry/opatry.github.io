@@ -5,12 +5,8 @@ preprocess do
   @items.delete_if { |item| item[:published] == false }
 end
 
-compile '/assets/*' do
+compile '/static/**/*' do
   # don’t filter or layout
-end
-
-compile '/htaccess/' do
-  filter :erb
 end
 
 compile '/notes/*' do
@@ -18,57 +14,59 @@ compile '/notes/*' do
   filter :erb
   filter :kramdown
   filter :colorize_syntax, :default_colorizer => :pygmentize  # syntax highlighting
-  layout 'default'
+  layout '/default.*'
   # FIXME do it unless debug
   # filter :html_compressor, :type => item[:extension]
 end
 
-compile '/rss/|/sitemap/' do
+compile '/htaccess.*' do
+  filter :erb
+end
+
+compile '/{rss,sitemap}.*' do
   filter :erb
   # filter :html_compressor, :type => item[:extension]
 end
 
-compile '*' do
+compile '**/*' do
   if item.binary?
     # don’t filter binary items
   else
     filter :erb
     filter :kramdown
-    layout item[:layout] || 'default' unless item[:layout] == 'none'
+    item_layout = item[:layout] || 'default'
+    layout "/#{item_layout}.*" unless item_layout == 'none'
   end
 end
 
 route '/notes/*' do
-  y,m,d,slug = /([0-9]+)\-([0-9]+)\-([0-9]+)\-([^\/]+)/.match(item.identifier).captures
+  y,m,d,slug = /([0-9]+)\-([0-9]+)\-([0-9]+)\-([^\/]+)/.match(item.identifier.without_ext).captures
 
   "/#{y}/#{m}/#{d}/#{slug}/index.html"
 end
 
-route '/assets/*' do
-  # /assets/foo.html/ -> /foo.html
-  item.identifier[7..-2]
+route '/static/**/*' do
+  item.identifier.to_s[7..-1]
 end
 
-route '/htaccess/' do
+route '/htaccess.*' do
   '/.htaccess'
 end
 
-route '/rss/|/sitemap/' do
-  item.identifier.chop + '.' + item[:extension]
+route '/{rss,sitemap}.*' do
+  item.identifier.to_s
 end
 
 route '/error/*' do
-  '/' + item.identifier[7..-2] + '.html'
+  item.identifier.without_ext.to_s[6..-1] + '.html'
 end
 
-route '*' do
+route '**/*' do
   if item.binary?
-    # Write item with identifier /foo/ to /foo.ext
-    item.identifier.chop + '.' + item[:extension]
+    item.identifier.to_s
   else
-    # Write item with identifier /foo/ to /foo/index.html
-    item.identifier + 'index.html'
+    item.identifier.without_ext + '.html'
   end
 end
 
-layout '*', :erb
+layout '**/*', :erb

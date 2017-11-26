@@ -13,7 +13,7 @@ def get_rss_date(note)
 end
 
 def get_xml_schema_date(note)
-  note[:created_at].to_iso8601_date
+  note[:created_at].iso8601
 end
 
 module NotesHelper
@@ -42,7 +42,7 @@ def previous_link
   else
     title = prev_article[:title]
     html = "&#9666;&nbsp;#{title}"
-    link_to(html, prev_article.reps[0], :class => "prev", :title => title)
+    link_to(html, prev_article.reps[:default], :class => "prev", :title => title)
   end
 end
 
@@ -55,11 +55,11 @@ def next_link
     next_article = notes_[idx]
     title = next_article[:title]
     html = "#{title}&nbsp;&#9656;"
-    link_to(html, next_article.reps[0], :class => "next", :title => title)
+    link_to(html, next_article.reps[:default], :class => "next", :title => title)
   end
 end
 
 def link_to_item(title, identifier)
-  item = @items.find { |i| i.identifier == identifier }
+  item = @items.find { |item| item.identifier =~ identifier }
   link_to(title, item.path)
 end

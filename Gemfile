@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # nanoc itself
-gem 'nanoc', '~>3.6', '>=3.6.6'
+gem 'nanoc', '~> 4.0'
 
 # nanoc view
 gem 'adsf'

@@ -1,5 +1,5 @@
-<%= render '_header' %>
-<%= render '_title' %>
+<%= render '/_header.*' %>
+<%= render '/_title.*' %>
 
 <div class="content">
   <article>
@@ -13,10 +13,10 @@
 
   <% unless item[:kind] != 'note' %>
     <footer>
-    <%= render '_pagination' %>
+    <%= render '/_pagination.*' %>
     </footer>
   <% end %>
   </article>
 </div>
 
-<%= render '_footer' %>
+<%= render '/_footer.*' %>
