@@ -9,8 +9,8 @@ Specialized in software **architecture** and **object oriented** programming for
 
 I'm currently working as a team leader on [Nebo](http://myscript.com/nebo/), MyScript's note taking application.
 
-<div style="margin: 0 auto; width: 560px;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2c1oeYGmig0?autoplay=0&amp;rel=0" frameborder="0" allowfullscreen=""></iframe>
+<div style="margin: 0 auto; width: 560px; max-width: 100%;">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/2c1oeYGmig0?autoplay=0&amp;rel=0" allowfullscreen=""></iframe>
 </div>
 
 ----

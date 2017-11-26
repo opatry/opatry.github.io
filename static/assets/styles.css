@@ -90,11 +90,7 @@ blockquote {
 }
 
 pre {
-  white-space: pre-wrap;       /* Chrome & Safari */
-  white-space: -moz-pre-wrap;  /* Mozilla since 1999 */
-  white-space: -pre-wrap;      /* Opera 4-6 */
-  white-space: -o-pre-wrap;    /* Opera 7 */
-  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  white-space: pre-wrap;
 
   padding: .5em;
 
@@ -115,8 +111,12 @@ pre code {
   background: transparent;
 }
 
-img {
+img, iframe {
   max-width: 100%;
+}
+
+iframe {
+  border: 0 none;
 }
 
 .code-container {
