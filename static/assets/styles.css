@@ -30,7 +30,7 @@ body {
 }
 
 .site {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 2em auto;
   padding: 0 1em;
   font-size: 1.5em;
@@ -150,6 +150,11 @@ footer {
 }
 
 @media screen and (max-width: 1000px) {
+  .site {
+    width: 100%;
+    max-width: none;
+    margin: 1em auto;
+  }
   .special-links a {
     font-size: 48px;
   }
