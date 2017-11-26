@@ -9,6 +9,11 @@ compile '/static/**/*' do
   # don’t filter or layout
 end
 
+compile '/**/*.scss' do
+  filter :sass, syntax: :scss
+  write item.identifier.without_ext + '.css'
+end
+
 compile '/notes/*' do
   filter :fenced_code_block
   filter :erb
