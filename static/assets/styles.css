@@ -132,8 +132,8 @@ iframe {
   text-align: right;
   text-transform: lowercase;
   background: white;
-  border-radius: 3px;
-  padding: .25em;
+  border-bottom-left-radius: 10px;
+  padding: .5em;
   font-size: .55em;
   font-weight: bold;
   position: absolute;
