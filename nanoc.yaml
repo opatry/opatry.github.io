@@ -11,16 +11,19 @@ prune:
 
   exclude: [ '.git', '.hg', '.svn', 'CVS' ]
 
+string_pattern_type: glob
 data_sources:
   -
-    type: filesystem_unified
+    type: filesystem
+    identifier_type: full
     items_root: /
     layouts_root: /
-    allow_periods_in_identifiers: false
     encoding: utf-8
   -
-    type: static
-    items_root: /assets/
+    type: filesystem
+    items_root: /static/
+    content_dir: 'static'
+    layouts_dir: null
     encoding: utf-8
 
 site:

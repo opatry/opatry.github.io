@@ -27,7 +27,7 @@ compile:
 check:
   stage: test
   script:
-    - bundle exec nanoc check ilinks elinks css stale
+    - bundle exec nanoc check ilinks elinks html css stale mixed_content
 
 deploy:
   stage: deploy
