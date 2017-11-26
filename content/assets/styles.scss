@@ -1,36 +1,41 @@
+---
+layout: none
+---
+
 @charset "UTF-8";
 
-/* flat UI colors
-cloud #ecf0f1
-silver #bdc3c7
-alizarin #e74c3c
-pomegranate #c0392b
-midnightblue #2c3e50
-wet asphalt #34495e
-amethyst #9b59b6
-wisteria #8e44ad
-concrete #95a5a6
-abestos #7f8c8d
-peter river #3498db
-belize hile #2980b9
-*/
+/* flat UI colors */
+$flatui-cloud-color: #ecf0f1;
+$flatui-silver-color: #bdc3c7;
+$flatui-alizarin-color: #e74c3c;
+$flatui-pomegranate-color: #c0392b;
+$flatui-midnightblue-color: #2c3e50;
+$flatui-wet_asphalt-color: #34495e;
+$flatui-amethyst-color: #9b59b6;
+$flatui-wisteria-color: #8e44ad;
+$flatui-concrete-color: #95a5a6;
+$flatui-abestos-color: #7f8c8d;
+$flatui-peter_river-color: #3498db;
+$flatui-belize_hile-color: #2980b9;
+
+$width-breakpoint: 1000px;
 
 *, *:before, *:after {
   box-sizing: border-box;
 }
 
 body {
-  color: #34495e;
+  color: $flatui-wet_asphalt-color;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 16px;
   margin: 0;
   padding: 0;
-  border-top: 5px solid #3498db;
+  border-top: 5px solid $flatui-peter_river-color;
 }
 
 .site {
-  max-width: 1000px;
+  max-width: $width-breakpoint;
   margin: 2em auto;
   padding: 0 1em;
   font-size: 1.5em;
@@ -41,31 +46,31 @@ body {
 }
 
 hr {
-  background-color: #bdc3c7;
+  background-color: $flatui-silver-color;
   height: 1px;
   border: 0 none;
 }
 
 h1, h2, h3 {
-  color: #34495e;
+  color: $flatui-wet_asphalt-color;
   font-weight: 300;
 }
 
 .author {
-  color: #2c3e50;
+  color: $flatui-midnightblue-color;
   font-size: 1.5em;
 }
 
 a, a:link {
   text-decoration: none;
-  color: #3498db;
+  color: $flatui-peter_river-color;
 }
 
 a:visited,
 a:hover,
 a:active {
   text-decoration: underline;
-  color: #2980b9;
+  color: $flatui-belize_hile-color;
 }
 
 p {
@@ -85,7 +90,7 @@ li > p {
 }
 
 blockquote {
-  color: #7f8c8d;
+  color: $flatui-abestos-color;
   font-style: italic;
 }
 
@@ -98,8 +103,8 @@ pre {
 
   padding: .5em;
 
-  color: #2c3e50;
-  background-color: #ecf0f1;
+  color: $flatui-midnightblue-color;
+  background-color: $flatui-cloud-color;
 }
 
 code, pre {
@@ -108,7 +113,7 @@ code, pre {
 }
 
 :not(pre) > code {
-  color: #e74c3c;
+  color: $flatui-alizarin-color;
   padding: .05em .25em;
 }
 
@@ -142,7 +147,7 @@ iframe {
 }
 
 .disabled {
-  color: #bdc3c7;
+  color: $flatui-silver-color;
 }
 
 footer {
@@ -154,7 +159,7 @@ footer {
   text-decoration: none;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: $width-breakpoint) {
   .special-links a {
     font-size: 48px;
   }
