@@ -18,7 +18,7 @@ pipelines:
           - npm install --prefix .npm firebase-tools
           - bundle install --path=.bundler
           - bundle exec nanoc compile
-          - bundle exec nanoc check ilinks elinks css stale
+          - bundle exec nanoc check ilinks elinks html css stale mixed_content
           - .npm/node_modules/firebase-tools/bin/firebase deploy -m "BitBucket build#$BITBUCKET_BUILD_NUMBER" --token "$FIREBASE_TOKEN" --non-interactive
 
   custom:
@@ -36,7 +36,7 @@ pipelines:
             - export LC_ALL=en_US.UTF-8
             - bundle install --path=.bundler
             - bundle exec nanoc compile
-            - bundle exec nanoc check ilinks elinks css stale
+            - bundle exec nanoc check ilinks elinks html css stale mixed_content
 
 definitions:
   caches:
