@@ -150,11 +150,6 @@ footer {
 }
 
 @media screen and (max-width: 1000px) {
-  .site {
-    width: 100%;
-    max-width: none;
-    margin: 1em auto;
-  }
   .special-links a {
     font-size: 48px;
   }
