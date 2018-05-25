@@ -2,12 +2,15 @@
 title: Home
 kind: resume
 ---
-You are on the personal website of Olivier Patry, software engineer working for [MyScript](http://developer.myscript.com/) (handwriting recognition for text, math, geometry, diagram, music…).
+You are on the personal website of Olivier Patry, software engineer working for [MyScript](https://myscript.com/) (handwriting recognition for text, math, geometry, diagram: [developer portal](https://www.myscript.com/)).
 
 Specialized in software **architecture** and **object oriented** programming for **mobile/embedded devices** mainly using
-**C++** and **Java** (Android &amp; Desktop).
+**Kotlin**, **Java** and **C++** (Android &amp; Desktop).
 
-I'm currently working as a team leader on [Nebo](http://myscript.com/nebo/), MyScript's note taking application.
+I'm currently working as MyScript's Mobile Application Program Manager.
+
+![](images/nebo.svg) [Nebo](https://www.myscript.com/nebo/): note taking application<br>
+![](images/calculator.svg) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
 
 <div style="margin: 0 auto; width: 560px; max-width: 100%;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/2c1oeYGmig0?autoplay=0&amp;rel=0" allowfullscreen=""></iframe>
@@ -16,8 +19,9 @@ I'm currently working as a team leader on [Nebo](http://myscript.com/nebo/), MyS
 ----
 
 <div class="special-links" markdown="1">
-[<span class="icon-github"></span>](https://github.com/opatry)
-[<span class="icon-feed"></span>](/rss.xml)
+[<span class="icon-twitter"></span>](https://twitter.com/o_patry)
+[<span class="icon-github-circled"></span>](https://github.com/opatry)
+[<span class="icon-rss-squared"></span>](/rss.xml)
 </div>
 
 ----
