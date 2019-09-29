@@ -19,7 +19,7 @@ pipelines:
           - bundle install --path=.bundler
           - bundle exec nanoc compile
           - bundle exec nanoc check ilinks elinks html css stale mixed_content
-          - .npm/node_modules/firebase-tools/bin/firebase deploy -m "BitBucket build#$BITBUCKET_BUILD_NUMBER" --token "$FIREBASE_TOKEN" --non-interactive
+          - .npm/node_modules/firebase-tools/bin/firebase deploy --only hosting:opatry-website -m "BitBucket build#$BITBUCKET_BUILD_NUMBER" --token "$FIREBASE_TOKEN" --non-interactive
 
   custom:
     check:
