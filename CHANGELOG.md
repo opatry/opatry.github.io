@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.6.0](/../tree/v2.6.0) - 2020-02-17:
+### Added
+ - Spring 2018 minor home content update
+ - Support for GitHub Actions pipelines
+
+### Changed
+ - Bundler update
+ - Minor style adjustments
+
+### Removed
+ - Support for GitLab pipelines
+ - Support for BitBicket pipelines
+
 ## [2.5.0](/../tree/v2.5.0) - 2017-11-26:
 ### Changed
  - Migrated to Nanoc 4
