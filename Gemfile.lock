@@ -28,7 +28,8 @@ GEM
     htmlentities (4.3.4)
     json (2.3.0)
     json_schema (0.20.8)
-    kramdown (2.1.0)
+    kramdown (2.3.0)
+      rexml
     mini_portile2 (2.4.0)
     nanoc (4.11.14)
       addressable (~> 2.5)
@@ -67,6 +68,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     ref (2.0.0)
+    rexml (3.2.4)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
