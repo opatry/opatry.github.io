@@ -1,8 +1,14 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 preprocess do
   # ignore unpublished items
   @items.delete_if { |item| item[:published] == false }
+
+  all_notes.each do |item|
+    slug = %r{\d{4}-\d{2}-\d{2}-([^/]+)}.match(item.identifier.without_exts).captures.first
+    item[:slug] = slug
+  end
 end
 
 compile '/static/**/*' do
@@ -11,17 +17,15 @@ end
 
 compile '/**/*.scss' do
   filter :sass, syntax: :scss
-  write item.identifier.without_ext + '.css'
+  write "#{item.identifier.without_ext}.css"
 end
 
 compile '/notes/*' do
   filter :fenced_code_block
   filter :erb
   filter :kramdown
-  filter :colorize_syntax, :default_colorizer => :pygmentize  # syntax highlighting
+  filter :colorize_syntax, default_colorizer: :pygmentize  # syntax highlighting
   layout '/default.*'
-  # FIXME do it unless debug
-  # filter :html_compressor, :type => item[:extension]
 end
 
 compile '/htaccess.*' do
@@ -30,13 +34,10 @@ end
 
 compile '/{rss,sitemap}.*' do
   filter :erb
-  # filter :html_compressor, :type => item[:extension]
 end
 
 compile '**/*' do
-  if item.binary?
-    # don’t filter binary items
-  else
+  unless item.binary?
     filter :erb
     filter :kramdown
     item_layout = item[:layout] || 'default'
@@ -45,13 +46,17 @@ compile '**/*' do
 end
 
 route '/notes/*' do
-  y,m,d,slug = /([0-9]+)\-([0-9]+)\-([0-9]+)\-([^\/]+)/.match(item.identifier.without_ext).captures
+  raise "item #{item.identifier} doesn't have a slug" if item[:slug].nil?
 
-  "/#{y}/#{m}/#{d}/#{slug}/index.html"
+  slug = item[:slug]
+  post_date = Date.parse(item[:created_at].to_s)
+  month_2d = format('%02d', post_date.month)
+  day_2d = format('%02d', post_date.mday)
+  "/#{post_date.year}/#{month_2d}/#{day_2d}/#{slug}/index.html"
 end
 
 route '/static/**/*' do
-  item.identifier.to_s[7..-1]
+  item.identifier.to_s.delete_prefix('/static')
 end
 
 route '/htaccess.*' do
@@ -63,15 +68,15 @@ route '/{rss,sitemap}.*' do
 end
 
 route '/error/*' do
-  item.identifier.without_ext.to_s[6..-1] + '.html'
+  "#{item.identifier.without_ext.to_s.delete_prefix('/error')}.html"
 end
 
 route '**/*' do
   if item.binary?
     item.identifier.to_s
   else
-    item.identifier.without_ext + '.html'
+    "#{item.identifier.without_ext}.html"
   end
 end
 
-layout '**/*', :erb
+layout '**/*', :erb, trim_mode: '-'

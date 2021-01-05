@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # from gpakosz/pempek.net
 
 require 'html_compressor'
@@ -7,13 +9,13 @@ class HtmlCompressorFilter < Nanoc::Filter
 
   def run(content, params = {})
     case params.delete(:type)
-      when 'txt'
-        # do nothing
-        content
-      when 'xml'
-        XmlCompressor.new(params).compress(content)
-      else
-        HtmlCompressor::HtmlCompressor.new(params).compress(content)
+    when 'txt'
+      # do nothing
+      content
+    when 'xml'
+      XmlCompressor.new(params).compress(content)
+    else
+      HtmlCompressor::HtmlCompressor.new(params).compress(content)
     end
   end
 end

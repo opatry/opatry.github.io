@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 include Nanoc::Helpers::Rendering
 include Nanoc::Helpers::LinkTo
 include Nanoc::Helpers::Blogging
@@ -17,7 +19,6 @@ def get_xml_schema_date(note)
 end
 
 module NotesHelper
-
   def all_notes
     @items.select { |item| item[:kind] == 'note' }
   end
@@ -33,7 +34,6 @@ end
 
 include NotesHelper
 
-# from https://ecarmi.org/writing/next-previous-links-nanoc/
 def previous_link
   notes_ = notes
   prev_article = notes_[notes_.index(@item) + 1]
@@ -42,24 +42,23 @@ def previous_link
   else
     title = prev_article[:title]
     html = "&#9666;&nbsp;#{title}"
-    link_to(html, prev_article.reps[:default], :class => "prev", :title => title)
+    link_to(html, prev_article.reps[:default], class: 'prev', title: title)
   end
 end
 
 def next_link
   notes_ = notes
   idx = notes_.index(@item) - 1
-  if idx < 0
+  if idx.negative?
     '<span class="disabled">&nbsp;&#9657;</span>'
   else
     next_article = notes_[idx]
     title = next_article[:title]
     html = "#{title}&nbsp;&#9656;"
-    link_to(html, next_article.reps[:default], :class => "next", :title => title)
+    link_to(html, next_article.reps[:default], class: 'next', title: title)
   end
 end
 
 def link_to_item(title, identifier)
-  item = @items.find { |item| item.identifier =~ identifier }
-  link_to(title, item.path)
+  link_to(title, @items[identifier].path)
 end
