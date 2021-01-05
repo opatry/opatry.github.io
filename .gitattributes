@@ -1,0 +1,40 @@
+*       text   eol=lf
+
+.gitignore text
+
+*.sh    text   eol=lf
+
+*.css   text eol=lf
+*.html  text eol=lf diff=html
+*.js    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.rb    text eol=lf diff=ruby
+Rules   text eol=lf diff=ruby
+*.erb   text eol=lf diff=ruby
+
+*.eot   binary
+*.otf   binary diff=exif
+*.ttc   binary diff=exif
+*.ttf   binary diff=exif
+*.woff  binary
+*.woff2 binary
+
+*.gif   binary diff=exif
+*.ico   binary
+*.jpeg  binary diff=exif
+*.jpg   binary diff=exif
+*.png   binary diff=exif
+*.psd   binary diff=exif
+*.svg   text
+*.xcf   binary
+
+*.gz    binary diff=exif
+*.jar   binary
+*.rar   binary diff=exif
+*.tar   binary
+*.tgz   binary
+*.war   binary
+*.zip   binary diff=exif
