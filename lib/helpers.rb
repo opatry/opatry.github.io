@@ -5,8 +5,8 @@ include Nanoc::Helpers::LinkTo
 include Nanoc::Helpers::Blogging
 
 def get_pretty_date(note)
-  # dimanche 9 mars 2014, 17h40
-  attribute_to_time(note[:created_at]).strftime('%A %-d %B %Y, %kh%M')
+  # January 5, 2021
+  attribute_to_time(note[:created_at]).strftime('%B %-d, %Y')
 end
 
 def get_rss_date(note)

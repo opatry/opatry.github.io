@@ -40,6 +40,12 @@ body {
   font-size: 1.5em;
 }
 
+.metatada {
+  text-align: right;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
 .navinfos {
   text-align: center;
 }

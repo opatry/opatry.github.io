@@ -39,6 +39,8 @@
 
 <% if item[:kind] == 'note' %>
     <footer>
+    <p class="metatada">Originally published on <%= get_pretty_date(item) %>.</p>
+
     <hr>
 
     <p id="navlinks" class="navinfos">
