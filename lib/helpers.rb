@@ -34,9 +34,9 @@ end
 
 include NotesHelper
 
-def previous_link
+def previous_link(item)
   notes_ = notes
-  prev_article = notes_[notes_.index(@item) + 1]
+  prev_article = notes_[notes_.index(item) + 1]
   if prev_article.nil?
     '<span class="disabled">&#9667;&nbsp;</span>'
   else
@@ -46,9 +46,9 @@ def previous_link
   end
 end
 
-def next_link
+def next_link(item)
   notes_ = notes
-  idx = notes_.index(@item) - 1
+  idx = notes_.index(item) - 1
   if idx.negative?
     '<span class="disabled">&nbsp;&#9657;</span>'
   else
