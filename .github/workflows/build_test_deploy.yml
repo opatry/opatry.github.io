@@ -1,44 +1,88 @@
 name: Main
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   build-test-and-deploy:
     name: Build, Test and Deploy
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup Ruby 2.6
-      uses: actions/setup-ruby@v1
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Ruby 3.0
+      uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 2.6.x
-    - name: Setup Node 10
-      uses: actions/setup-node@v1
+        ruby-version: 3.0
+
+    - name: Cache bundler gems
+      id: cache-bundler
+      uses: actions/cache@v2
       with:
-        node-version: '10.x'
-    - name: Setup Bundler
+        path: .bundler
+        key: ${{ runner.os }}-gems-v2-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-v2-
+
+    - name: Install Bundler & Gems
+      if: steps.cache-bundler.outputs.cache-hit != 'true'
       run: |
         gem install bundler
-        bundle install --path=.bundler --jobs $(nproc)
+        bundle config set --local without 'development'
+        bundle config set --local path .bundler
+        bundle install --jobs "$(nproc)"
+
+    - name: Install Bundler only
+      if: steps.cache-bundler.outputs.cache-hit == 'true'
+      run: |
+          gem install bundler
+          bundle config set --local without 'development'
+          bundle config set --local path .bundler
+
+    - name: Cache nanoc
+      id: cache-nanoc
+      uses: actions/cache@v2
+      with:
+        path: output
+        key: ${{ runner.os }}-nanoc-prod-v2-${{ hashFiles('content/**', 'Rules', 'nanoc.yaml', 'lib/**', 'layouts/**') }}
+        restore-keys: |
+          ${{ runner.os }}-nanoc-prod-v2-
+
     - name: Build
+      id: build
       run: |
         export LANG=en_US.UTF-8
         export LANGUAGE=en_US:en
         export LC_ALL=en_US.UTF-8
+        output_hash_before=$(_ci/hashFiles.sh "$PWD/output")
         bundle exec nanoc compile
+        output_hash_after=$(_ci/hashFiles.sh "$PWD/output")
+        echo ::set-output name=need_deploy::$([ "$output_hash_before" != "$output_hash_after" ]; echo $?)
+
     - name: Stats
       run: |
         du -shc output/* | sort -h
         echo "$(find output -type f | wc -l | tr -d ' ') generated files"
+
     - name: Test
       run: |
         bundle exec nanoc check ilinks stale
-    - name: Deploy
+
+    - name: Setup Node 10
+      if: steps.build.outputs.need_deploy == 0
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: Deploy prod
+      if: steps.build.outputs.need_deploy == 0
       env:
         GIT_SHA: ${{ github.sha }}
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       run: |
         npm install --prefix .npm firebase-tools
         .npm/node_modules/.bin/firebase deploy --only hosting:opatry-website -m "GitHub Actions@${GIT_SHA::8}" --token "$FIREBASE_TOKEN" --non-interactive
-      if: github.ref == 'refs/heads/master'
