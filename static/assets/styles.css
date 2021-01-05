@@ -19,7 +19,7 @@
 }
 
 
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
@@ -76,6 +76,15 @@ a:hover,
 a:active {
   text-decoration: underline;
   color: var(--flatui-belize_hile-color);
+}
+
+a[href^="https://"]::after,
+a[href^="http://"]::after {
+  content: "[↗︎]";
+  font-size: 0.5em;
+  padding-left: .5em;
+  text-decoration: none;
+  color: var(--flatui-wisteria-color);
 }
 
 p {
@@ -169,6 +178,10 @@ footer {
   text-decoration: none;
 }
 
+.special-links a::after {
+  content: none;
+}
+
 @media screen and (max-width: var(--width-breakpoint)) {
   .special-links a {
     font-size: 48px;
@@ -200,7 +213,7 @@ footer {
 }
 */
  
- [class^="icon-"]:before, [class*=" icon-"]:before {
+ [class^="icon-"]::before, [class*=" icon-"]::before {
   font-family: "opatry";
   font-style: normal;
   font-weight: normal;
