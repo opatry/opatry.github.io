@@ -33,3 +33,9 @@ gem 'systemu'
 gem 'stringex'
 
 gem 'sass'
+
+group 'development' do
+  gem 'debase', require: false
+  gem 'ruby-debug-ide', require: false
+  gem 'solargraph', require: false
+end

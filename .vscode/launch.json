@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "nanoc compile",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/bin/nanoc",
+      "useBundler": true,
+      "pathToBundler": "${workspaceRoot}/bin/bundle",
+      "showDebuggerOutput": true,
+      "pathToRDebugIDE": "${workspaceRoot}/bin/rdebug-ide",
+      "args": [
+        "compile"
+      ]
+    }
+  ]
+}

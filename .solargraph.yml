@@ -1,0 +1,18 @@
+---
+include:
+- "**/*.rb"
+- "Rules"
+exclude:
+- spec/**/*
+- test/**/*
+- output/**/*
+- tmp/**/*
+- ".bundle/**/*"
+- ".bundler/**/*"
+require: []
+domains: []
+reporters:
+- rubocop
+require_paths: []
+plugins: []
+max_files: 5000

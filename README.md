@@ -7,3 +7,17 @@ This website is available on https://opatry.net using [🔥 Firebase hosting](ht
 ## CI Status
 
   [![Build, test and deploy Status](https://github.com/opatry/opatry.github.io/workflows/Main/badge.svg)](https://github.com/opatry/opatry.github.io/actions)
+
+## Debug Ruby code 🔎 💎
+<details>
+<summary>See details…</summary>
+
+Using Visual Studio Code and `ruby-debug-ide`, initial setup requires to install `binstubs` for few binaries:
+
+```bash
+$ bundle install
+$ bundle binstubs bundler nanoc ruby-debug-ide
+```
+
+Then, debug launch configuration should work out of the box in VS Code (put a breakpoint (in `Rules#preprocess` for example) then press <kbd>F5</kbd>).
+</details>
