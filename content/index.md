@@ -13,7 +13,7 @@ I'm currently working as MyScript's Mobile Application Program Manager.
 ![](images/calculator.svg) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
 
 <div style="margin: 0 auto; width: 560px; max-width: 100%;">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/2c1oeYGmig0?autoplay=0&amp;rel=0" allowfullscreen=""></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6iNqExuVra4?autoplay=0&amp;rel=0" allowfullscreen=""></iframe>
 </div>
 
 ----
