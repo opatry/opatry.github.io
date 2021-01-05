@@ -163,7 +163,7 @@ footer {
   text-decoration: none;
 }
 
-@media screen and (max-width: $width-breakpoint) {
+@media screen and (max-width: var(--width-breakpoint)) {
   .special-links a {
     font-size: 48px;
   }
