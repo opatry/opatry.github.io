@@ -32,6 +32,7 @@ gem 'html_compressor'
 
 # syntax highlighting
 gem 'htmlentities'
+gem 'rouge'
 gem 'systemu'
 
 # string utils

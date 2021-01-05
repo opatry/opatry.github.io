@@ -19,7 +19,7 @@ compile '/notes/*' do
   filter :fenced_code_block
   filter :erb
   filter :kramdown
-  filter :colorize_syntax, default_colorizer: :pygmentize  # syntax highlighting
+  filter :colorize_syntax, default_colorizer: :rouge
   layout '/default.*'
 end
 

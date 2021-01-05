@@ -96,6 +96,7 @@ GEM
     reverse_markdown (2.0.0)
       nokogiri
     rexml (3.2.4)
+    rouge (3.26.0)
     rubocop (1.7.0)
       parallel (~> 1.10)
       parser (>= 2.7.1.5)
@@ -164,6 +165,7 @@ DEPENDENCIES
   nokogiri
   rack
   rainpress
+  rouge
   ruby-debug-ide
   sass
   solargraph
