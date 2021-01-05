@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <title>Automated web site deployment | Olivier Patry</title>
+
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300italic">
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+  <link rel="stylesheet" type="text/css" href="/assets/pygments/manni.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <meta name=viewport content="width=device-width">
+
+  <!-- Android Chrome 39+ theme color -->
+  <meta name="theme-color" content="#3498db">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+
+</head>
+<body>
+
+<div class="site">
+<header class="title">
+  <h1 class="author">
+  <a href="/" title="back to home">Olivier Patry</a>
+  </h1>
+</header>
+
+
+<div class="content">
+  <article>
+    <header>
+    <h1>Automated web site deployment</h1>
+    </header>
+
+    <section>
+    <hr>
+
+<p><strong>⚠️</strong> <em>This how to is outdated. Still relevant if you want to use <code>lftp</code> but you have now much more convenient solution like <a href="/2017/11/25/firebase-site-hosting/">Firebase hosting</a>.</em></p>
+
+<hr>
+
+<p>There are plenty of ways to automate the deployment of a website (GitHub pages with Jekyll, Maven, Git commit hooks…). 
+Unfortunately some configurations (cheap ones, most of the time) don’t allow easy source control interaction on server side.</p>
+
+<p>We can use <code>lftp</code> to deploy only modified files.</p>
+
+<p>The Git source control contains two main branches <code>master</code> and <code>prod</code>. The first one (default) is used for common development tasks and the other is only modified when an update of the Web site on the Internet must be done.</p>
+
+<p>The following script is used to synchronize the local and remote site states.</p>
+
+<div class="code-container">
+<div class="langspec">Bash</div>
+<pre class="highlight"><code class="language-bash"><span class="ch">#!/usr/bin/env bash</span>
+
+<span class="nb">set</span> -eu
+
+<span class="c1"># retrieve the absolute path of this script in a portable manner</span>
+<span class="nv">cur_dir</span><span class="o">=</span><span class="k">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -lt <span class="m">2</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="nb">echo</span> <span class="s2">"USAGE: </span><span class="nv">$0</span><span class="s2"> ftp_user ftp_password [ftp_host] [remote_dir]"</span>
+  <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">ftp_user</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span>
+<span class="nv">ftp_password</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span><span class="s2">"</span>
+<span class="nv">ftp_host</span><span class="o">=</span><span class="si">${</span><span class="nv">3</span><span class="k">:-</span><span class="s2">"ftp.your.conf.com"</span><span class="si">}</span>
+<span class="nv">remote_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">4</span><span class="k">:-</span><span class="s2">"/ftp/remote/directory"</span><span class="si">}</span>
+<span class="nv">local_dir</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">cur_dir</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span> <span class="c1"># we consider here that the web site sources are sibling of this script</span>
+
+<span class="c1"># use lftp to synchronize the source with the FTP server for only modified files.</span>
+lftp -c <span class="s2">"</span>
+<span class="s2">#debug;</span>
+<span class="s2">open ftp://</span><span class="si">${</span><span class="nv">ftp_user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">ftp_password</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">ftp_host</span><span class="si">}</span><span class="s2"></span>
+<span class="s2">lcd </span><span class="si">${</span><span class="nv">local_dir</span><span class="si">}</span><span class="s2">;</span>
+<span class="s2">cd </span><span class="si">${</span><span class="nv">remote_dir</span><span class="si">}</span><span class="s2">;</span>
+<span class="s2">mirror --only-newer \</span>
+<span class="s2">       --ignore-time \</span>
+<span class="s2">       --reverse \</span>
+<span class="s2">       --parallel=5 \</span>
+<span class="s2">       --verbose \</span>
+<span class="s2">       --exclude .git/ \</span>
+<span class="s2">       --exclude .gitignore \</span>
+<span class="s2">       --exclude-glob composer.* \</span>
+<span class="s2">       --exclude-glob *.sh"</span></code></pre>
+</div>
+<p>The important parts are the <code>lftp</code> command itself and its special commands <code>--only-newer</code> combined with <code>--ignore-time</code>.
+The <code>--reverse</code> switch tells <code>lftp</code> to upload files instead of downloading them.</p>
+
+<p>By default, the upload doesn’t update file timestamp so the <code>--only-newer</code> doesn’t work as expected,
+you’ll have to tell <code>lftp</code> to ignore time to get the expected behavior.</p>
+
+<p>Doing so will update only modified files (comparison by size, so not 100% sure…) on remote FTP server.</p>
+
+<p>There are several drawbacks compared to other (better?) solutions, no rollback possibility, no atomicity, file to update
+criterion not safe etc. But for cheap configurations it helps a lot to automate the process of deploying a website.</p>
+
+    </section>
+
+  
+    <footer>
+    
+<hr>
+
+<p id="navlinks" class="navinfos">
+<span class="disabled">&#9667;&nbsp;</span>
+<span>|</span>
+<a class="next" title="BitBucket Pipelines Android Signing Config" href="/2017/10/07/bitbucket-pipelines-android-signing-config/">BitBucket Pipelines Android Signing Config&nbsp;&#9656;</a>
+</p>
+    </footer>
+  
+  </article>
+</div>
+
+</div> <!-- /.site -->
+</body>
+</html>

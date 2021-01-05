@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Olivier Patry</title>
+    <description>Personal website of Olivier Patry.</description>
+    <link>https://opatry.net/</link>
+    <atom:link href="https://opatry.net//rss.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Firebase site hosting</title>
+        <description>&lt;p&gt;I used to host this website on a cheap FTP server and &lt;a href=&quot;/2014/04/11/automated-web-site-deployment/&quot;&gt;deploy it using &lt;code&gt;lftp&lt;/code&gt;&lt;/a&gt;.
+It seems now a bit archaic, I use Firebase to host it these days.
+Here follows the setup to automatically deploy the website using hosted Continuous Integration services such as BitBucket or GitLab Pipelines.&lt;/p&gt;
+
+&lt;h2 id=&quot;local-setup&quot;&gt;Local setup&lt;/h2&gt;
+
+&lt;p&gt;First, you’ll need to setup your local work environment by installing Firebase tools:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ npm install -g firebase-tools&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Then, login to your Google account using &lt;code&gt;firebase login&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To map your local work tree to a Firebase project, execute &lt;code&gt;firebase init&lt;/code&gt; and select &lt;code&gt;Hosting&lt;/code&gt;. You’ll be asked to choose 
+or create a Firebase project.&lt;/p&gt;
+
+&lt;p&gt;Once done, &lt;code&gt;.firebaserc&lt;/code&gt; and &lt;code&gt;firebase.json&lt;/code&gt; files will be created. The former defines the Firebase project and the latter
+defines some configuration for your project structure, like the directory to publish.
+For a &lt;a href=&quot;https://nanoc.ws/&quot;&gt;&lt;code&gt;nanoc&lt;/code&gt;&lt;/a&gt; website you’ll use &lt;code&gt;output&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Json&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&quot;hosting&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&quot;public&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;output&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Finally, deploy your local output online using &lt;code&gt;firebase deploy&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;continuous-integration-setup&quot;&gt;Continuous Integration setup&lt;/h2&gt;
+
+&lt;p&gt;You can choose to deploy your site by hand using your local copy but sooner or later, you’ll be better with a
+continuous integration build for this purpose.&lt;/p&gt;
+
+&lt;p&gt;I share here the BitBucket and GitLab pipelines configurations I used for this website.&lt;/p&gt;
+
+&lt;p&gt;There is no big difficulty, the tedious part was the provisioning of the image used to build this site due to
+its dependencies (&lt;code&gt;pygmentize&lt;/code&gt; for syntax highlighting, Node JS for minifiers and Firebase…).&lt;/p&gt;
+
+&lt;p&gt;For any CI, you’ll need to generate a token allowing automated deployment:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ firebase login:ci
+
+Visit this URL on any device to log in:
+&amp;lt;some long URL to use&amp;gt;
+
+Waiting &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; authentication...
+
+✔  Success! Use this token to login on a CI server:
+
+&amp;lt;CI token to keep as an environment variable&amp;gt;
+
+Example: firebase deploy --token &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FIREBASE_TOKEN&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;!-- title broken after ``` ``` block, needed something (like this comment!) to fix it --&gt;
+
+&lt;h3 id=&quot;bitbucket&quot;&gt;BitBucket&lt;/h3&gt;
+
+&lt;p&gt;To use &lt;a href=&quot;https://bitbucket.org/product/features/pipelines&quot;&gt;BitBucket pipelines&lt;/a&gt;, create a &lt;code&gt;bitbucket-pipelines.yml&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ruby:2.4.0&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundler&lt;/span&gt;
+        &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm install --prefix .npm firebase-tools&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle install --path=.bundler&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
+          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.npm/node_modules/firebase-tools/bin/firebase deploy -m &quot;BitBucket build#$BITBUCKET_BUILD_NUMBER&quot; --token &quot;$FIREBASE_TOKEN&quot; --non-interactive&lt;/span&gt;
+
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;custom&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundler&lt;/span&gt;
+          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle install --path=.bundler&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundler&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.bundler&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.npm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;As you might have noticed, I used a &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; environment variable, go to &lt;code&gt;Settings &amp;gt; Pipelines / Environment Variables&lt;/code&gt;.
+Add a new &lt;em&gt;secured&lt;/em&gt; environment variable &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; with the value returned by &lt;code&gt;firebase login:ci&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;In this setup, I publish only on &lt;code&gt;master&lt;/code&gt; branch but allow build from any other branch to validate it without deploying.&lt;/p&gt;
+
+&lt;h3 id=&quot;gitlab&quot;&gt;GitLab&lt;/h3&gt;
+
+&lt;p&gt;The &lt;a href=&quot;https://docs.gitlab.com/ee/ci/pipelines.html&quot;&gt;GitLab pipeline&lt;/a&gt; setup is similar, create a &lt;code&gt;.gitlab-ci.yml&lt;/code&gt; file:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ruby:2.4&quot;&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.npm&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.bundler&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;gem install bundler --no-ri --no-rdoc&lt;/span&gt;
+  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle install --path=.bundler --jobs $(nproc)&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;build&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;artifacts&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;output/&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;test&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;deploy&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm install --prefix .npm firebase-tools&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.npm/node_modules/firebase-tools/bin/firebase deploy -m &quot;GitLab Pipeline#$CI_PIPELINE_ID Build#$CI_BUILD_ID&quot; --token &quot;$FIREBASE_TOKEN&quot; --non-interactive&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;This time, the &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; variable should be created from &lt;code&gt;Settings &amp;gt; CI/CD &amp;gt; Secret Variables&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;deploy&lt;/code&gt; Job is only available on &lt;code&gt;master&lt;/code&gt; branch, this way, you can have build validation on any branch but continuous deployment only on &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;I had troubles with UTF-8 encoding, &lt;a href=&quot;https://gitlab.com/gitlab-org/gitlab-ce/issues/14983#note_4637913&quot;&gt;needed &lt;code&gt;en_US.UTF-8&lt;/code&gt; locale installation and configuration&lt;/a&gt;.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;You can also refer to the &lt;a href=&quot;https://firebase.google.com/docs/cli/&quot;&gt;Firebase command line documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The initial source of this &lt;em&gt;How To&lt;/em&gt; comes from &lt;a href=&quot;https://chris.banes.me/2017/06/02/jekyll-firebase/&quot;&gt;Chris Banes&lt;/a&gt;. 
+Chris Banes’s article provides CI setup for Circle CI.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 25 Nov 2017 20:51:00 +0200</pubDate>
+        <link>https://opatry.net//2017/11/25/firebase-site-hosting/</link>
+        <guid isPermaLink="true">https://opatry.net//2017/11/25/firebase-site-hosting/</guid>
+      </item>
+    
+      <item>
+        <title>BitBucket Pipelines for Android</title>
+        <description>&lt;p&gt;BitBucket provides &lt;a href=&quot;https://bitbucket.org/product/features/pipelines&quot;&gt;build pipelines&lt;/a&gt; to automate the build process when you push
+changes on your repository.
+By default, it comes with a docker image made for Java which is not directly suitable
+for Android builds.&lt;/p&gt;
+
+&lt;p&gt;There are some &lt;a href=&quot;https://hub.docker.com/r/runmymind/docker-android-sdk/&quot;&gt;alternative docker images&lt;/a&gt; to solve this but on my
+experimentations, it was very long to download and setup the image. Due to build time restriction
+of the BitBucket free plan, it was a blocker.&lt;/p&gt;
+
+&lt;p&gt;My approach is to download the Android SDK myself and use &lt;code&gt;caches&lt;/code&gt; for it. The build with custom
+docker image was about 8 minutes and is now 1’30”.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ci_install.sh&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -eu
+
+&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;dirname &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/..&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;app_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/android&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;output_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/artifacts&quot;&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;default_android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3859397&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;default_android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;uname -s&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; in
+  Linux&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;linux&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+  Darwin&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;darwin&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+  CYGWIN*&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;MINGW*&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;windows&quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+  *&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;!! Unsupported OS &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;uname -s&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/android-sdk-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -f &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools/bin/sdkmanager&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;# Download and unzip Android sdk&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Downloading Android SDK &#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39; for &#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39;&quot;&lt;/span&gt;
+  wget &lt;span class=&quot;s2&quot;&gt;&quot;https://dl.google.com/android/repository/sdk-tools-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt;
+  unzip &lt;span class=&quot;s2&quot;&gt;&quot;sdk-tools-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt; -d &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  rm &lt;span class=&quot;s2&quot;&gt;&quot;sdk-tools-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Add Android binaries to PATH&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools/bin:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/platform-tools:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Accept all licenses (source: http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Auto Accepting licenses&quot;&lt;/span&gt;
+mkdir -p &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses/android-sdk-license&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;\n84831b9409646a918e30573bab4c9c91346d8abd&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses/android-sdk-preview-license&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Update android sdk&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Downloading packages described by &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;
+cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; sleep &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; sleep &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; y&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sdkmanager --package_file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;package_file.txt&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Text&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;platform-tools
+build-tools;26.0.2
+platforms;android-26&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;bitbucket-pipelines.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;java:8&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;gradle&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;android-sdk&lt;/span&gt;
+          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bash ./build/ci_install.sh&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ANDROID_HOME=$PWD/android-sdk-linux bash ./build/android.sh&lt;/span&gt;
+
+&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;android-sdk&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;android-sdk-linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 06 Nov 2017 21:20:12 +0200</pubDate>
+        <link>https://opatry.net//2017/11/06/bitbucket-pipelines-for-android/</link>
+        <guid isPermaLink="true">https://opatry.net//2017/11/06/bitbucket-pipelines-for-android/</guid>
+      </item>
+    
+      <item>
+        <title>Android Studio Layout Preview Tools</title>
+        <description>&lt;p&gt;For those who are using the Android Studio layout preview (those who don’t should!), you might already know the 
+&lt;a href=&quot;https://developer.android.com/studio/write/tool-attributes.html&quot;&gt;&lt;code&gt;tools&lt;/code&gt;&lt;/a&gt; namespace (&lt;code&gt;toolsNs&lt;/code&gt; shortcut in Android Studio).&lt;/p&gt;
+
+&lt;p&gt;Here follows some steroids for such attributes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+&lt;code&gt;tools:showIn&lt;/code&gt; to integrate a layout in a parent for the preview (for nested layout/components)&lt;/li&gt;
+  &lt;li&gt;
+&lt;code&gt;tools:listitem&lt;/code&gt; to apply a layout to children of list/recycler views&lt;/li&gt;
+  &lt;li&gt;
+&lt;code&gt;tools:...=&quot;@sample/...&quot;&lt;/code&gt; to apply concrete data source to a layout (iterate over list of data when layout is integrated into a list/recycler view)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You have built-in sample data:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Xml&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;xmlns:tools=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/tools&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vertical&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tools:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@tools:sample/lorem&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tools:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@tools:sample/full_names&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tools:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@tools:sample/date_mmddyyyy&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tools:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@tools:sample/cities&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tools:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@tools:sample/avatars&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- See Android Studio auto completion for further examples. --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;And you can add custom text sample data using &lt;code&gt;src/main/sampledata/mydata&lt;/code&gt; (New &amp;gt; Sample Data directory from your module):&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Text&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;line1
+another line
+line 3
+and some content
+...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Or using &lt;code&gt;src/main/sampledata/mydata.json&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Json&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&quot;stuff&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_foo&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_bar&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;zorg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_zorg&quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;You can now use it in your layout files using &lt;code&gt;@sample/*&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Xml&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;xmlns:tools=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/tools&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
+              &lt;span class=&quot;na&quot;&gt;android:orientation=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;vertical&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;TextView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tools:text=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@sample/mydata.json/stuff/label&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;ImageView&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;wrap_content&quot;&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;tools:src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;@sample/mydata.json/stuff/icon&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Android Studio can also auto complete from user defined sample data. --&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The cool thing is that Android Studio provides auto completion even for your custom sample data (need rebuild of project).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/as_preview_toolsns.png&quot; alt=&quot;Android Studio with sample data&quot;&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 28 Oct 2017 13:16:42 +0200</pubDate>
+        <link>https://opatry.net//2017/10/28/android-studio-layout-preview-tools/</link>
+        <guid isPermaLink="true">https://opatry.net//2017/10/28/android-studio-layout-preview-tools/</guid>
+      </item>
+    
+      <item>
+        <title>BitBucket Pipelines Android Signing Config</title>
+        <description>&lt;p&gt;Building Android release APK can be a bit tedious when it comes to signing it.
+Storing (and sharing to a restricted audience) the signing configuration, should
+be done carefully especially on Open Source projects.&lt;/p&gt;
+
+&lt;p&gt;Using Git submodule, we can isolate sensitive information from public and only
+allow access to Continuous Integration users and repository administrators.&lt;/p&gt;
+
+&lt;p&gt;First create a new repository (&lt;code&gt;secret&lt;/code&gt;) with restricted access.&lt;/p&gt;
+
+&lt;p&gt;Add sensitive information in it.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;playstore.properties&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Properties&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;na&quot;&gt;storeFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp.keystore&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;keyAlias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp_android&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;storePassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;keyPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Add your &lt;code&gt;myapp.keystore&lt;/code&gt; near the &lt;code&gt;playstore.properties&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;p&gt;Add it to your application as a submodule.&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ git submodule add &amp;lt;url&amp;gt; build/secret&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Configure the application signing configuration in Gradle:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;app/build.gradle&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Groovy&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-groovy&quot;&gt;&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;com.android.application&#39;&lt;/span&gt;
+
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signingPropertiesFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;../../build/secret/playstore.properties&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keystoreProperties&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Properties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;signingPropertiesFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signingPropertiesFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;keystoreProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;load&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;FileInputStream&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;signingPropertiesFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;android&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;signingConfigs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// &quot;public&quot; development keystore file shared between developers&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;storeFile&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;../myapp_dev.keystore&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;storePassword&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;devapp&#39;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;keyAlias&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;myapp_android_dev&#39;&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;keyPassword&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;devapp&#39;&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;release&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;storeFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keystoreProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;storeFile&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+                  &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;../../build/secret/${keystoreProperties[&#39;storeFile&#39;]}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+                  &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;storePassword&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keystoreProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;storePassword&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;keyAlias&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keystoreProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;keyAlias&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;keyPassword&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keystoreProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;keyPassword&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;buildTypes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;debug&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;signingConfig&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signingConfigs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debug&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;release&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;signingConfig&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signingConfigs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;release&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The tricky part is now to tell BitBucket how to initialize the secret submodule.
+To do so, you’ll have to manually initialize the submodule in your pipeline file.&lt;/p&gt;
+
+&lt;p&gt;In your BitBucket’s application repository, go to &lt;code&gt;Settings &amp;gt; Pipelines / Environment Variables&lt;/code&gt;.
+Add 2 new &lt;em&gt;secured&lt;/em&gt; environment variables for user (&lt;code&gt;BITBUCKET_USER&lt;/code&gt;) and password
+ (&lt;code&gt;BITBUCKET_PASS&lt;/code&gt;). Use values allowed to clone your &lt;code&gt;secret&lt;/code&gt; repository.&lt;/p&gt;
+
+&lt;p&gt;Finally trigger the submodule initialization using these secret credentials:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;bitbucket-pipelines.yml&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git config --file=.gitmodules submodule.build/secret.url https://$BITBUCKET_USER:$BITBUCKET_PASS@bitbucket.org/shht/secrets.git&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git submodule sync&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git submodule update --init build/secret&lt;/span&gt;
+            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;./gradlew assembleRelease&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://community.atlassian.com/t5/Bitbucket-questions/Bitbucket-Pipelines-and-git-submodules/qaq-p/130479&quot;&gt;Source&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 07 Oct 2017 21:32:08 +0200</pubDate>
+        <link>https://opatry.net//2017/10/07/bitbucket-pipelines-android-signing-config/</link>
+        <guid isPermaLink="true">https://opatry.net//2017/10/07/bitbucket-pipelines-android-signing-config/</guid>
+      </item>
+    
+      <item>
+        <title>Automated web site deployment</title>
+        <description>&lt;hr&gt;
+
+&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This how to is outdated. Still relevant if you want to use &lt;code&gt;lftp&lt;/code&gt; but you have now much more convenient solution like &lt;a href=&quot;/2017/11/25/firebase-site-hosting/&quot;&gt;Firebase hosting&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;There are plenty of ways to automate the deployment of a website (GitHub pages with Jekyll, Maven, Git commit hooks…). 
+Unfortunately some configurations (cheap ones, most of the time) don’t allow easy source control interaction on server side.&lt;/p&gt;
+
+&lt;p&gt;We can use &lt;code&gt;lftp&lt;/code&gt; to deploy only modified files.&lt;/p&gt;
+
+&lt;p&gt;The Git source control contains two main branches &lt;code&gt;master&lt;/code&gt; and &lt;code&gt;prod&lt;/code&gt;. The first one (default) is used for common development tasks and the other is only modified when an update of the Web site on the Internet must be done.&lt;/p&gt;
+
+&lt;p&gt;The following script is used to synchronize the local and remote site states.&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;
+&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -eu
+
+&lt;span class=&quot;c1&quot;&gt;# retrieve the absolute path of this script in a portable manner&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;dirname &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$#&lt;/span&gt; -lt &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;USAGE: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; ftp_user ftp_password [ftp_host] [remote_dir]&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;ftp_user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ftp_password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ftp_host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ftp.your.conf.com&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;remote_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/ftp/remote/directory&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;local_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# we consider here that the web site sources are sibling of this script&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# use lftp to synchronize the source with the FTP server for only modified files.&lt;/span&gt;
+lftp -c &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;#debug;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;open ftp://&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_user&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_password&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_host&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;lcd &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;local_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;cd &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remote_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;mirror --only-newer \&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;       --ignore-time \&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;       --reverse \&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;       --parallel=5 \&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;       --verbose \&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;       --exclude .git/ \&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;       --exclude .gitignore \&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;       --exclude-glob composer.* \&lt;/span&gt;
+&lt;span class=&quot;s2&quot;&gt;       --exclude-glob *.sh&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The important parts are the &lt;code&gt;lftp&lt;/code&gt; command itself and its special commands &lt;code&gt;--only-newer&lt;/code&gt; combined with &lt;code&gt;--ignore-time&lt;/code&gt;.
+The &lt;code&gt;--reverse&lt;/code&gt; switch tells &lt;code&gt;lftp&lt;/code&gt; to upload files instead of downloading them.&lt;/p&gt;
+
+&lt;p&gt;By default, the upload doesn’t update file timestamp so the &lt;code&gt;--only-newer&lt;/code&gt; doesn’t work as expected,
+you’ll have to tell &lt;code&gt;lftp&lt;/code&gt; to ignore time to get the expected behavior.&lt;/p&gt;
+
+&lt;p&gt;Doing so will update only modified files (comparison by size, so not 100% sure…) on remote FTP server.&lt;/p&gt;
+
+&lt;p&gt;There are several drawbacks compared to other (better?) solutions, no rollback possibility, no atomicity, file to update
+criterion not safe etc. But for cheap configurations it helps a lot to automate the process of deploying a website.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 11 Apr 2014 14:08:42 +0200</pubDate>
+        <link>https://opatry.net//2014/04/11/automated-web-site-deployment/</link>
+        <guid isPermaLink="true">https://opatry.net//2014/04/11/automated-web-site-deployment/</guid>
+      </item>
+    
+  </channel>
+</rss>

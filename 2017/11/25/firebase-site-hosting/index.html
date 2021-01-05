@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <title>Firebase site hosting | Olivier Patry</title>
+
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300italic">
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+  <link rel="stylesheet" type="text/css" href="/assets/pygments/manni.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <meta name=viewport content="width=device-width">
+
+  <!-- Android Chrome 39+ theme color -->
+  <meta name="theme-color" content="#3498db">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+
+</head>
+<body>
+
+<div class="site">
+<header class="title">
+  <h1 class="author">
+  <a href="/" title="back to home">Olivier Patry</a>
+  </h1>
+</header>
+
+
+<div class="content">
+  <article>
+    <header>
+    <h1>Firebase site hosting</h1>
+    </header>
+
+    <section>
+    <p>I used to host this website on a cheap FTP server and <a href="/2014/04/11/automated-web-site-deployment/">deploy it using <code>lftp</code></a>.
+It seems now a bit archaic, I use Firebase to host it these days.
+Here follows the setup to automatically deploy the website using hosted Continuous Integration services such as BitBucket or GitLab Pipelines.</p>
+
+<h2 id="local-setup">Local setup</h2>
+
+<p>First, you’ll need to setup your local work environment by installing Firebase tools:</p>
+
+<div class="code-container">
+<div class="langspec">Bash</div>
+<pre class="highlight"><code class="language-bash">$ npm install -g firebase-tools</code></pre>
+</div>
+<p>Then, login to your Google account using <code>firebase login</code>.</p>
+
+<p>To map your local work tree to a Firebase project, execute <code>firebase init</code> and select <code>Hosting</code>. You’ll be asked to choose 
+or create a Firebase project.</p>
+
+<p>Once done, <code>.firebaserc</code> and <code>firebase.json</code> files will be created. The former defines the Firebase project and the latter
+defines some configuration for your project structure, like the directory to publish.
+For a <a href="https://nanoc.ws/"><code>nanoc</code></a> website you’ll use <code>output</code>:</p>
+
+<div class="code-container">
+<div class="langspec">Json</div>
+<pre class="highlight"><code class="language-json"><span class="p">{</span>
+  <span class="nt">"hosting"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"public"</span><span class="p">:</span> <span class="s2">"output"</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre>
+</div>
+<p>Finally, deploy your local output online using <code>firebase deploy</code>.</p>
+
+<h2 id="continuous-integration-setup">Continuous Integration setup</h2>
+
+<p>You can choose to deploy your site by hand using your local copy but sooner or later, you’ll be better with a
+continuous integration build for this purpose.</p>
+
+<p>I share here the BitBucket and GitLab pipelines configurations I used for this website.</p>
+
+<p>There is no big difficulty, the tedious part was the provisioning of the image used to build this site due to
+its dependencies (<code>pygmentize</code> for syntax highlighting, Node JS for minifiers and Firebase…).</p>
+
+<p>For any CI, you’ll need to generate a token allowing automated deployment:</p>
+
+<div class="code-container">
+<div class="langspec">Bash</div>
+<pre class="highlight"><code class="language-bash">$ firebase login:ci
+
+Visit this URL on any device to log in:
+&lt;some long URL to use&gt;
+
+Waiting <span class="k">for</span> authentication...
+
+✔  Success! Use this token to login on a CI server:
+
+&lt;CI token to keep as an environment variable&gt;
+
+Example: firebase deploy --token <span class="s2">"</span><span class="nv">$FIREBASE_TOKEN</span><span class="s2">"</span></code></pre>
+</div>
+<!-- title broken after ``` ``` block, needed something (like this comment!) to fix it -->
+
+<h3 id="bitbucket">BitBucket</h3>
+
+<p>To use <a href="https://bitbucket.org/product/features/pipelines">BitBucket pipelines</a>, create a <code>bitbucket-pipelines.yml</code> file:</p>
+
+<div class="code-container">
+<div class="langspec">Yaml</div>
+<pre class="highlight"><code class="language-yaml"><span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ruby:2.4.0</span>
+
+<span class="l l-Scalar l-Scalar-Plain">pipelines</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">branches</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">master</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">step</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">caches</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npm</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundler</span>
+        <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">curl -sL https://deb.nodesource.com/setup_8.x | bash -</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">apt-get update -qq &amp;&amp; apt-get install -y nodejs python-pygments locales</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo "en_US UTF-8" &gt; /etc/locale.gen</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">locale-gen en_US.UTF-8</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LANG=en_US.UTF-8</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LANGUAGE=en_US:en</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LC_ALL=en_US.UTF-8</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npm install --prefix .npm firebase-tools</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle install --path=.bundler</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec nanoc compile</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec nanoc check ilinks elinks css stale</span>
+          <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">.npm/node_modules/firebase-tools/bin/firebase deploy -m "BitBucket build#$BITBUCKET_BUILD_NUMBER" --token "$FIREBASE_TOKEN" --non-interactive</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">custom</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">check</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">step</span><span class="p p-Indicator">:</span>
+          <span class="l l-Scalar l-Scalar-Plain">caches</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundler</span>
+          <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">curl -sL https://deb.nodesource.com/setup_8.x | bash -</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">apt-get update -qq &amp;&amp; apt-get install -y nodejs python-pygments locales</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo "en_US UTF-8" &gt; /etc/locale.gen</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">locale-gen en_US.UTF-8</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LANG=en_US.UTF-8</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LANGUAGE=en_US:en</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LC_ALL=en_US.UTF-8</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle install --path=.bundler</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec nanoc compile</span>
+            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec nanoc check ilinks elinks css stale</span>
+
+<span class="l l-Scalar l-Scalar-Plain">definitions</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">caches</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">bundler</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">.bundler</span>
+    <span class="l l-Scalar l-Scalar-Plain">npm</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">.npm</span></code></pre>
+</div>
+<p>As you might have noticed, I used a <code>FIREBASE_TOKEN</code> environment variable, go to <code>Settings &gt; Pipelines / Environment Variables</code>.
+Add a new <em>secured</em> environment variable <code>FIREBASE_TOKEN</code> with the value returned by <code>firebase login:ci</code>.</p>
+
+<p>In this setup, I publish only on <code>master</code> branch but allow build from any other branch to validate it without deploying.</p>
+
+<h3 id="gitlab">GitLab</h3>
+
+<p>The <a href="https://docs.gitlab.com/ee/ci/pipelines.html">GitLab pipeline</a> setup is similar, create a <code>.gitlab-ci.yml</code> file:</p>
+
+<div class="code-container">
+<div class="langspec">Yaml</div>
+<pre class="highlight"><code class="language-yaml"><span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="s">"ruby:2.4"</span>
+
+<span class="l l-Scalar l-Scalar-Plain">cache</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">paths</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">.npm</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">.bundler</span>
+
+<span class="l l-Scalar l-Scalar-Plain">before_script</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">curl -sL https://deb.nodesource.com/setup_8.x | bash -</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">apt-get update -qq &amp;&amp; apt-get install -y nodejs python-pygments locales</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">echo "en_US UTF-8" &gt; /etc/locale.gen</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">locale-gen en_US.UTF-8</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LANG=en_US.UTF-8</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LANGUAGE=en_US:en</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">export LC_ALL=en_US.UTF-8</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gem install bundler --no-ri --no-rdoc</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle install --path=.bundler --jobs $(nproc)</span>
+
+<span class="l l-Scalar l-Scalar-Plain">compile</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">stage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">build</span>
+  <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec nanoc compile</span>
+  <span class="l l-Scalar l-Scalar-Plain">artifacts</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">paths</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">output/</span>
+
+<span class="l l-Scalar l-Scalar-Plain">check</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">stage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test</span>
+  <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bundle exec nanoc check ilinks elinks css stale</span>
+
+<span class="l l-Scalar l-Scalar-Plain">deploy</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">stage</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy</span>
+  <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">npm install --prefix .npm firebase-tools</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">.npm/node_modules/firebase-tools/bin/firebase deploy -m "GitLab Pipeline#$CI_PIPELINE_ID Build#$CI_BUILD_ID" --token "$FIREBASE_TOKEN" --non-interactive</span>
+  <span class="l l-Scalar l-Scalar-Plain">only</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">master</span></code></pre>
+</div>
+<p>This time, the <code>FIREBASE_TOKEN</code> variable should be created from <code>Settings &gt; CI/CD &gt; Secret Variables</code>.</p>
+
+<p>The <code>deploy</code> Job is only available on <code>master</code> branch, this way, you can have build validation on any branch but continuous deployment only on <code>master</code>.</p>
+
+<p>I had troubles with UTF-8 encoding, <a href="https://gitlab.com/gitlab-org/gitlab-ce/issues/14983#note_4637913">needed <code>en_US.UTF-8</code> locale installation and configuration</a>.</p>
+
+<hr>
+
+<p>You can also refer to the <a href="https://firebase.google.com/docs/cli/">Firebase command line documentation</a>.</p>
+
+<p>The initial source of this <em>How To</em> comes from <a href="https://chris.banes.me/2017/06/02/jekyll-firebase/">Chris Banes</a>. 
+Chris Banes’s article provides CI setup for Circle CI.</p>
+
+    </section>
+
+  
+    <footer>
+    
+<hr>
+
+<p id="navlinks" class="navinfos">
+<a class="prev" title="BitBucket Pipelines for Android" href="/2017/11/06/bitbucket-pipelines-for-android/">&#9666;&nbsp;BitBucket Pipelines for Android</a>
+<span>|</span>
+<span class="disabled">&nbsp;&#9657;</span>
+</p>
+    </footer>
+  
+  </article>
+</div>
+
+</div> <!-- /.site -->
+</body>
+</html>

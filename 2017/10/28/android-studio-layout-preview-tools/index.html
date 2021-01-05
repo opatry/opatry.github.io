@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <title>Android Studio Layout Preview Tools | Olivier Patry</title>
+
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300italic">
+  <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+  <link rel="stylesheet" type="text/css" href="/assets/pygments/manni.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <meta name=viewport content="width=device-width">
+
+  <!-- Android Chrome 39+ theme color -->
+  <meta name="theme-color" content="#3498db">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
+
+</head>
+<body>
+
+<div class="site">
+<header class="title">
+  <h1 class="author">
+  <a href="/" title="back to home">Olivier Patry</a>
+  </h1>
+</header>
+
+
+<div class="content">
+  <article>
+    <header>
+    <h1>Android Studio Layout Preview Tools</h1>
+    </header>
+
+    <section>
+    <p>For those who are using the Android Studio layout preview (those who don’t should!), you might already know the 
+<a href="https://developer.android.com/studio/write/tool-attributes.html"><code>tools</code></a> namespace (<code>toolsNs</code> shortcut in Android Studio).</p>
+
+<p>Here follows some steroids for such attributes:</p>
+
+<ul>
+  <li>
+<code>tools:showIn</code> to integrate a layout in a parent for the preview (for nested layout/components)</li>
+  <li>
+<code>tools:listitem</code> to apply a layout to children of list/recycler views</li>
+  <li>
+<code>tools:...="@sample/..."</code> to apply concrete data source to a layout (iterate over list of data when layout is integrated into a list/recycler view)</li>
+</ul>
+
+<p>You have built-in sample data:</p>
+
+<div class="code-container">
+<div class="langspec">Xml</div>
+<pre class="highlight"><code class="language-xml"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+              <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+              <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+              <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+              <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;TextView</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">tools:text=</span><span class="s">"@tools:sample/lorem"</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;TextView</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">tools:text=</span><span class="s">"@tools:sample/full_names"</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;TextView</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">tools:text=</span><span class="s">"@tools:sample/date_mmddyyyy"</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;TextView</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">tools:text=</span><span class="s">"@tools:sample/cities"</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;ImageView</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">tools:src=</span><span class="s">"@tools:sample/avatars"</span><span class="nt">/&gt;</span>
+
+  <span class="c">&lt;!-- See Android Studio auto completion for further examples. --&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre>
+</div>
+<p>And you can add custom text sample data using <code>src/main/sampledata/mydata</code> (New &gt; Sample Data directory from your module):</p>
+
+<div class="code-container">
+<div class="langspec">Text</div>
+<pre class="highlight"><code class="language-text">line1
+another line
+line 3
+and some content
+...</code></pre>
+</div>
+<p>Or using <code>src/main/sampledata/mydata.json</code>:</p>
+<div class="code-container">
+<div class="langspec">Json</div>
+<pre class="highlight"><code class="language-json"><span class="p">{</span>
+  <span class="nt">"stuff"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">"label"</span><span class="p">:</span> <span class="s2">"foo"</span><span class="p">,</span>
+      <span class="nt">"icon"</span><span class="p">:</span> <span class="s2">"@drawable/ic_foo"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">"label"</span><span class="p">:</span> <span class="s2">"bar"</span><span class="p">,</span>
+      <span class="nt">"icon"</span><span class="p">:</span> <span class="s2">"@drawable/ic_bar"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">"label"</span><span class="p">:</span> <span class="s2">"zorg"</span><span class="p">,</span>
+      <span class="nt">"icon"</span><span class="p">:</span> <span class="s2">"@drawable/ic_zorg"</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span></code></pre>
+</div>
+<p>You can now use it in your layout files using <code>@sample/*</code>.</p>
+
+<div class="code-container">
+<div class="langspec">Xml</div>
+<pre class="highlight"><code class="language-xml"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+              <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
+              <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
+              <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
+              <span class="na">android:orientation=</span><span class="s">"vertical"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;TextView</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">tools:text=</span><span class="s">"@sample/mydata.json/stuff/label"</span><span class="nt">/&gt;</span>
+
+  <span class="nt">&lt;ImageView</span>
+    <span class="na">android:layout_width=</span><span class="s">"wrap_content"</span>
+    <span class="na">android:layout_height=</span><span class="s">"wrap_content"</span>
+    <span class="na">tools:src=</span><span class="s">"@sample/mydata.json/stuff/icon"</span><span class="nt">/&gt;</span>
+
+  <span class="c">&lt;!-- Android Studio can also auto complete from user defined sample data. --&gt;</span>
+
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre>
+</div>
+<p>The cool thing is that Android Studio provides auto completion even for your custom sample data (need rebuild of project).</p>
+
+<p><img src="/images/as_preview_toolsns.png" alt="Android Studio with sample data"></p>
+
+
+    </section>
+
+  
+    <footer>
+    
+<hr>
+
+<p id="navlinks" class="navinfos">
+<a class="prev" title="BitBucket Pipelines Android Signing Config" href="/2017/10/07/bitbucket-pipelines-android-signing-config/">&#9666;&nbsp;BitBucket Pipelines Android Signing Config</a>
+<span>|</span>
+<a class="next" title="BitBucket Pipelines for Android" href="/2017/11/06/bitbucket-pipelines-for-android/">BitBucket Pipelines for Android&nbsp;&#9656;</a>
+</p>
+    </footer>
+  
+  </article>
+</div>
+
+</div> <!-- /.site -->
+</body>
+</html>
