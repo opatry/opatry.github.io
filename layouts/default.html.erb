@@ -1,5 +1,31 @@
-<%= render '/_header.*' %>
-<%= render '/_title.*' %>
+<!DOCTYPE html>
+<html lang="<%= @config[:site][:lang] %>">
+<head>
+
+  <meta charset="UTF-8" />
+  <title><%= item[:title] %> | <%= @config[:site][:name] %></title>
+
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300italic">
+  <link rel="stylesheet" type="text/css" href="<%= @items['/static/assets/styles.*'].path %>">
+  <link rel="stylesheet" type="text/css" href="<%= @items['/static/assets/pygments/manni.*'].path %>">
+  <link rel="shortcut icon" href="<%= @items['/static/favicon.ico'].path %>">
+
+  <meta name=viewport content="width=device-width">
+
+  <!-- Android Chrome 39+ theme color -->
+  <meta name="theme-color" content="#3498db">
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= @items['/rss.*'].path %>">
+
+</head>
+<body>
+
+<div class="site">
+<header class="title">
+  <h1 class="author">
+  <a href="<%= @items['/index.*'].path %>" title="back to home"><%= @config[:site][:name] %></a>
+  </h1>
+</header>
 
 <div class="content">
   <article>
@@ -11,12 +37,20 @@
     <%= yield %>
     </section>
 
-  <% unless item[:kind] != 'note' %>
+<% if item[:kind] == 'note' %>
     <footer>
-    <%= render '/_pagination.*' %>
+    <hr>
+
+    <p id="navlinks" class="navinfos">
+    <%= previous_link %>
+    <span>|</span>
+    <%= next_link %>
+    </p>
     </footer>
-  <% end %>
+<% end %>
   </article>
 </div>
 
-<%= render '/_footer.*' %>
+</div> <!-- /.site -->
+</body>
+</html>
