@@ -12,12 +12,7 @@ preprocess do
 end
 
 compile '/static/**/*' do
-  # don’t filter or layout
-end
-
-compile '/**/*.scss' do
-  filter :sass, syntax: :scss
-  write "#{item.identifier.without_ext}.css"
+  # don't filter or layout
 end
 
 compile '/notes/*' do
