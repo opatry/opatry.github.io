@@ -3,14 +3,13 @@ layout: none
 ---
 <%
 require 'cgi'
+
 site_url = @config[:site][:url]
-site_name = @config[:site][:name]
-site_desc = @config[:site][:description]
 %><?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title><%= site_name %></title>
-    <description><%= site_desc %></description>
+    <title><%= @config[:site][:name] %></title>
+    <description><%= @config[:site][:description] %></description>
     <link><%= site_url %></link>
     <atom:link href="<%= site_url %>/rss.xml" rel="self" type="application/rss+xml" />
     <% notes.each do |note| %>
@@ -18,8 +17,8 @@ site_desc = @config[:site][:description]
         <title><%= CGI.escapeHTML(note[:title]) %></title>
         <description><%= CGI.escapeHTML(note.compiled_content) %></description>
         <pubDate><%= get_rss_date(note) %></pubDate>
-        <link><%= site_url %><%= note.path %></link>
-        <guid isPermaLink="true"><%= site_url %><%= note.path %></guid>
+        <link><%= site_url + note.path %></link>
+        <guid isPermaLink="true"><%= site_url + note.path %></guid>
       </item>
     <% end %>
   </channel>

@@ -1,11 +1,7 @@
 ---
 layout: none
 ---
-<%
-site_url = @config[:site][:url]
-site_name = @config[:site][:name]
-site_desc = @config[:site][:description]
-%><?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?>
 <urlset
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -14,7 +10,7 @@ site_desc = @config[:site][:description]
 >
   <% notes[0, 20].each do |note| %>
   <url>
-    <loc><%= site_url %><%= note.path %></loc>
+    <loc><%= @config[:site][:url] + note.path %></loc>
     <lastmod><%= get_xml_schema_date(note) %></lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
