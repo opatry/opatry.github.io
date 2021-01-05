@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300italic">
   <link rel="stylesheet" type="text/css" href="/assets/styles.css">
-  <link rel="stylesheet" type="text/css" href="/assets/pygments/manni.css">
+  <link rel="stylesheet" type="text/css" href="/assets/highlighting/thankful_eyes.css">
   <link rel="shortcut icon" href="/favicon.ico">
 
   <meta name=viewport content="width=device-width">
@@ -49,10 +49,10 @@ allow access to Continuous Integration users and repository administrators.</p>
 
 <div class="code-container">
 <div class="langspec">Properties</div>
-<pre class="highlight"><code class="language-properties"><span class="na">storeFile</span><span class="o">=</span><span class="s">myapp.keystore</span>
-<span class="na">keyAlias</span><span class="o">=</span><span class="s">myapp_android</span>
-<span class="na">storePassword</span><span class="o">=</span><span class="s">SENSITIVE_PASSWORD</span>
-<span class="na">keyPassword</span><span class="o">=</span><span class="s">SENSITIVE_PASSWORD2</span></code></pre>
+<pre class="highlight"><code class="language-properties"><span class="py">storeFile</span><span class="p">=</span><span class="s">myapp.keystore</span>
+<span class="py">keyAlias</span><span class="p">=</span><span class="s">myapp_android</span>
+<span class="py">storePassword</span><span class="p">=</span><span class="s">SENSITIVE_PASSWORD</span>
+<span class="py">keyPassword</span><span class="p">=</span><span class="s">SENSITIVE_PASSWORD2</span></code></pre>
 </div>
 <p>Add your <code>myapp.keystore</code> near the <code>playstore.properties</code> file.</p>
 
@@ -60,7 +60,7 @@ allow access to Continuous Integration users and repository administrators.</p>
 
 <div class="code-container">
 <div class="langspec">Bash</div>
-<pre class="highlight"><code class="language-bash">$ git submodule add &lt;url&gt; build/secret</code></pre>
+<pre class="highlight"><code class="language-bash"><span class="nv">$ </span>git submodule add &lt;url&gt; build/secret</code></pre>
 </div>
 <p>Configure the application signing configuration in Gradle:</p>
 
@@ -119,15 +119,15 @@ Add 2 new <em>secured</em> environment variables for user (<code>BITBUCKET_USER<
 
 <div class="code-container">
 <div class="langspec">Yaml</div>
-<pre class="highlight"><code class="language-yaml"><span class="l l-Scalar l-Scalar-Plain">pipelines</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">branches</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">master</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">step</span><span class="p p-Indicator">:</span>
-          <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git config --file=.gitmodules submodule.build/secret.url https://$BITBUCKET_USER:$BITBUCKET_PASS@bitbucket.org/shht/secrets.git</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git submodule sync</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git submodule update --init build/secret</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./gradlew assembleRelease</span></code></pre>
+<pre class="highlight"><code class="language-yaml"><span class="na">pipelines</span><span class="pi">:</span>
+  <span class="na">branches</span><span class="pi">:</span>
+    <span class="na">master</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">step</span><span class="pi">:</span>
+          <span class="na">script</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="s">git config --file=.gitmodules submodule.build/secret.url https://$BITBUCKET_USER:$BITBUCKET_PASS@bitbucket.org/shht/secrets.git</span>
+            <span class="pi">-</span> <span class="s">git submodule sync</span>
+            <span class="pi">-</span> <span class="s">git submodule update --init build/secret</span>
+            <span class="pi">-</span> <span class="s">./gradlew assembleRelease</span></code></pre>
 </div>
 <p><a href="https://community.atlassian.com/t5/Bitbucket-questions/Bitbucket-Pipelines-and-git-submodules/qaq-p/130479">Source</a>.</p>
 
@@ -135,6 +135,8 @@ Add 2 new <em>secured</em> environment variables for user (<code>BITBUCKET_USER<
 
 
     <footer>
+    <p class="metatada">Originally published on October 7, 2017.</p>
+
     <hr>
 
     <p id="navlinks" class="navinfos">

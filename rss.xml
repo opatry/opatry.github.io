@@ -18,7 +18,7 @@ Here follows the setup to automatically deploy the website using hosted Continuo
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ npm install -g firebase-tools&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; firebase-tools&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Then, login to your Google account using &lt;code&gt;firebase login&lt;/code&gt;.&lt;/p&gt;
 
@@ -31,11 +31,11 @@ For a &lt;a href=&quot;https://nanoc.ws/&quot;&gt;&lt;code&gt;nanoc&lt;/code&gt;
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Json&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&quot;hosting&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&quot;public&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;output&quot;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;hosting&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;public&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;output&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Finally, deploy your local output online using &lt;code&gt;firebase deploy&lt;/code&gt;.&lt;/p&gt;
 
@@ -53,18 +53,18 @@ its dependencies (&lt;code&gt;pygmentize&lt;/code&gt; for syntax highlighting, N
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ firebase login:ci
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;firebase login:ci
 
-Visit this URL on any device to log in:
+Visit this URL on any device to log &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;:
 &amp;lt;some long URL to use&amp;gt;
 
-Waiting &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; authentication...
+Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;authentication...
 
 ✔  Success! Use this token to login on a CI server:
 
 &amp;lt;CI token to keep as an environment variable&amp;gt;
 
-Example: firebase deploy --token &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FIREBASE_TOKEN&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+Example: firebase deploy &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FIREBASE_TOKEN&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;!-- title broken after ``` ``` block, needed something (like this comment!) to fix it --&gt;
 
@@ -74,50 +74,50 @@ Example: firebase deploy --token &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/spa
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ruby:2.4.0&lt;/span&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ruby:2.4.0&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundler&lt;/span&gt;
-        &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm install --prefix .npm firebase-tools&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle install --path=.bundler&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
-          &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.npm/node_modules/firebase-tools/bin/firebase deploy -m &quot;BitBucket build#$BITBUCKET_BUILD_NUMBER&quot; --token &quot;$FIREBASE_TOKEN&quot; --non-interactive&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;npm&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundler&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;npm install --prefix .npm firebase-tools&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle install --path=.bundler&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.npm/node_modules/firebase-tools/bin/firebase deploy -m &quot;BitBucket build#$BITBUCKET_BUILD_NUMBER&quot; --token &quot;$FIREBASE_TOKEN&quot; --non-interactive&lt;/span&gt;
 
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;custom&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundler&lt;/span&gt;
-          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle install --path=.bundler&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;custom&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundler&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle install --path=.bundler&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundler&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.bundler&lt;/span&gt;
-    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.npm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;na&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;bundler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.bundler&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;npm&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.npm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;As you might have noticed, I used a &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; environment variable, go to &lt;code&gt;Settings &amp;gt; Pipelines / Environment Variables&lt;/code&gt;.
 Add a new &lt;em&gt;secured&lt;/em&gt; environment variable &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; with the value returned by &lt;code&gt;firebase login:ci&lt;/code&gt;.&lt;/p&gt;
@@ -130,44 +130,44 @@ Add a new &lt;em&gt;secured&lt;/em&gt; environment variable &lt;code&gt;FIREBASE
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;ruby:2.4&quot;&lt;/span&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ruby:2.4&quot;&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.npm&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.bundler&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.npm&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.bundler&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;gem install bundler --no-ri --no-rdoc&lt;/span&gt;
-  &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle install --path=.bundler --jobs $(nproc)&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;before_script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;curl -sL https://deb.nodesource.com/setup_8.x | bash -&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;apt-get update -qq &amp;amp;&amp;amp; apt-get install -y nodejs python-pygments locales&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;echo &quot;en_US UTF-8&quot; &amp;gt; /etc/locale.gen&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;locale-gen en_US.UTF-8&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LANG=en_US.UTF-8&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LANGUAGE=en_US:en&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;export LC_ALL=en_US.UTF-8&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gem install bundler --no-ri --no-rdoc&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle install --path=.bundler --jobs $(nproc)&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;build&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;artifacts&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;output/&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;build&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle exec nanoc compile&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;artifacts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;output/&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;test&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;check&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;test&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle exec nanoc check ilinks elinks css stale&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;deploy&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;npm install --prefix .npm firebase-tools&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;.npm/node_modules/firebase-tools/bin/firebase deploy -m &quot;GitLab Pipeline#$CI_PIPELINE_ID Build#$CI_BUILD_ID&quot; --token &quot;$FIREBASE_TOKEN&quot; --non-interactive&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;na&quot;&gt;deploy&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;stage&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;deploy&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;npm install --prefix .npm firebase-tools&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.npm/node_modules/firebase-tools/bin/firebase deploy -m &quot;GitLab Pipeline#$CI_PIPELINE_ID Build#$CI_BUILD_ID&quot; --token &quot;$FIREBASE_TOKEN&quot; --non-interactive&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;This time, the &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; variable should be created from &lt;code&gt;Settings &amp;gt; CI/CD &amp;gt; Secret Variables&lt;/code&gt;.&lt;/p&gt;
 
@@ -205,57 +205,57 @@ docker image was about 8 minutes and is now 1’30”.&lt;/p&gt;
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
 
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -eu
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-eu&lt;/span&gt;
 
-&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;dirname &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/..&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;app_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/android&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;output_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/artifacts&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/..&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;app_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/android&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;output_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/artifacts&quot;&lt;/span&gt;
 
 &lt;span class=&quot;nv&quot;&gt;default_android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;3859397&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;default_android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;default_android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}}&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;uname -s&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt; in
-  Linux&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;uname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in
+  &lt;/span&gt;Linux&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;linux&quot;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-  Darwin&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  Darwin&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;darwin&quot;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-  CYGWIN*&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;MINGW*&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  CYGWIN&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;MINGW&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
     &lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;windows&quot;&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
-  *&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;!! Unsupported OS &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;uname -s&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;!! Unsupported OS &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;uname&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
   &lt;span class=&quot;p&quot;&gt;;;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;esac&lt;/span&gt;
 
-&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/android-sdk-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;origin_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/android-sdk-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; ! -f &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools/bin/sdkmanager&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;# Download and unzip Android sdk&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Downloading Android SDK &#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39; for &#39;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39;&quot;&lt;/span&gt;
-  wget &lt;span class=&quot;s2&quot;&gt;&quot;https://dl.google.com/android/repository/sdk-tools-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt;
-  unzip &lt;span class=&quot;s2&quot;&gt;&quot;sdk-tools-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt; -d &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-  rm &lt;span class=&quot;s2&quot;&gt;&quot;sdk-tools-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools/bin/sdkmanager&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+  &lt;span class=&quot;c&quot;&gt;# Download and unzip Android sdk&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Downloading Android SDK &#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39; for &#39;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&#39;&quot;&lt;/span&gt;
+  wget &lt;span class=&quot;s2&quot;&gt;&quot;https://dl.google.com/android/repository/sdk-tools-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt;
+  unzip &lt;span class=&quot;s2&quot;&gt;&quot;sdk-tools-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;rm&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;sdk-tools-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;os&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;android_sdk_zip_version&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.zip&quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# Add Android binaries to PATH&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools/bin:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/platform-tools:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Add Android binaries to PATH&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/tools/bin:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/platform-tools:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# Accept all licenses (source: http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Accept all licenses (source: http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences)&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Auto Accepting licenses&quot;&lt;/span&gt;
-mkdir -p &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;\n8933bad161af4178b1185d1a37fbf41ea5269c55&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses/android-sdk-license&quot;&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;\n84831b9409646a918e30573bab4c9c91346d8abd&quot;&lt;/span&gt; &amp;gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses/android-sdk-preview-license&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;8933bad161af4178b1185d1a37fbf41ea5269c55&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses/android-sdk-license&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;84831b9409646a918e30573bab4c9c91346d8abd&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ANDROID_HOME&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/licenses/android-sdk-preview-license&quot;&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# Update android sdk&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Downloading packages described by &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;
-cat &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; sleep &lt;span class=&quot;m&quot;&gt;5&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt; sleep &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; y&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;|&lt;/span&gt; sdkmanager --package_file&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;c&quot;&gt;# Update android sdk&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Downloading packages described by &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;5 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 1 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;y&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | sdkmanager &lt;span class=&quot;nt&quot;&gt;--package_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;code&gt;package_file.txt&lt;/code&gt;&lt;/p&gt;
 
@@ -269,22 +269,22 @@ platforms;android-26&lt;/code&gt;&lt;/pre&gt;
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;java:8&lt;/span&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;java:8&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;gradle&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;android-sdk&lt;/span&gt;
-          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;bash ./build/ci_install.sh&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;ANDROID_HOME=$PWD/android-sdk-linux bash ./build/android.sh&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;gradle&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;android-sdk&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bash ./build/ci_install.sh&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ANDROID_HOME=$PWD/android-sdk-linux bash ./build/android.sh&lt;/span&gt;
 
-&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;android-sdk&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;android-sdk-linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;na&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;android-sdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;android-sdk-linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 </description>
         <pubDate>Mon, 06 Nov 2017 21:20:12 +0200</pubDate>
@@ -359,22 +359,22 @@ and some content
 &lt;p&gt;Or using &lt;code&gt;src/main/sampledata/mydata.json&lt;/code&gt;:&lt;/p&gt;
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Json&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&quot;stuff&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_foo&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_bar&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;zorg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nt&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_zorg&quot;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;stuff&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_foo&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;bar&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_bar&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;zorg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_zorg&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;You can now use it in your layout files using &lt;code&gt;@sample/*&lt;/code&gt;.&lt;/p&gt;
 
@@ -426,10 +426,10 @@ allow access to Continuous Integration users and repository administrators.&lt;/
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Properties&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;na&quot;&gt;storeFile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp.keystore&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;keyAlias&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp_android&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;storePassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;keyPassword&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;py&quot;&gt;storeFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp.keystore&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;keyAlias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp_android&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;storePassword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;keyPassword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Add your &lt;code&gt;myapp.keystore&lt;/code&gt; near the &lt;code&gt;playstore.properties&lt;/code&gt; file.&lt;/p&gt;
 
@@ -437,7 +437,7 @@ allow access to Continuous Integration users and repository administrators.&lt;/
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;$ git submodule add &amp;lt;url&amp;gt; build/secret&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git submodule add &amp;lt;url&amp;gt; build/secret&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;Configure the application signing configuration in Gradle:&lt;/p&gt;
 
@@ -496,15 +496,15 @@ Add 2 new &lt;em&gt;secured&lt;/em&gt; environment variables for user (&lt;code&
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;p p-Indicator&quot;&gt;:&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git config --file=.gitmodules submodule.build/secret.url https://$BITBUCKET_USER:$BITBUCKET_PASS@bitbucket.org/shht/secrets.git&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git submodule sync&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;git submodule update --init build/secret&lt;/span&gt;
-            &lt;span class=&quot;p p-Indicator&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;l l-Scalar l-Scalar-Plain&quot;&gt;./gradlew assembleRelease&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;git config --file=.gitmodules submodule.build/secret.url https://$BITBUCKET_USER:$BITBUCKET_PASS@bitbucket.org/shht/secrets.git&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;git submodule sync&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;git submodule update --init build/secret&lt;/span&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./gradlew assembleRelease&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;https://community.atlassian.com/t5/Bitbucket-questions/Bitbucket-Pipelines-and-git-submodules/qaq-p/130479&quot;&gt;Source&lt;/a&gt;.&lt;/p&gt;
 </description>
@@ -532,39 +532,39 @@ Unfortunately some configurations (cheap ones, most of the time) don’t allow e
 
 &lt;div class=&quot;code-container&quot;&gt;
 &lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;ch&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
 
-&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -eu
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-eu&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# retrieve the absolute path of this script in a portable manner&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;dirname &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# retrieve the absolute path of this script in a portable manner&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
 
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$#&lt;/span&gt; -lt &lt;span class=&quot;m&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;USAGE: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; ftp_user ftp_password [ftp_host] [remote_dir]&quot;&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$# &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-lt&lt;/span&gt; 2 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;USAGE: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; ftp_user ftp_password [ftp_host] [remote_dir]&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;1
+&lt;span class=&quot;k&quot;&gt;fi
 
-&lt;span class=&quot;nv&quot;&gt;ftp_user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ftp_password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;ftp_host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ftp.your.conf.com&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;remote_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/ftp/remote/directory&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;local_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# we consider here that the web site sources are sibling of this script&lt;/span&gt;
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ftp_password&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;ftp_host&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;ftp.your.conf.com&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;remote_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/ftp/remote/directory&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;local_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# we consider here that the web site sources are sibling of this script&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;# use lftp to synchronize the source with the FTP server for only modified files.&lt;/span&gt;
-lftp -c &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;#debug;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;open ftp://&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_user&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_password&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_host&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;lcd &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;local_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;cd &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remote_dir&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;mirror --only-newer \&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;       --ignore-time \&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;       --reverse \&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;       --parallel=5 \&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;       --verbose \&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;       --exclude .git/ \&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;       --exclude .gitignore \&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;       --exclude-glob composer.* \&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;       --exclude-glob *.sh&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;c&quot;&gt;# use lftp to synchronize the source with the FTP server for only modified files.&lt;/span&gt;
+lftp &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;
+#debug;
+open ftp://&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_user&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_password&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;ftp_host&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+lcd &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;local_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;
+cd &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;remote_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;;
+mirror --only-newer &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+       --ignore-time &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+       --reverse &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+       --parallel=5 &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+       --verbose &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+       --exclude .git/ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+       --exclude .gitignore &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+       --exclude-glob composer.* &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
+       --exclude-glob *.sh&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;p&gt;The important parts are the &lt;code&gt;lftp&lt;/code&gt; command itself and its special commands &lt;code&gt;--only-newer&lt;/code&gt; combined with &lt;code&gt;--ignore-time&lt;/code&gt;.
 The &lt;code&gt;--reverse&lt;/code&gt; switch tells &lt;code&gt;lftp&lt;/code&gt; to upload files instead of downloading them.&lt;/p&gt;

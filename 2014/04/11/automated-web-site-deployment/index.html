@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300italic">
   <link rel="stylesheet" type="text/css" href="/assets/styles.css">
-  <link rel="stylesheet" type="text/css" href="/assets/pygments/manni.css">
+  <link rel="stylesheet" type="text/css" href="/assets/highlighting/thankful_eyes.css">
   <link rel="shortcut icon" href="/favicon.ico">
 
   <meta name=viewport content="width=device-width">
@@ -51,39 +51,39 @@ Unfortunately some configurations (cheap ones, most of the time) don’t allow e
 
 <div class="code-container">
 <div class="langspec">Bash</div>
-<pre class="highlight"><code class="language-bash"><span class="ch">#!/usr/bin/env bash</span>
+<pre class="highlight"><code class="language-bash"><span class="c">#!/usr/bin/env bash</span>
 
-<span class="nb">set</span> -eu
+<span class="nb">set</span> <span class="nt">-eu</span>
 
-<span class="c1"># retrieve the absolute path of this script in a portable manner</span>
-<span class="nv">cur_dir</span><span class="o">=</span><span class="k">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="k">)</span>
+<span class="c"># retrieve the absolute path of this script in a portable manner</span>
+<span class="nv">cur_dir</span><span class="o">=</span><span class="si">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">dirname</span> <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="si">)</span>
 
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$#</span> -lt <span class="m">2</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="nb">echo</span> <span class="s2">"USAGE: </span><span class="nv">$0</span><span class="s2"> ftp_user ftp_password [ftp_host] [remote_dir]"</span>
-  <span class="nb">exit</span> <span class="m">1</span>
-<span class="k">fi</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span><span class="nt">-lt</span> 2 <span class="o">]</span><span class="p">;</span> <span class="k">then
+  </span><span class="nb">echo</span> <span class="s2">"USAGE: </span><span class="nv">$0</span><span class="s2"> ftp_user ftp_password [ftp_host] [remote_dir]"</span>
+  <span class="nb">exit </span>1
+<span class="k">fi
 
-<span class="nv">ftp_user</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span>
-<span class="nv">ftp_password</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span><span class="s2">"</span>
-<span class="nv">ftp_host</span><span class="o">=</span><span class="si">${</span><span class="nv">3</span><span class="k">:-</span><span class="s2">"ftp.your.conf.com"</span><span class="si">}</span>
-<span class="nv">remote_dir</span><span class="o">=</span><span class="si">${</span><span class="nv">4</span><span class="k">:-</span><span class="s2">"/ftp/remote/directory"</span><span class="si">}</span>
-<span class="nv">local_dir</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">cur_dir</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span> <span class="c1"># we consider here that the web site sources are sibling of this script</span>
+</span><span class="nv">ftp_user</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">1</span><span class="k">}</span><span class="s2">"</span>
+<span class="nv">ftp_password</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">2</span><span class="k">}</span><span class="s2">"</span>
+<span class="nv">ftp_host</span><span class="o">=</span><span class="k">${</span><span class="nv">3</span><span class="k">:-</span><span class="s2">"ftp.your.conf.com"</span><span class="k">}</span>
+<span class="nv">remote_dir</span><span class="o">=</span><span class="k">${</span><span class="nv">4</span><span class="k">:-</span><span class="s2">"/ftp/remote/directory"</span><span class="k">}</span>
+<span class="nv">local_dir</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="c"># we consider here that the web site sources are sibling of this script</span>
 
-<span class="c1"># use lftp to synchronize the source with the FTP server for only modified files.</span>
-lftp -c <span class="s2">"</span>
-<span class="s2">#debug;</span>
-<span class="s2">open ftp://</span><span class="si">${</span><span class="nv">ftp_user</span><span class="si">}</span><span class="s2">:</span><span class="si">${</span><span class="nv">ftp_password</span><span class="si">}</span><span class="s2">@</span><span class="si">${</span><span class="nv">ftp_host</span><span class="si">}</span><span class="s2"></span>
-<span class="s2">lcd </span><span class="si">${</span><span class="nv">local_dir</span><span class="si">}</span><span class="s2">;</span>
-<span class="s2">cd </span><span class="si">${</span><span class="nv">remote_dir</span><span class="si">}</span><span class="s2">;</span>
-<span class="s2">mirror --only-newer \</span>
-<span class="s2">       --ignore-time \</span>
-<span class="s2">       --reverse \</span>
-<span class="s2">       --parallel=5 \</span>
-<span class="s2">       --verbose \</span>
-<span class="s2">       --exclude .git/ \</span>
-<span class="s2">       --exclude .gitignore \</span>
-<span class="s2">       --exclude-glob composer.* \</span>
-<span class="s2">       --exclude-glob *.sh"</span></code></pre>
+<span class="c"># use lftp to synchronize the source with the FTP server for only modified files.</span>
+lftp <span class="nt">-c</span> <span class="s2">"
+#debug;
+open ftp://</span><span class="k">${</span><span class="nv">ftp_user</span><span class="k">}</span><span class="s2">:</span><span class="k">${</span><span class="nv">ftp_password</span><span class="k">}</span><span class="s2">@</span><span class="k">${</span><span class="nv">ftp_host</span><span class="k">}</span><span class="s2">
+lcd </span><span class="k">${</span><span class="nv">local_dir</span><span class="k">}</span><span class="s2">;
+cd </span><span class="k">${</span><span class="nv">remote_dir</span><span class="k">}</span><span class="s2">;
+mirror --only-newer </span><span class="se">\</span><span class="s2">
+       --ignore-time </span><span class="se">\</span><span class="s2">
+       --reverse </span><span class="se">\</span><span class="s2">
+       --parallel=5 </span><span class="se">\</span><span class="s2">
+       --verbose </span><span class="se">\</span><span class="s2">
+       --exclude .git/ </span><span class="se">\</span><span class="s2">
+       --exclude .gitignore </span><span class="se">\</span><span class="s2">
+       --exclude-glob composer.* </span><span class="se">\</span><span class="s2">
+       --exclude-glob *.sh"</span></code></pre>
 </div>
 <p>The important parts are the <code>lftp</code> command itself and its special commands <code>--only-newer</code> combined with <code>--ignore-time</code>.
 The <code>--reverse</code> switch tells <code>lftp</code> to upload files instead of downloading them.</p>
@@ -100,6 +100,8 @@ criterion not safe etc. But for cheap configurations it helps a lot to automate 
 
 
     <footer>
+    <p class="metatada">Originally published on April 11, 2014.</p>
+
     <hr>
 
     <p id="navlinks" class="navinfos">

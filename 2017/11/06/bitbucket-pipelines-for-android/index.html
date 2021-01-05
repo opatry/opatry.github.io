@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300italic">
   <link rel="stylesheet" type="text/css" href="/assets/styles.css">
-  <link rel="stylesheet" type="text/css" href="/assets/pygments/manni.css">
+  <link rel="stylesheet" type="text/css" href="/assets/highlighting/thankful_eyes.css">
   <link rel="shortcut icon" href="/favicon.ico">
 
   <meta name=viewport content="width=device-width">
@@ -50,57 +50,57 @@ docker image was about 8 minutes and is now 1’30”.</p>
 
 <div class="code-container">
 <div class="langspec">Bash</div>
-<pre class="highlight"><code class="language-bash"><span class="ch">#!/usr/bin/env bash</span>
+<pre class="highlight"><code class="language-bash"><span class="c">#!/usr/bin/env bash</span>
 
-<span class="nb">set</span> -eu
+<span class="nb">set</span> <span class="nt">-eu</span>
 
-<span class="nv">cur_dir</span><span class="o">=</span><span class="k">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="k">$(</span>dirname <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span><span class="p">;</span> <span class="nb">pwd</span><span class="k">)</span>
-<span class="nv">origin_dir</span><span class="o">=</span><span class="k">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="si">${</span><span class="nv">cur_dir</span><span class="si">}</span><span class="s2">/.."</span><span class="p">;</span> <span class="nb">pwd</span><span class="k">)</span>
-<span class="nv">app_dir</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">origin_dir</span><span class="si">}</span><span class="s2">/android"</span>
-<span class="nv">output_dir</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">origin_dir</span><span class="si">}</span><span class="s2">/artifacts"</span>
+<span class="nv">cur_dir</span><span class="o">=</span><span class="si">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">dirname</span> <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span><span class="p">;</span> <span class="nb">pwd</span><span class="si">)</span>
+<span class="nv">origin_dir</span><span class="o">=</span><span class="si">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/.."</span><span class="p">;</span> <span class="nb">pwd</span><span class="si">)</span>
+<span class="nv">app_dir</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">origin_dir</span><span class="k">}</span><span class="s2">/android"</span>
+<span class="nv">output_dir</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">origin_dir</span><span class="k">}</span><span class="s2">/artifacts"</span>
 
 <span class="nv">default_android_sdk_zip_version</span><span class="o">=</span><span class="s2">"3859397"</span>
-<span class="nv">android_sdk_zip_version</span><span class="o">=</span><span class="si">${</span><span class="nv">1</span><span class="k">:-</span><span class="si">${</span><span class="nv">default_android_sdk_zip_version</span><span class="si">}}</span>
+<span class="nv">android_sdk_zip_version</span><span class="o">=</span><span class="k">${</span><span class="nv">1</span><span class="k">:-${</span><span class="nv">default_android_sdk_zip_version</span><span class="k">}}</span>
 
-<span class="k">case</span> <span class="k">$(</span>uname -s<span class="k">)</span> in
-  Linux<span class="o">)</span>
+<span class="k">case</span> <span class="si">$(</span><span class="nb">uname</span> <span class="nt">-s</span><span class="si">)</span> <span class="k">in
+  </span>Linux<span class="p">)</span>
     <span class="nv">os</span><span class="o">=</span><span class="s2">"linux"</span>
   <span class="p">;;</span>
-  Darwin<span class="o">)</span>
+  Darwin<span class="p">)</span>
     <span class="nv">os</span><span class="o">=</span><span class="s2">"darwin"</span>
   <span class="p">;;</span>
-  CYGWIN*<span class="p">|</span>MINGW*<span class="o">)</span>
+  CYGWIN<span class="k">*</span><span class="p">|</span>MINGW<span class="k">*</span><span class="p">)</span>
     <span class="nv">os</span><span class="o">=</span><span class="s2">"windows"</span>
   <span class="p">;;</span>
-  *<span class="o">)</span>
-    <span class="nb">echo</span> <span class="s2">"!! Unsupported OS </span><span class="k">$(</span>uname -s<span class="k">)</span><span class="s2">"</span>
-    <span class="nb">exit</span> <span class="m">1</span>
+  <span class="k">*</span><span class="p">)</span>
+    <span class="nb">echo</span> <span class="s2">"!! Unsupported OS </span><span class="si">$(</span><span class="nb">uname</span> <span class="nt">-s</span><span class="si">)</span><span class="s2">"</span>
+    <span class="nb">exit </span>1
   <span class="p">;;</span>
 <span class="k">esac</span>
 
-<span class="nb">export</span> <span class="nv">ANDROID_HOME</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">origin_dir</span><span class="si">}</span><span class="s2">/android-sdk-</span><span class="si">${</span><span class="nv">os</span><span class="si">}</span><span class="s2">"</span>
+<span class="nb">export </span><span class="nv">ANDROID_HOME</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">origin_dir</span><span class="k">}</span><span class="s2">/android-sdk-</span><span class="k">${</span><span class="nv">os</span><span class="k">}</span><span class="s2">"</span>
 
-<span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">"</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span><span class="s2">/tools/bin/sdkmanager"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-  <span class="c1"># Download and unzip Android sdk</span>
-  <span class="nb">echo</span> <span class="s2">"Downloading Android SDK '</span><span class="si">${</span><span class="nv">android_sdk_zip_version</span><span class="si">}</span><span class="s2">' for '</span><span class="si">${</span><span class="nv">os</span><span class="si">}</span><span class="s2">'"</span>
-  wget <span class="s2">"https://dl.google.com/android/repository/sdk-tools-</span><span class="si">${</span><span class="nv">os</span><span class="si">}</span><span class="s2">-</span><span class="si">${</span><span class="nv">android_sdk_zip_version</span><span class="si">}</span><span class="s2">.zip"</span>
-  unzip <span class="s2">"sdk-tools-</span><span class="si">${</span><span class="nv">os</span><span class="si">}</span><span class="s2">-</span><span class="si">${</span><span class="nv">android_sdk_zip_version</span><span class="si">}</span><span class="s2">.zip"</span> -d <span class="s2">"</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span><span class="s2">"</span>
-  rm <span class="s2">"sdk-tools-</span><span class="si">${</span><span class="nv">os</span><span class="si">}</span><span class="s2">-</span><span class="si">${</span><span class="nv">android_sdk_zip_version</span><span class="si">}</span><span class="s2">.zip"</span>
+<span class="k">if</span> <span class="o">[</span> <span class="o">!</span> <span class="nt">-f</span> <span class="s2">"</span><span class="k">${</span><span class="nv">ANDROID_HOME</span><span class="k">}</span><span class="s2">/tools/bin/sdkmanager"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+  <span class="c"># Download and unzip Android sdk</span>
+  <span class="nb">echo</span> <span class="s2">"Downloading Android SDK '</span><span class="k">${</span><span class="nv">android_sdk_zip_version</span><span class="k">}</span><span class="s2">' for '</span><span class="k">${</span><span class="nv">os</span><span class="k">}</span><span class="s2">'"</span>
+  wget <span class="s2">"https://dl.google.com/android/repository/sdk-tools-</span><span class="k">${</span><span class="nv">os</span><span class="k">}</span><span class="s2">-</span><span class="k">${</span><span class="nv">android_sdk_zip_version</span><span class="k">}</span><span class="s2">.zip"</span>
+  unzip <span class="s2">"sdk-tools-</span><span class="k">${</span><span class="nv">os</span><span class="k">}</span><span class="s2">-</span><span class="k">${</span><span class="nv">android_sdk_zip_version</span><span class="k">}</span><span class="s2">.zip"</span> <span class="nt">-d</span> <span class="s2">"</span><span class="k">${</span><span class="nv">ANDROID_HOME</span><span class="k">}</span><span class="s2">"</span>
+  <span class="nb">rm</span> <span class="s2">"sdk-tools-</span><span class="k">${</span><span class="nv">os</span><span class="k">}</span><span class="s2">-</span><span class="k">${</span><span class="nv">android_sdk_zip_version</span><span class="k">}</span><span class="s2">.zip"</span>
 <span class="k">fi</span>
 
-<span class="c1"># Add Android binaries to PATH</span>
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span><span class="s2">/tools:</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span><span class="s2">/tools/bin:</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span><span class="s2">/platform-tools:</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">"</span>
+<span class="c"># Add Android binaries to PATH</span>
+<span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">ANDROID_HOME</span><span class="k">}</span><span class="s2">/tools:</span><span class="k">${</span><span class="nv">ANDROID_HOME</span><span class="k">}</span><span class="s2">/tools/bin:</span><span class="k">${</span><span class="nv">ANDROID_HOME</span><span class="k">}</span><span class="s2">/platform-tools:</span><span class="k">${</span><span class="nv">PATH</span><span class="k">}</span><span class="s2">"</span>
 
-<span class="c1"># Accept all licenses (source: http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences)</span>
+<span class="c"># Accept all licenses (source: http://stackoverflow.com/questions/38096225/automatically-accept-all-sdk-licences)</span>
 <span class="nb">echo</span> <span class="s2">"Auto Accepting licenses"</span>
-mkdir -p <span class="s2">"</span><span class="nv">$ANDROID_HOME</span><span class="s2">/licenses"</span>
-<span class="nb">echo</span> -e <span class="s2">"\n8933bad161af4178b1185d1a37fbf41ea5269c55"</span> &gt; <span class="s2">"</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span><span class="s2">/licenses/android-sdk-license"</span>
-<span class="nb">echo</span> -e <span class="s2">"\n84831b9409646a918e30573bab4c9c91346d8abd"</span> &gt; <span class="s2">"</span><span class="si">${</span><span class="nv">ANDROID_HOME</span><span class="si">}</span><span class="s2">/licenses/android-sdk-preview-license"</span>
+<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$ANDROID_HOME</span><span class="s2">/licenses"</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">8933bad161af4178b1185d1a37fbf41ea5269c55"</span> <span class="o">&gt;</span> <span class="s2">"</span><span class="k">${</span><span class="nv">ANDROID_HOME</span><span class="k">}</span><span class="s2">/licenses/android-sdk-license"</span>
+<span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">84831b9409646a918e30573bab4c9c91346d8abd"</span> <span class="o">&gt;</span> <span class="s2">"</span><span class="k">${</span><span class="nv">ANDROID_HOME</span><span class="k">}</span><span class="s2">/licenses/android-sdk-preview-license"</span>
 
-<span class="c1"># Update android sdk</span>
-<span class="nb">echo</span> <span class="s2">"Downloading packages described by </span><span class="si">${</span><span class="nv">cur_dir</span><span class="si">}</span><span class="s2">/package_file.txt"</span>
-cat <span class="s2">"</span><span class="si">${</span><span class="nv">cur_dir</span><span class="si">}</span><span class="s2">/package_file.txt"</span>
-<span class="o">(</span> sleep <span class="m">5</span> <span class="o">&amp;&amp;</span> <span class="k">while</span> <span class="o">[</span> <span class="m">1</span> <span class="o">]</span><span class="p">;</span> <span class="k">do</span> sleep <span class="m">1</span><span class="p">;</span> <span class="nb">echo</span> y<span class="p">;</span> <span class="k">done</span> <span class="o">)</span> <span class="p">|</span> sdkmanager --package_file<span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">cur_dir</span><span class="si">}</span><span class="s2">/package_file.txt"</span></code></pre>
+<span class="c"># Update android sdk</span>
+<span class="nb">echo</span> <span class="s2">"Downloading packages described by </span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/package_file.txt"</span>
+<span class="nb">cat</span> <span class="s2">"</span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/package_file.txt"</span>
+<span class="o">(</span> <span class="nb">sleep </span>5 <span class="o">&amp;&amp;</span> <span class="k">while</span> <span class="o">[</span> 1 <span class="o">]</span><span class="p">;</span> <span class="k">do </span><span class="nb">sleep </span>1<span class="p">;</span> <span class="nb">echo </span>y<span class="p">;</span> <span class="k">done</span> <span class="o">)</span> | sdkmanager <span class="nt">--package_file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/package_file.txt"</span></code></pre>
 </div>
 <p><code>package_file.txt</code></p>
 
@@ -114,28 +114,30 @@ platforms;android-26</code></pre>
 
 <div class="code-container">
 <div class="langspec">Yaml</div>
-<pre class="highlight"><code class="language-yaml"><span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">java:8</span>
+<pre class="highlight"><code class="language-yaml"><span class="na">image</span><span class="pi">:</span> <span class="s">java:8</span>
 
-<span class="l l-Scalar l-Scalar-Plain">pipelines</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">branches</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">master</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">step</span><span class="p p-Indicator">:</span>
-          <span class="l l-Scalar l-Scalar-Plain">caches</span><span class="p p-Indicator">:</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">gradle</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">android-sdk</span>
-          <span class="l l-Scalar l-Scalar-Plain">script</span><span class="p p-Indicator">:</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">bash ./build/ci_install.sh</span>
-            <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ANDROID_HOME=$PWD/android-sdk-linux bash ./build/android.sh</span>
+<span class="na">pipelines</span><span class="pi">:</span>
+  <span class="na">branches</span><span class="pi">:</span>
+    <span class="na">master</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">step</span><span class="pi">:</span>
+          <span class="na">caches</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="s">gradle</span>
+            <span class="pi">-</span> <span class="s">android-sdk</span>
+          <span class="na">script</span><span class="pi">:</span>
+            <span class="pi">-</span> <span class="s">bash ./build/ci_install.sh</span>
+            <span class="pi">-</span> <span class="s">ANDROID_HOME=$PWD/android-sdk-linux bash ./build/android.sh</span>
 
-<span class="l l-Scalar l-Scalar-Plain">definitions</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">caches</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">android-sdk</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">android-sdk-linux</span></code></pre>
+<span class="na">definitions</span><span class="pi">:</span>
+  <span class="na">caches</span><span class="pi">:</span>
+    <span class="na">android-sdk</span><span class="pi">:</span> <span class="s">android-sdk-linux</span></code></pre>
 </div>
 
     </section>
 
 
     <footer>
+    <p class="metatada">Originally published on November 6, 2017.</p>
+
     <hr>
 
     <p id="navlinks" class="navinfos">
