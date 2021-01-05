@@ -2,8 +2,6 @@ text_extensions: [ 'coffee', 'css', 'erb', 'haml', 'handlebars', 'hb', 'htm', 'h
 
 output_dir: output
 
-index_filenames: [ 'index.html' ]
-
 enable_output_diff: false
 
 prune:
@@ -11,7 +9,6 @@ prune:
 
   exclude: [ '.git', '.hg', '.svn', 'CVS' ]
 
-string_pattern_type: glob
 data_sources:
   -
     type: filesystem
@@ -27,8 +24,7 @@ data_sources:
     encoding: utf-8
 
 site:
-  lang: "en"
-  name: "Olivier Patry"
-  description: "Personal website of Olivier Patry."
-  url: "https://opatry.net/"
-  repo: "https://gitlab.com/opatry/opatry.net.git"
+  lang: en
+  name: Olivier Patry
+  description: Personal website of Olivier Patry.
+  url: https://opatry.net/
