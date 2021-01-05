@@ -4,7 +4,9 @@
 
 The content is, most of the time, written using [**`[M↓]`** Markdown](http://daringfireball.net/projects/markdown/) and served by [`nanoc`](http://nanoc.ws/).
 
-This website is available on https://opatry.net using [🔥 Firebase hosting](https://firebase.google.com/products/hosting) and [🤖 GitHub Actions](https://github.com/features/actions). 
+This website is available at https://opatry.net using [🔥 Firebase hosting](https://firebase.google.com/products/hosting)
+and https://opatry.github.io/ using [📄 GitHub Pages](https://pages.github.com/)
+both thanks to [🤖 GitHub Actions](https://github.com/features/actions). 
 
 ## Debug Ruby code 🔎 💎
 <details>
