@@ -9,7 +9,7 @@ Specialized in software **architecture** and **object oriented** programming for
 
 I'm currently working as MyScript's Mobile Application Program Manager.
 
-![](images/nebo.svg) [Nebo](https://www.myscript.com/nebo/): note taking application<br>
+![](images/nebo.svg) [Nebo](https://nebo.app): note taking application<br>
 ![](images/calculator.svg) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
 
 <div style="margin: 0 auto; width: 560px; max-width: 100%;">
