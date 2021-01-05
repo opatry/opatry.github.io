@@ -1,0 +1,22 @@
+<%= render '/_header.*' %>
+<%= render '/_title.*' %>
+
+<div class="content">
+  <article>
+    <header>
+    <h1><%= item[:title] %></h1>
+    </header>
+
+    <section>
+    <%= yield %>
+    </section>
+
+  <% unless item[:kind] != 'note' %>
+    <footer>
+    <%= render '/_pagination.*' %>
+    </footer>
+  <% end %>
+  </article>
+</div>
+
+<%= render '/_footer.*' %>
