@@ -86,3 +86,10 @@ jobs:
       run: |
         npm install --prefix .npm firebase-tools
         .npm/node_modules/.bin/firebase deploy --only hosting:opatry-website -m "GitHub Actions@${GIT_SHA::8}" --token "$FIREBASE_TOKEN" --non-interactive
+
+    - name: Deploy gh-pages
+      if: steps.build.outputs.need_deploy == 0
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: output
