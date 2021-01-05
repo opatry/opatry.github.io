@@ -147,6 +147,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.6)
       rexml (~> 3.2)
+    webrick (1.6.0)
     yard (0.9.26)
     zeitwerk (2.4.2)
 
@@ -170,6 +171,7 @@ DEPENDENCIES
   systemu
   uglifier
   w3c_validators
+  webrick
 
 BUNDLED WITH
    2.2.4
