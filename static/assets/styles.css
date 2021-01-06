@@ -14,8 +14,6 @@
   --flatui-abestos-color: #7f8c8d;
   --flatui-peter_river-color: #3498db;
   --flatui-belize_hile-color: #2980b9;
-
-  --width-breakpoint: 1000px;
 }
 
 
@@ -34,7 +32,7 @@ body {
 }
 
 .site {
-  max-width: var(--width-breakpoint);
+  max-width: 1000px;
   margin: 2em auto;
   padding: 0 1em;
   font-size: 1.5em;
@@ -182,7 +180,7 @@ footer {
   content: none;
 }
 
-@media screen and (max-width: var(--width-breakpoint)) {
+@media screen and (max-width: 1000px) {
   .special-links a {
     font-size: 48px;
   }
