@@ -24,10 +24,6 @@ compile '/notes/**/*' do
   layout '/base.*'
 end
 
-compile '/htaccess.*' do
-  filter :erb
-end
-
 compile '/{rss,sitemap}.*' do
   filter :erb
 end
@@ -55,10 +51,6 @@ end
 
 route '/static/**/*' do
   item.identifier.to_s.delete_prefix('/static')
-end
-
-route '/htaccess.*' do
-  '/.htaccess'
 end
 
 route '/{rss,sitemap}.*' do
