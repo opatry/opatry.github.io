@@ -15,12 +15,13 @@ compile '/static/**/*' do
   # don't filter or layout
 end
 
-compile '/notes/*' do
+compile '/notes/**/*' do
   filter :fenced_code_block
   filter :erb
   filter :kramdown
   filter :colorize_syntax, default_colorizer: :rouge
-  layout '/default.*'
+  layout '/note.*'
+  layout '/base.*'
 end
 
 compile '/htaccess.*' do
@@ -31,16 +32,18 @@ compile '/{rss,sitemap}.*' do
   filter :erb
 end
 
-compile '**/*' do
+compile '/**/*' do
   unless item.binary?
     filter :erb
     filter :kramdown
-    item_layout = item[:layout] || 'default'
-    layout "/#{item_layout}.*" unless item_layout == 'none'
+    unless item[:layout] == 'none'
+      layout "/#{item[:layout]}.*" unless item[:layout].nil?
+      layout '/base.*'
+    end
   end
 end
 
-route '/notes/*' do
+route '/notes/**/*' do
   raise "item #{item.identifier} doesn't have a slug" if item[:slug].nil?
 
   slug = item[:slug]
@@ -62,11 +65,11 @@ route '/{rss,sitemap}.*' do
   item.identifier.to_s
 end
 
-route '/error/*' do
+route '/error/**/*' do
   "#{item.identifier.without_ext.to_s.delete_prefix('/error')}.html"
 end
 
-route '**/*' do
+route '/**/*' do
   if item.binary?
     item.identifier.to_s
   else
@@ -74,4 +77,4 @@ route '**/*' do
   end
 end
 
-layout '**/*', :erb, trim_mode: '-'
+layout '/**/*', :erb, trim_mode: '-'

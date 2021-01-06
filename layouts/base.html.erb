@@ -18,41 +18,10 @@
   <link rel="alternate" type="application/rss+xml" title="RSS" href="<%= @items['/rss.*'].path %>">
 
 </head>
+
 <body>
-
 <div class="site">
-<header class="title">
-  <h1 class="author">
-  <a href="<%= @items['/index.*'].path %>" title="back to home"><%= @config[:site][:name] %></a>
-  </h1>
-</header>
-
-<div class="content">
-  <article>
-    <header>
-    <h1><%= item[:title] %></h1>
-    </header>
-
-    <section>
-    <%= yield %>
-    </section>
-
-<% if item[:kind] == 'note' %>
-    <footer>
-    <p class="metatada">Originally published on <%= get_pretty_date(item) %>.</p>
-
-    <hr>
-
-    <p id="navlinks" class="navinfos">
-    <%= previous_link(item) %>
-    <span>|</span>
-    <%= next_link(item) %>
-    </p>
-    </footer>
-<% end %>
-  </article>
+<%= yield %>
 </div>
-
-</div> <!-- /.site -->
 </body>
 </html>

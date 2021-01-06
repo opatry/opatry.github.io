@@ -1,7 +1,8 @@
 ---
 title: Home
-kind: resume
+layout: home
 ---
+
 You are on the personal website of Olivier Patry, software engineer working for [MyScript](https://myscript.com/) (handwriting recognition for text, math, geometry, diagram: [developer portal](https://developer.myscript.com/)).
 
 Specialized in software **architecture** and **object oriented** programming for **mobile/embedded devices** mainly using

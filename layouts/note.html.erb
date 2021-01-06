@@ -1,0 +1,27 @@
+  <header class="title">
+    <p>🏠 <a href="<%= @items['/index.*'].path %>">Back to home</a></p>
+  </header>
+
+  <div class="content">
+  <article>
+    <header>
+    <h1><%= item[:title] %></h1>
+    </header>
+
+    <section>
+<%= yield %>
+    </section>
+
+    <footer>
+    <p class="metatada">Originally published on <%= get_pretty_date(item) %>.</p>
+
+    <hr>
+
+    <p id="navlinks" class="navinfos">
+    <%= previous_link(item) %>
+    <span>| <%= link_to('🏠', @items['/index.*'].path) %> |</span>
+    <%= next_link(item) %>
+    </p>
+    </footer>
+  </article>
+  </div>
