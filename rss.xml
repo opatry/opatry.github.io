@@ -173,13 +173,13 @@ Add a new &lt;em&gt;secured&lt;/em&gt; environment variable &lt;code&gt;FIREBASE
 
 &lt;p&gt;The &lt;code&gt;deploy&lt;/code&gt; Job is only available on &lt;code&gt;master&lt;/code&gt; branch, this way, you can have build validation on any branch but continuous deployment only on &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
 
-&lt;p&gt;I had troubles with UTF-8 encoding, &lt;a href=&quot;https://gitlab.com/gitlab-org/gitlab-ce/issues/14983#note_4637913&quot;&gt;needed &lt;code&gt;en_US.UTF-8&lt;/code&gt; locale installation and configuration&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I had troubles with UTF-8 encoding, &lt;a href=&quot;https://gitlab.com/gitlab-org/gitlab-foss/-/issues/14983#note_4637913&quot;&gt;needed &lt;code&gt;en_US.UTF-8&lt;/code&gt; locale installation and configuration&lt;/a&gt;.&lt;/p&gt;
 
 &lt;hr&gt;
 
 &lt;p&gt;You can also refer to the &lt;a href=&quot;https://firebase.google.com/docs/cli/&quot;&gt;Firebase command line documentation&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;The initial source of this &lt;em&gt;How To&lt;/em&gt; comes from &lt;a href=&quot;https://chris.banes.me/2017/06/02/jekyll-firebase/&quot;&gt;Chris Banes&lt;/a&gt;. 
+&lt;p&gt;The initial source of this &lt;em&gt;How To&lt;/em&gt; comes from &lt;a href=&quot;https://chris.banes.dev/jekyll-firebase/&quot;&gt;Chris Banes&lt;/a&gt;. 
 Chris Banes’s article provides CI setup for Circle CI.&lt;/p&gt;
 </description>
         <pubDate>Sat, 25 Nov 2017 20:51:00 +0200</pubDate>
