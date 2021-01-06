@@ -169,11 +169,11 @@ This time, the `FIREBASE_TOKEN` variable should be created from `Settings > CI/C
 
 The `deploy` Job is only available on `master` branch, this way, you can have build validation on any branch but continuous deployment only on `master`.
 
-I had troubles with UTF-8 encoding, [needed `en_US.UTF-8` locale installation and configuration](https://gitlab.com/gitlab-org/gitlab-ce/issues/14983#note_4637913).
+I had troubles with UTF-8 encoding, [needed `en_US.UTF-8` locale installation and configuration](https://gitlab.com/gitlab-org/gitlab-foss/-/issues/14983#note_4637913).
 
 ---
 
 You can also refer to the [Firebase command line documentation](https://firebase.google.com/docs/cli/).
 
-The initial source of this _How To_ comes from [Chris Banes](https://chris.banes.me/2017/06/02/jekyll-firebase/). 
+The initial source of this _How To_ comes from [Chris Banes](https://chris.banes.dev/jekyll-firebase/). 
 Chris Banes's article provides CI setup for Circle CI.

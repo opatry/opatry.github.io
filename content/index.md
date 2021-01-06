@@ -3,14 +3,14 @@ title: Home
 layout: home
 ---
 
-You are on the personal website of Olivier Patry, software engineer working for [MyScript](https://myscript.com/) (handwriting recognition for text, math, geometry, diagram: [developer portal](https://developer.myscript.com/)).
+You are on the personal website of Olivier Patry, software engineer working for [MyScript](https://www.myscript.com/) (handwriting recognition for text, math, geometry, diagram: [developer portal](https://developer.myscript.com/)).
 
 Specialized in software **architecture** and **object oriented** programming for **mobile/embedded devices** mainly using
 **Kotlin**, **Java** and **C++** (Android &amp; Desktop).
 
 I'm currently working as MyScript's Mobile Application Program Manager.
 
-![](<%= @items['/images/nebo.*'].path %>) [Nebo](https://nebo.app): note taking application<br>
+![](<%= @items['/images/nebo.*'].path %>) [Nebo](https://www.nebo.app/): note taking application<br>
 ![](<%= @items['/images/calculator.*'].path %>) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
 
 <div style="margin: 0 auto; width: 560px; max-width: 100%;">
