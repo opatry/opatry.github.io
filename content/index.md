@@ -10,8 +10,8 @@ Specialized in software **architecture** and **object oriented** programming for
 
 I'm currently working as MyScript's Mobile Application Program Manager.
 
-![](images/nebo.svg) [Nebo](https://nebo.app): note taking application<br>
-![](images/calculator.svg) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
+![](<%= @items['/images/nebo.*'].path %>) [Nebo](https://nebo.app): note taking application<br>
+![](<%= @items['/images/calculator.*'].path %>) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
 
 <div style="margin: 0 auto; width: 560px; max-width: 100%;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6iNqExuVra4?autoplay=0&amp;rel=0" allowfullscreen=""></iframe>
@@ -29,5 +29,5 @@ I'm currently working as MyScript's Mobile Application Program Manager.
 
 ## Notes
 <% notes.each do |note| %>
-* [<%= note[:title] %>](<%= note.path %>)
+* <%= link_to(note[:title], note.path) %>
 <% end %>
