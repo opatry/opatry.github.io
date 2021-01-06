@@ -70,7 +70,7 @@ jobs:
 
     - name: Test
       run: |
-        bundle exec nanoc check ilinks stale
+        bundle exec nanoc check ilinks stale html mixed_content
 
     - name: Setup Node 10
       if: steps.build.outputs.need_deploy == 0
