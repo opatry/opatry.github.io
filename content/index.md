@@ -3,15 +3,32 @@ title: Home
 layout: home
 ---
 
-You are on the personal website of Olivier Patry, software engineer working for [MyScript](https://www.myscript.com/) (handwriting recognition for text, math, geometry, diagram: [developer portal](https://developer.myscript.com/)).
+You are on the personal website of Olivier Patry, working at [MyScript](https://www.myscript.com/) as Apps Team lead.
 
-Specialized in software **architecture** and **object oriented** programming for **mobile/embedded devices** mainly using
-**Kotlin**, **Java** and **C++** (Android &amp; Desktop).
+MyScript is do handwriting recognition for text, math and diagram (see [developer portal](https://developer.myscript.com/)).
 
-I'm currently working as MyScript's Mobile Application Program Manager.
+## Apps
 
-![](<%= @items['/images/nebo.*'].path %>) [Nebo](https://www.nebo.app/): note taking application<br>
-![](<%= @items['/images/calculator.*'].path %>) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
+### ![](<%= @items['/images/calculator.*'].path %>) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
+
+> **The easiest way to calculate**
+
+Available on
+  [iOS](https://apps.apple.com/us/app/myscript-calculator-handwriting-calculator/id1304488725) and
+  [Android](https://play.google.com/store/apps/details?id=com.myscript.calculator).
+{: .metadata}
+
+### ![](<%= @items['/images/nebo.*'].path %>) [Nebo](https://www.nebo.app/): note taking application
+
+> **The future of note‑taking**
+> 
+> Take smarter, more beautiful notes with the only app that makes handwriting as powerful as typed text.
+
+Available on
+ [iOS](https://apps.apple.com/us/app/myscript-nebo-best-way-to/id1119601770),
+ [Android](https://play.google.com/store/apps/details?id=com.myscript.nebo) and
+ [Windows](https://www.microsoft.com/en-us/p/nebo/9nblggh4nlb0).
+{: .metadata}
 
 <div style="margin: 0 auto; width: 560px; max-width: 100%;">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6iNqExuVra4?autoplay=0&amp;rel=0" allowfullscreen=""></iframe>
