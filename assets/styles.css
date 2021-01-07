@@ -38,7 +38,7 @@ body {
   font-size: 1.5em;
 }
 
-.metatada {
+.metadata {
   text-align: right;
   font-style: italic;
   font-size: 0.8em;
@@ -89,10 +89,6 @@ p {
   line-height: 1.5em;
 }
 
-dd {
-  margin: .5em 2em 1em;
-}
-
 ul {
   list-style-type: circle;
 }
@@ -139,7 +135,7 @@ img, iframe {
 
 img[src$=".svg"] {
     margin: 0 6px -6px 0;
-    width: 24px;
+    width: 30px;
 }
 
 iframe {
