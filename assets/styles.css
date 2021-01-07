@@ -181,6 +181,10 @@ footer {
 }
 
 @media screen and (max-width: 1000px) {
+  .special-links {
+    text-align: center;
+  }
+
   .special-links a {
     font-size: 48px;
   }
