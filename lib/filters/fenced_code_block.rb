@@ -10,10 +10,10 @@ class FencedCodeBlock < Nanoc::Filter
 
       replacement = '<div class="code-container">'
 
-      replacement << "<div class=\"langspec\">#{lang_spec.capitalize}</div>" unless lang_spec&.empty?
+      data_lang_attr = "data-langspec=\"#{lang_spec}\"" unless lang_spec&.empty?
 
       language_class = lang_spec&.empty? ? 'language' : "language-#{lang_spec}"
-      replacement << "<pre class=\"highlight\"><code class=\"#{language_class}\">"
+      replacement << "<pre #{data_lang_attr} class=\"highlight\"><code class=\"#{language_class}\">"
 
       code_block.gsub!('[:backtick:]', '`')
 
