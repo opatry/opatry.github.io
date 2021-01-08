@@ -32,6 +32,26 @@
     </header>
 
     <section>
+<hr>
+
+<p><strong>⚠️</strong> <em>This “how-to” deserves some love ❤️. Should provide alternative CI setup for the new player in the market,
+<a href="https://github.com/features/actions">GitHub Actions</a> workflows.</em></p>
+
+<p>Also, since <a href="https://github.com/firebase/firebase-tools/releases/tag/v7.1.0">v7.1</a>, <code>firebase</code> hosting requires a service account to allow CI deployment.</p>
+
+<ul>
+  <li><a href="https://github.com/FirebaseExtended/action-hosting-deploy/blob/main/docs/service-account.md">FirebaseExtended/action-hosting-deploy/main/docs/service-account.md</a></li>
+  <li><a href="https://firebase.google.com/support/guides/service-accounts">support/guides/service-accounts</a></li>
+  <li><a href="https://stackoverflow.com/questions/59053919/login-to-firebase-using-gcloud-service-account">stackoverflow/login-to-firebase-using-gcloud-service-account</a></li>
+  <li><a href="https://stackoverflow.com/questions/45437286/firebase-tools-login-as-service-account">stackoverflow/firebase-tools-login-as-service-account</a></li>
+</ul>
+
+<p>There is also a <a href="https://github.com/FirebaseExtended/action-hosting-deploy">🔥🌎 Firebase Hosting GitHub Action</a> ready to use to deploy site.</p>
+
+<p class="metadata">(January 8, 2021)</p>
+
+<hr>
+
 <p>I used to host this website on a cheap FTP server and <a href="/2014/04/11/automated-web-site-deployment/">deploy it using <code>lftp</code></a>.
 It seems now a bit archaic, I use Firebase to host it these days.
 Here follows the setup to automatically deploy the website using hosted Continuous Integration services such as BitBucket or GitLab Pipelines.</p>

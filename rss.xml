@@ -8,7 +8,27 @@
     
       <item>
         <title>Firebase site hosting</title>
-        <description>&lt;p&gt;I used to host this website on a cheap FTP server and &lt;a href=&quot;/2014/04/11/automated-web-site-deployment/&quot;&gt;deploy it using &lt;code&gt;lftp&lt;/code&gt;&lt;/a&gt;.
+        <description>&lt;hr&gt;
+
+&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This “how-to” deserves some love ❤️. Should provide alternative CI setup for the new player in the market,
+&lt;a href=&quot;https://github.com/features/actions&quot;&gt;GitHub Actions&lt;/a&gt; workflows.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, since &lt;a href=&quot;https://github.com/firebase/firebase-tools/releases/tag/v7.1.0&quot;&gt;v7.1&lt;/a&gt;, &lt;code&gt;firebase&lt;/code&gt; hosting requires a service account to allow CI deployment.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/FirebaseExtended/action-hosting-deploy/blob/main/docs/service-account.md&quot;&gt;FirebaseExtended/action-hosting-deploy/main/docs/service-account.md&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://firebase.google.com/support/guides/service-accounts&quot;&gt;support/guides/service-accounts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/59053919/login-to-firebase-using-gcloud-service-account&quot;&gt;stackoverflow/login-to-firebase-using-gcloud-service-account&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://stackoverflow.com/questions/45437286/firebase-tools-login-as-service-account&quot;&gt;stackoverflow/firebase-tools-login-as-service-account&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There is also a &lt;a href=&quot;https://github.com/FirebaseExtended/action-hosting-deploy&quot;&gt;🔥🌎 Firebase Hosting GitHub Action&lt;/a&gt; ready to use to deploy site.&lt;/p&gt;
+
+&lt;p class=&quot;metadata&quot;&gt;(January 8, 2021)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;I used to host this website on a cheap FTP server and &lt;a href=&quot;/2014/04/11/automated-web-site-deployment/&quot;&gt;deploy it using &lt;code&gt;lftp&lt;/code&gt;&lt;/a&gt;.
 It seems now a bit archaic, I use Firebase to host it these days.
 Here follows the setup to automatically deploy the website using hosted Continuous Integration services such as BitBucket or GitLab Pipelines.&lt;/p&gt;
 
@@ -174,7 +194,18 @@ Chris Banes’s article provides CI setup for Circle CI.&lt;/p&gt;
     
       <item>
         <title>BitBucket Pipelines for Android</title>
-        <description>&lt;p&gt;BitBucket provides &lt;a href=&quot;https://bitbucket.org/product/features/pipelines&quot;&gt;build pipelines&lt;/a&gt; to automate the build process when you push
+        <description>&lt;hr&gt;
+
+&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This “how-to” deserves some love ❤️. The &lt;code&gt;--package_file&lt;/code&gt; option seems broken right now,
+use a workaround in the meantime (see &lt;a href=&quot;https://issuetracker.google.com/issues/66465833&quot;&gt;https://issuetracker.google.com/issues/66465833&lt;/a&gt;).&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# ( sleep 5 &amp;amp;&amp;amp; while [ 1 ]; do sleep 1; echo y; done ) | sdkmanager --package_file=&quot;${cur_dir}/package_file.txt&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; pkg&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;y&quot;&lt;/span&gt; | sdkmanager &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkg&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &amp;lt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; /dev/null&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p class=&quot;metadata&quot;&gt;(January 8, 2021)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;BitBucket provides &lt;a href=&quot;https://bitbucket.org/product/features/pipelines&quot;&gt;build pipelines&lt;/a&gt; to automate the build process when you push
 changes on your repository.
 By default, it comes with a docker image made for Java which is not directly suitable
 for Android builds.&lt;/p&gt;
@@ -375,7 +406,39 @@ and some content
     
       <item>
         <title>BitBucket Pipelines Android Signing Config</title>
-        <description>&lt;p&gt;Building Android release APK can be a bit tedious when it comes to signing it.
+        <description>&lt;hr&gt;
+
+&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This “how-to” deserves some love ❤️. These days, I would favor
+&lt;a href=&quot;https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets&quot;&gt;GPG encrypted secrets within repository&lt;/a&gt;
+with a decrypt script using key provided by CI secrets capabilities.&lt;/em&gt;&lt;/p&gt;
+
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Script to decrypt signing keystore&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# see https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-eu&lt;/span&gt;
+
+&lt;span class=&quot;nv&quot;&gt;origin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;BASH_SOURCE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[0]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit
+
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tmp_dir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mktemp&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-t&lt;/span&gt; ci-secrets.XXXXXX&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tmp_dir&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;output_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$tmp_dir&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/playstore.keystore&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# convert potentially relative path to absolute&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;output_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;dirname&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$output_file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pwd&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;basename&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$output_file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# --batch to prevent interactive command --yes to assume &quot;yes&quot; for questions&lt;/span&gt;
+gpg &lt;span class=&quot;nt&quot;&gt;--quiet&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--batch&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--yes&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--decrypt&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--passphrase&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$PLAYSTORE_SECRET_PASSPHRASE&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--output&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$output_file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$origin&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/playstore.keystore.gpg&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# output so that caller can retrieve generated output when not provided explicitly&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$output_file&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p class=&quot;metadata&quot;&gt;(January 8, 2021)&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;Building Android release APK can be a bit tedious when it comes to signing it.
 Storing (and sharing to a restricted audience) the signing configuration, should
 be done carefully especially on Open Source projects.&lt;/p&gt;
 
@@ -469,7 +532,10 @@ Add 2 new &lt;em&gt;secured&lt;/em&gt; environment variables for user (&lt;code&
         <title>Automated web site deployment</title>
         <description>&lt;hr&gt;
 
-&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This how to is outdated. Still relevant if you want to use &lt;code&gt;lftp&lt;/code&gt; but you have now much more convenient solution like &lt;a href=&quot;/2017/11/25/firebase-site-hosting/&quot;&gt;Firebase hosting&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This “how-to” is outdated. Still relevant if you want to use &lt;code&gt;lftp&lt;/code&gt; but you have now much more
+convenient solution like &lt;a href=&quot;/2017/11/25/firebase-site-hosting/&quot;&gt;Firebase hosting&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p class=&quot;metadata&quot;&gt;(November 25, 2017)&lt;/p&gt;
 
 &lt;hr&gt;
 

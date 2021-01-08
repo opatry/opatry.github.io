@@ -110,6 +110,7 @@ pre {
   word-wrap: break-word;       /* Internet Explorer 5.5+ */
 
   padding: .8em;
+  line-height: 1.5em;
 
   color: var(--flatui-cloud-color);
   background-color: var(--flatui-cloud-color);

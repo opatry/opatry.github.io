@@ -32,6 +32,38 @@
     </header>
 
     <section>
+<hr>
+
+<p><strong>⚠️</strong> <em>This “how-to” deserves some love ❤️. These days, I would favor
+<a href="https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets">GPG encrypted secrets within repository</a>
+with a decrypt script using key provided by CI secrets capabilities.</em></p>
+
+<div class="code-container"><pre data-langspec="bash" class="highlight"><code class="language-bash"><span class="c">#!/usr/bin/env bash</span>
+
+<span class="c"># Script to decrypt signing keystore</span>
+<span class="c"># see https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets</span>
+
+<span class="nb">set</span> <span class="nt">-eu</span>
+
+<span class="nv">origin</span><span class="o">=</span><span class="si">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">dirname</span> <span class="s2">"</span><span class="k">${</span><span class="nv">BASH_SOURCE</span><span class="p">[0]</span><span class="k">}</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">pwd</span><span class="si">)</span> <span class="o">||</span> <span class="nb">exit
+
+</span><span class="nv">tmp_dir</span><span class="o">=</span><span class="si">$(</span><span class="nb">mktemp</span> <span class="nt">-d</span> <span class="nt">-t</span> ci-secrets.XXXXXX<span class="si">)</span>
+<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$tmp_dir</span><span class="s2">"</span>
+<span class="nv">output_file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">1</span><span class="k">:-</span><span class="s2">"</span><span class="nv">$tmp_dir</span><span class="s2">/playstore.keystore"</span><span class="k">}</span><span class="s2">"</span>
+<span class="c"># convert potentially relative path to absolute</span>
+<span class="nv">output_file</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">cd</span> <span class="s2">"</span><span class="si">$(</span><span class="nb">dirname</span> <span class="s2">"</span><span class="nv">$output_file</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span><span class="p">;</span> <span class="nb">pwd</span><span class="si">)</span><span class="s2">/</span><span class="si">$(</span><span class="nb">basename</span> <span class="s2">"</span><span class="nv">$output_file</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span>
+
+<span class="c"># --batch to prevent interactive command --yes to assume "yes" for questions</span>
+gpg <span class="nt">--quiet</span> <span class="nt">--batch</span> <span class="nt">--yes</span> <span class="nt">--decrypt</span> <span class="se">\</span>
+    <span class="nt">--passphrase</span><span class="o">=</span><span class="s2">"</span><span class="nv">$PLAYSTORE_SECRET_PASSPHRASE</span><span class="s2">"</span> <span class="se">\</span>
+    <span class="nt">--output</span> <span class="s2">"</span><span class="nv">$output_file</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$origin</span><span class="s2">/playstore.keystore.gpg"</span>
+
+<span class="c"># output so that caller can retrieve generated output when not provided explicitly</span>
+<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$output_file</span><span class="s2">"</span></code></pre></div>
+<p class="metadata">(January 8, 2021)</p>
+
+<hr>
+
 <p>Building Android release APK can be a bit tedious when it comes to signing it.
 Storing (and sharing to a restricted audience) the signing configuration, should
 be done carefully especially on Open Source projects.</p>
