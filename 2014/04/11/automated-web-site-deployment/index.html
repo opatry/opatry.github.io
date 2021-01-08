@@ -47,9 +47,7 @@ Unfortunately some configurations (cheap ones, most of the time) don’t allow e
 
 <p>The following script is used to synchronize the local and remote site states.</p>
 
-<div class="code-container">
-<div class="langspec">Bash</div>
-<pre class="highlight"><code class="language-bash"><span class="c">#!/usr/bin/env bash</span>
+<div class="code-container"><pre data-langspec="bash" class="highlight"><code class="language-bash"><span class="c">#!/usr/bin/env bash</span>
 
 <span class="nb">set</span> <span class="nt">-eu</span>
 
@@ -81,8 +79,7 @@ mirror --only-newer </span><span class="se">\</span><span class="s2">
        --exclude .git/ </span><span class="se">\</span><span class="s2">
        --exclude .gitignore </span><span class="se">\</span><span class="s2">
        --exclude-glob composer.* </span><span class="se">\</span><span class="s2">
-       --exclude-glob *.sh"</span></code></pre>
-</div>
+       --exclude-glob *.sh"</span></code></pre></div>
 <p>The important parts are the <code>lftp</code> command itself and its special commands <code>--only-newer</code> combined with <code>--ignore-time</code>.
 The <code>--reverse</code> switch tells <code>lftp</code> to upload files instead of downloading them.</p>
 

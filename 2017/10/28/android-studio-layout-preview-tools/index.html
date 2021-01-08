@@ -48,9 +48,7 @@
 
 <p>You have built-in sample data:</p>
 
-<div class="code-container">
-<div class="langspec">Xml</div>
-<pre class="highlight"><code class="language-xml"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+<div class="code-container"><pre data-langspec="xml" class="highlight"><code class="language-xml"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
               <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
               <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
               <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
@@ -82,22 +80,16 @@
 
   <span class="c">&lt;!-- See Android Studio auto completion for further examples. --&gt;</span>
 
-<span class="nt">&lt;/LinearLayout&gt;</span></code></pre>
-</div>
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></div>
 <p>And you can add custom text sample data using <code>src/main/sampledata/mydata</code> (New &gt; Sample Data directory from your module):</p>
 
-<div class="code-container">
-<div class="langspec">Text</div>
-<pre class="highlight"><code class="language-text">line1
+<div class="code-container"><pre data-langspec="text" class="highlight"><code class="language-text">line1
 another line
 line 3
 and some content
-...</code></pre>
-</div>
+...</code></pre></div>
 <p>Or using <code>src/main/sampledata/mydata.json</code>:</p>
-<div class="code-container">
-<div class="langspec">Json</div>
-<pre class="highlight"><code class="language-json"><span class="p">{</span><span class="w">
+<div class="code-container"><pre data-langspec="json" class="highlight"><code class="language-json"><span class="p">{</span><span class="w">
   </span><span class="nl">"stuff"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
@@ -112,13 +104,10 @@ and some content
       </span><span class="nl">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@drawable/ic_zorg"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span></code></pre>
-</div>
+</span><span class="p">}</span></code></pre></div>
 <p>You can now use it in your layout files using <code>@sample/*</code>.</p>
 
-<div class="code-container">
-<div class="langspec">Xml</div>
-<pre class="highlight"><code class="language-xml"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
+<div class="code-container"><pre data-langspec="xml" class="highlight"><code class="language-xml"><span class="nt">&lt;LinearLayout</span> <span class="na">xmlns:android=</span><span class="s">"http://schemas.android.com/apk/res/android"</span>
               <span class="na">xmlns:tools=</span><span class="s">"http://schemas.android.com/tools"</span>
               <span class="na">android:layout_width=</span><span class="s">"match_parent"</span>
               <span class="na">android:layout_height=</span><span class="s">"match_parent"</span>
@@ -135,8 +124,7 @@ and some content
 
   <span class="c">&lt;!-- Android Studio can also auto complete from user defined sample data. --&gt;</span>
 
-<span class="nt">&lt;/LinearLayout&gt;</span></code></pre>
-</div>
+<span class="nt">&lt;/LinearLayout&gt;</span></code></pre></div>
 <p>The cool thing is that Android Studio provides auto completion even for your custom sample data (need rebuild of project).</p>
 
 <p><img src="/images/as_preview_toolsns.png" alt="Android Studio with sample data"></p>

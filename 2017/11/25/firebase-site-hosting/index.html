@@ -40,10 +40,7 @@ Here follows the setup to automatically deploy the website using hosted Continuo
 
 <p>First, you’ll need to setup your local work environment by installing Firebase tools:</p>
 
-<div class="code-container">
-<div class="langspec">Bash</div>
-<pre class="highlight"><code class="language-bash"><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> firebase-tools</code></pre>
-</div>
+<div class="code-container"><pre data-langspec="bash" class="highlight"><code class="language-bash"><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> firebase-tools</code></pre></div>
 <p>Then, login to your Google account using <code>firebase login</code>.</p>
 
 <p>To map your local work tree to a Firebase project, execute <code>firebase init</code> and select <code>Hosting</code>. You’ll be asked to choose 
@@ -53,14 +50,11 @@ or create a Firebase project.</p>
 defines some configuration for your project structure, like the directory to publish.
 For a <a href="https://nanoc.ws/"><code>nanoc</code></a> website you’ll use <code>output</code>:</p>
 
-<div class="code-container">
-<div class="langspec">Json</div>
-<pre class="highlight"><code class="language-json"><span class="p">{</span><span class="w">
+<div class="code-container"><pre data-langspec="json" class="highlight"><code class="language-json"><span class="p">{</span><span class="w">
   </span><span class="nl">"hosting"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"public"</span><span class="p">:</span><span class="w"> </span><span class="s2">"output"</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span></code></pre>
-</div>
+</span><span class="p">}</span></code></pre></div>
 <p>Finally, deploy your local output online using <code>firebase deploy</code>.</p>
 
 <h2 id="continuous-integration-setup">Continuous Integration setup</h2>
@@ -75,9 +69,7 @@ its dependencies (<code>pygmentize</code> for syntax highlighting, Node JS for m
 
 <p>For any CI, you’ll need to generate a token allowing automated deployment:</p>
 
-<div class="code-container">
-<div class="langspec">Bash</div>
-<pre class="highlight"><code class="language-bash"><span class="nv">$ </span>firebase login:ci
+<div class="code-container"><pre data-langspec="bash" class="highlight"><code class="language-bash"><span class="nv">$ </span>firebase login:ci
 
 Visit this URL on any device to log <span class="k">in</span>:
 &lt;some long URL to use&gt;
@@ -88,17 +80,14 @@ Waiting <span class="k">for </span>authentication...
 
 &lt;CI token to keep as an environment variable&gt;
 
-Example: firebase deploy <span class="nt">--token</span> <span class="s2">"</span><span class="nv">$FIREBASE_TOKEN</span><span class="s2">"</span></code></pre>
-</div>
+Example: firebase deploy <span class="nt">--token</span> <span class="s2">"</span><span class="nv">$FIREBASE_TOKEN</span><span class="s2">"</span></code></pre></div>
 <!-- title broken after ``` ``` block, needed something (like this comment!) to fix it -->
 
 <h3 id="bitbucket">BitBucket</h3>
 
 <p>To use <a href="https://bitbucket.org/product/features/pipelines">BitBucket pipelines</a>, create a <code>bitbucket-pipelines.yml</code> file:</p>
 
-<div class="code-container">
-<div class="langspec">Yaml</div>
-<pre class="highlight"><code class="language-yaml"><span class="na">image</span><span class="pi">:</span> <span class="s">ruby:2.4.0</span>
+<div class="code-container"><pre data-langspec="yaml" class="highlight"><code class="language-yaml"><span class="na">image</span><span class="pi">:</span> <span class="s">ruby:2.4.0</span>
 
 <span class="na">pipelines</span><span class="pi">:</span>
   <span class="na">branches</span><span class="pi">:</span>
@@ -141,8 +130,7 @@ Example: firebase deploy <span class="nt">--token</span> <span class="s2">"</spa
 <span class="na">definitions</span><span class="pi">:</span>
   <span class="na">caches</span><span class="pi">:</span>
     <span class="na">bundler</span><span class="pi">:</span> <span class="s">.bundler</span>
-    <span class="na">npm</span><span class="pi">:</span> <span class="s">.npm</span></code></pre>
-</div>
+    <span class="na">npm</span><span class="pi">:</span> <span class="s">.npm</span></code></pre></div>
 <p>As you might have noticed, I used a <code>FIREBASE_TOKEN</code> environment variable, go to <code>Settings &gt; Pipelines / Environment Variables</code>.
 Add a new <em>secured</em> environment variable <code>FIREBASE_TOKEN</code> with the value returned by <code>firebase login:ci</code>.</p>
 
@@ -152,9 +140,7 @@ Add a new <em>secured</em> environment variable <code>FIREBASE_TOKEN</code> with
 
 <p>The <a href="https://docs.gitlab.com/ee/ci/pipelines.html">GitLab pipeline</a> setup is similar, create a <code>.gitlab-ci.yml</code> file:</p>
 
-<div class="code-container">
-<div class="langspec">Yaml</div>
-<pre class="highlight"><code class="language-yaml"><span class="na">image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ruby:2.4"</span>
+<div class="code-container"><pre data-langspec="yaml" class="highlight"><code class="language-yaml"><span class="na">image</span><span class="pi">:</span> <span class="s2">"</span><span class="s">ruby:2.4"</span>
 
 <span class="na">cache</span><span class="pi">:</span>
   <span class="na">paths</span><span class="pi">:</span>
@@ -191,8 +177,7 @@ Add a new <em>secured</em> environment variable <code>FIREBASE_TOKEN</code> with
     <span class="pi">-</span> <span class="s">npm install --prefix .npm firebase-tools</span>
     <span class="pi">-</span> <span class="s">.npm/node_modules/firebase-tools/bin/firebase deploy -m "GitLab Pipeline#$CI_PIPELINE_ID Build#$CI_BUILD_ID" --token "$FIREBASE_TOKEN" --non-interactive</span>
   <span class="na">only</span><span class="pi">:</span>
-    <span class="pi">-</span> <span class="s">master</span></code></pre>
-</div>
+    <span class="pi">-</span> <span class="s">master</span></code></pre></div>
 <p>This time, the <code>FIREBASE_TOKEN</code> variable should be created from <code>Settings &gt; CI/CD &gt; Secret Variables</code>.</p>
 
 <p>The <code>deploy</code> Job is only available on <code>master</code> branch, this way, you can have build validation on any branch but continuous deployment only on <code>master</code>.</p>

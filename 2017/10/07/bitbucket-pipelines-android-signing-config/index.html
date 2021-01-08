@@ -45,28 +45,20 @@ allow access to Continuous Integration users and repository administrators.</p>
 
 <p><code>playstore.properties</code>:</p>
 
-<div class="code-container">
-<div class="langspec">Properties</div>
-<pre class="highlight"><code class="language-properties"><span class="py">storeFile</span><span class="p">=</span><span class="s">myapp.keystore</span>
+<div class="code-container"><pre data-langspec="properties" class="highlight"><code class="language-properties"><span class="py">storeFile</span><span class="p">=</span><span class="s">myapp.keystore</span>
 <span class="py">keyAlias</span><span class="p">=</span><span class="s">myapp_android</span>
 <span class="py">storePassword</span><span class="p">=</span><span class="s">SENSITIVE_PASSWORD</span>
-<span class="py">keyPassword</span><span class="p">=</span><span class="s">SENSITIVE_PASSWORD2</span></code></pre>
-</div>
+<span class="py">keyPassword</span><span class="p">=</span><span class="s">SENSITIVE_PASSWORD2</span></code></pre></div>
 <p>Add your <code>myapp.keystore</code> near the <code>playstore.properties</code> file.</p>
 
 <p>Add it to your application as a submodule.</p>
 
-<div class="code-container">
-<div class="langspec">Bash</div>
-<pre class="highlight"><code class="language-bash"><span class="nv">$ </span>git submodule add &lt;url&gt; build/secret</code></pre>
-</div>
+<div class="code-container"><pre data-langspec="bash" class="highlight"><code class="language-bash"><span class="nv">$ </span>git submodule add &lt;url&gt; build/secret</code></pre></div>
 <p>Configure the application signing configuration in Gradle:</p>
 
 <p><code>app/build.gradle</code></p>
 
-<div class="code-container">
-<div class="langspec">Groovy</div>
-<pre class="highlight"><code class="language-groovy"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'com.android.application'</span>
+<div class="code-container"><pre data-langspec="groovy" class="highlight"><code class="language-groovy"><span class="n">apply</span> <span class="nl">plugin:</span> <span class="s1">'com.android.application'</span>
 
 <span class="kt">def</span> <span class="n">signingPropertiesFile</span> <span class="o">=</span> <span class="n">file</span><span class="o">(</span><span class="s1">'../../build/secret/playstore.properties'</span><span class="o">)</span>
 <span class="kt">def</span> <span class="n">keystoreProperties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">()</span>
@@ -102,8 +94,7 @@ allow access to Continuous Integration users and repository administrators.</p>
             <span class="n">signingConfig</span> <span class="n">signingConfigs</span><span class="o">.</span><span class="na">release</span>
         <span class="o">}</span>
     <span class="o">}</span>
-<span class="o">}</span></code></pre>
-</div>
+<span class="o">}</span></code></pre></div>
 <p>The tricky part is now to tell BitBucket how to initialize the secret submodule.
 To do so, you’ll have to manually initialize the submodule in your pipeline file.</p>
 
@@ -115,9 +106,7 @@ Add 2 new <em>secured</em> environment variables for user (<code>BITBUCKET_USER<
 
 <p><code>bitbucket-pipelines.yml</code>:</p>
 
-<div class="code-container">
-<div class="langspec">Yaml</div>
-<pre class="highlight"><code class="language-yaml"><span class="na">pipelines</span><span class="pi">:</span>
+<div class="code-container"><pre data-langspec="yaml" class="highlight"><code class="language-yaml"><span class="na">pipelines</span><span class="pi">:</span>
   <span class="na">branches</span><span class="pi">:</span>
     <span class="na">master</span><span class="pi">:</span>
       <span class="pi">-</span> <span class="na">step</span><span class="pi">:</span>
@@ -125,8 +114,7 @@ Add 2 new <em>secured</em> environment variables for user (<code>BITBUCKET_USER<
             <span class="pi">-</span> <span class="s">git config --file=.gitmodules submodule.build/secret.url https://$BITBUCKET_USER:$BITBUCKET_PASS@bitbucket.org/shht/secrets.git</span>
             <span class="pi">-</span> <span class="s">git submodule sync</span>
             <span class="pi">-</span> <span class="s">git submodule update --init build/secret</span>
-            <span class="pi">-</span> <span class="s">./gradlew assembleRelease</span></code></pre>
-</div>
+            <span class="pi">-</span> <span class="s">./gradlew assembleRelease</span></code></pre></div>
 <p><a href="https://community.atlassian.com/t5/Bitbucket-questions/Bitbucket-Pipelines-and-git-submodules/qaq-p/130479">Source</a>.</p>
 
     </section>

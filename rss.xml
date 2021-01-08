@@ -16,10 +16,7 @@ Here follows the setup to automatically deploy the website using hosted Continuo
 
 &lt;p&gt;First, you’ll need to setup your local work environment by installing Firebase tools:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; firebase-tools&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; firebase-tools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Then, login to your Google account using &lt;code&gt;firebase login&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;To map your local work tree to a Firebase project, execute &lt;code&gt;firebase init&lt;/code&gt; and select &lt;code&gt;Hosting&lt;/code&gt;. You’ll be asked to choose 
@@ -29,14 +26,11 @@ or create a Firebase project.&lt;/p&gt;
 defines some configuration for your project structure, like the directory to publish.
 For a &lt;a href=&quot;https://nanoc.ws/&quot;&gt;&lt;code&gt;nanoc&lt;/code&gt;&lt;/a&gt; website you’ll use &lt;code&gt;output&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Json&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;json&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;hosting&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;public&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;output&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Finally, deploy your local output online using &lt;code&gt;firebase deploy&lt;/code&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;continuous-integration-setup&quot;&gt;Continuous Integration setup&lt;/h2&gt;
@@ -51,9 +45,7 @@ its dependencies (&lt;code&gt;pygmentize&lt;/code&gt; for syntax highlighting, N
 
 &lt;p&gt;For any CI, you’ll need to generate a token allowing automated deployment:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;firebase login:ci
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;firebase login:ci
 
 Visit this URL on any device to log &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;:
 &amp;lt;some long URL to use&amp;gt;
@@ -64,17 +56,14 @@ Waiting &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;authentication...
 
 &amp;lt;CI token to keep as an environment variable&amp;gt;
 
-Example: firebase deploy &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FIREBASE_TOKEN&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+Example: firebase deploy &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$FIREBASE_TOKEN&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;!-- title broken after ``` ``` block, needed something (like this comment!) to fix it --&gt;
 
 &lt;h3 id=&quot;bitbucket&quot;&gt;BitBucket&lt;/h3&gt;
 
 &lt;p&gt;To use &lt;a href=&quot;https://bitbucket.org/product/features/pipelines&quot;&gt;BitBucket pipelines&lt;/a&gt;, create a &lt;code&gt;bitbucket-pipelines.yml&lt;/code&gt; file:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ruby:2.4.0&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;yaml&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ruby:2.4.0&lt;/span&gt;
 
 &lt;span class=&quot;na&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
@@ -117,8 +106,7 @@ Example: firebase deploy &lt;span class=&quot;nt&quot;&gt;--token&lt;/span&gt; &
 &lt;span class=&quot;na&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;bundler&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.bundler&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;npm&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.npm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+    &lt;span class=&quot;na&quot;&gt;npm&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.npm&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;As you might have noticed, I used a &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; environment variable, go to &lt;code&gt;Settings &amp;gt; Pipelines / Environment Variables&lt;/code&gt;.
 Add a new &lt;em&gt;secured&lt;/em&gt; environment variable &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; with the value returned by &lt;code&gt;firebase login:ci&lt;/code&gt;.&lt;/p&gt;
 
@@ -128,9 +116,7 @@ Add a new &lt;em&gt;secured&lt;/em&gt; environment variable &lt;code&gt;FIREBASE
 
 &lt;p&gt;The &lt;a href=&quot;https://docs.gitlab.com/ee/ci/pipelines.html&quot;&gt;GitLab pipeline&lt;/a&gt; setup is similar, create a &lt;code&gt;.gitlab-ci.yml&lt;/code&gt; file:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ruby:2.4&quot;&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;yaml&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ruby:2.4&quot;&lt;/span&gt;
 
 &lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
@@ -167,8 +153,7 @@ Add a new &lt;em&gt;secured&lt;/em&gt; environment variable &lt;code&gt;FIREBASE
     &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;npm install --prefix .npm firebase-tools&lt;/span&gt;
     &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;.npm/node_modules/firebase-tools/bin/firebase deploy -m &quot;GitLab Pipeline#$CI_PIPELINE_ID Build#$CI_BUILD_ID&quot; --token &quot;$FIREBASE_TOKEN&quot; --non-interactive&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;only&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;master&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This time, the &lt;code&gt;FIREBASE_TOKEN&lt;/code&gt; variable should be created from &lt;code&gt;Settings &amp;gt; CI/CD &amp;gt; Secret Variables&lt;/code&gt;.&lt;/p&gt;
 
 &lt;p&gt;The &lt;code&gt;deploy&lt;/code&gt; Job is only available on &lt;code&gt;master&lt;/code&gt; branch, this way, you can have build validation on any branch but continuous deployment only on &lt;code&gt;master&lt;/code&gt;.&lt;/p&gt;
@@ -203,9 +188,7 @@ docker image was about 8 minutes and is now 1’30”.&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;ci_install.sh&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-eu&lt;/span&gt;
 
@@ -255,21 +238,15 @@ docker image was about 8 minutes and is now 1’30”.&lt;/p&gt;
 &lt;span class=&quot;c&quot;&gt;# Update android sdk&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Downloading packages described by &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;5 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 1 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;y&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | sdkmanager &lt;span class=&quot;nt&quot;&gt;--package_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;5 &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; 1 &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sleep &lt;/span&gt;1&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;echo &lt;/span&gt;y&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; | sdkmanager &lt;span class=&quot;nt&quot;&gt;--package_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;package_file.txt&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Text&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;platform-tools
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;text&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;platform-tools
 build-tools;26.0.2
-platforms;android-26&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+platforms;android-26&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;code&gt;bitbucket-pipelines.yml&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;java:8&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;yaml&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;java:8&lt;/span&gt;
 
 &lt;span class=&quot;na&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
@@ -284,8 +261,7 @@ platforms;android-26&lt;/code&gt;&lt;/pre&gt;
 
 &lt;span class=&quot;na&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;caches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;android-sdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;android-sdk-linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+    &lt;span class=&quot;na&quot;&gt;android-sdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;android-sdk-linux&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 </description>
         <pubDate>Mon, 06 Nov 2017 21:20:12 +0200</pubDate>
         <link>https://opatry.net//2017/11/06/bitbucket-pipelines-for-android/</link>
@@ -310,9 +286,7 @@ platforms;android-26&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;You have built-in sample data:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Xml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;xml&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
               &lt;span class=&quot;na&quot;&gt;xmlns:tools=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/tools&quot;&lt;/span&gt;
               &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
               &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
@@ -344,22 +318,16 @@ platforms;android-26&lt;/code&gt;&lt;/pre&gt;
 
   &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- See Android Studio auto completion for further examples. --&amp;gt;&lt;/span&gt;
 
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And you can add custom text sample data using &lt;code&gt;src/main/sampledata/mydata&lt;/code&gt; (New &amp;gt; Sample Data directory from your module):&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Text&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;line1
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;text&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;line1
 another line
 line 3
 and some content
-...&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Or using &lt;code&gt;src/main/sampledata/mydata.json&lt;/code&gt;:&lt;/p&gt;
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Json&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;json&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;stuff&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
       &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;label&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
@@ -374,13 +342,10 @@ and some content
       &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;icon&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@drawable/ic_zorg&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
     &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;You can now use it in your layout files using &lt;code&gt;@sample/*&lt;/code&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Xml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;xml&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-xml&quot;&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;LinearLayout&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;xmlns:android=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/apk/res/android&quot;&lt;/span&gt;
               &lt;span class=&quot;na&quot;&gt;xmlns:tools=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://schemas.android.com/tools&quot;&lt;/span&gt;
               &lt;span class=&quot;na&quot;&gt;android:layout_width=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
               &lt;span class=&quot;na&quot;&gt;android:layout_height=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;match_parent&quot;&lt;/span&gt;
@@ -397,8 +362,7 @@ and some content
 
   &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- Android Studio can also auto complete from user defined sample data. --&amp;gt;&lt;/span&gt;
 
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The cool thing is that Android Studio provides auto completion even for your custom sample data (need rebuild of project).&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/as_preview_toolsns.png&quot; alt=&quot;Android Studio with sample data&quot;&gt;&lt;/p&gt;
@@ -424,28 +388,20 @@ allow access to Continuous Integration users and repository administrators.&lt;/
 
 &lt;p&gt;&lt;code&gt;playstore.properties&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Properties&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;py&quot;&gt;storeFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp.keystore&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;properties&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-properties&quot;&gt;&lt;span class=&quot;py&quot;&gt;storeFile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp.keystore&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;keyAlias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;myapp_android&lt;/span&gt;
 &lt;span class=&quot;py&quot;&gt;storePassword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD&lt;/span&gt;
-&lt;span class=&quot;py&quot;&gt;keyPassword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;py&quot;&gt;keyPassword&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;SENSITIVE_PASSWORD2&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Add your &lt;code&gt;myapp.keystore&lt;/code&gt; near the &lt;code&gt;playstore.properties&lt;/code&gt; file.&lt;/p&gt;
 
 &lt;p&gt;Add it to your application as a submodule.&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git submodule add &amp;lt;url&amp;gt; build/secret&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git submodule add &amp;lt;url&amp;gt; build/secret&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Configure the application signing configuration in Gradle:&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;app/build.gradle&lt;/code&gt;&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Groovy&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-groovy&quot;&gt;&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;com.android.application&#39;&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;groovy&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-groovy&quot;&gt;&lt;span class=&quot;n&quot;&gt;apply&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;plugin:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;com.android.application&#39;&lt;/span&gt;
 
 &lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signingPropertiesFile&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;../../build/secret/playstore.properties&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 &lt;span class=&quot;kt&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;keystoreProperties&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Properties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
@@ -481,8 +437,7 @@ allow access to Continuous Integration users and repository administrators.&lt;/
             &lt;span class=&quot;n&quot;&gt;signingConfig&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;signingConfigs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;release&lt;/span&gt;
         &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The tricky part is now to tell BitBucket how to initialize the secret submodule.
 To do so, you’ll have to manually initialize the submodule in your pipeline file.&lt;/p&gt;
 
@@ -494,9 +449,7 @@ Add 2 new &lt;em&gt;secured&lt;/em&gt; environment variables for user (&lt;code&
 
 &lt;p&gt;&lt;code&gt;bitbucket-pipelines.yml&lt;/code&gt;:&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Yaml&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;yaml&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-yaml&quot;&gt;&lt;span class=&quot;na&quot;&gt;pipelines&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;branches&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
       &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
@@ -504,8 +457,7 @@ Add 2 new &lt;em&gt;secured&lt;/em&gt; environment variables for user (&lt;code&
             &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;git config --file=.gitmodules submodule.build/secret.url https://$BITBUCKET_USER:$BITBUCKET_PASS@bitbucket.org/shht/secrets.git&lt;/span&gt;
             &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;git submodule sync&lt;/span&gt;
             &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;git submodule update --init build/secret&lt;/span&gt;
-            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./gradlew assembleRelease&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+            &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;./gradlew assembleRelease&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;a href=&quot;https://community.atlassian.com/t5/Bitbucket-questions/Bitbucket-Pipelines-and-git-submodules/qaq-p/130479&quot;&gt;Source&lt;/a&gt;.&lt;/p&gt;
 </description>
         <pubDate>Sat, 07 Oct 2017 21:32:08 +0200</pubDate>
@@ -530,9 +482,7 @@ Unfortunately some configurations (cheap ones, most of the time) don’t allow e
 
 &lt;p&gt;The following script is used to synchronize the local and remote site states.&lt;/p&gt;
 
-&lt;div class=&quot;code-container&quot;&gt;
-&lt;div class=&quot;langspec&quot;&gt;Bash&lt;/div&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
+&lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
 
 &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-eu&lt;/span&gt;
 
@@ -564,8 +514,7 @@ mirror --only-newer &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
        --exclude .git/ &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
        --exclude .gitignore &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
        --exclude-glob composer.* &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;
-       --exclude-glob *.sh&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+       --exclude-glob *.sh&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The important parts are the &lt;code&gt;lftp&lt;/code&gt; command itself and its special commands &lt;code&gt;--only-newer&lt;/code&gt; combined with &lt;code&gt;--ignore-time&lt;/code&gt;.
 The &lt;code&gt;--reverse&lt;/code&gt; switch tells &lt;code&gt;lftp&lt;/code&gt; to upload files instead of downloading them.&lt;/p&gt;
 

@@ -46,9 +46,7 @@ docker image was about 8 minutes and is now 1’30”.</p>
 
 <p><code>ci_install.sh</code>:</p>
 
-<div class="code-container">
-<div class="langspec">Bash</div>
-<pre class="highlight"><code class="language-bash"><span class="c">#!/usr/bin/env bash</span>
+<div class="code-container"><pre data-langspec="bash" class="highlight"><code class="language-bash"><span class="c">#!/usr/bin/env bash</span>
 
 <span class="nb">set</span> <span class="nt">-eu</span>
 
@@ -98,21 +96,15 @@ docker image was about 8 minutes and is now 1’30”.</p>
 <span class="c"># Update android sdk</span>
 <span class="nb">echo</span> <span class="s2">"Downloading packages described by </span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/package_file.txt"</span>
 <span class="nb">cat</span> <span class="s2">"</span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/package_file.txt"</span>
-<span class="o">(</span> <span class="nb">sleep </span>5 <span class="o">&amp;&amp;</span> <span class="k">while</span> <span class="o">[</span> 1 <span class="o">]</span><span class="p">;</span> <span class="k">do </span><span class="nb">sleep </span>1<span class="p">;</span> <span class="nb">echo </span>y<span class="p">;</span> <span class="k">done</span> <span class="o">)</span> | sdkmanager <span class="nt">--package_file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/package_file.txt"</span></code></pre>
-</div>
+<span class="o">(</span> <span class="nb">sleep </span>5 <span class="o">&amp;&amp;</span> <span class="k">while</span> <span class="o">[</span> 1 <span class="o">]</span><span class="p">;</span> <span class="k">do </span><span class="nb">sleep </span>1<span class="p">;</span> <span class="nb">echo </span>y<span class="p">;</span> <span class="k">done</span> <span class="o">)</span> | sdkmanager <span class="nt">--package_file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/package_file.txt"</span></code></pre></div>
 <p><code>package_file.txt</code></p>
 
-<div class="code-container">
-<div class="langspec">Text</div>
-<pre class="highlight"><code class="language-text">platform-tools
+<div class="code-container"><pre data-langspec="text" class="highlight"><code class="language-text">platform-tools
 build-tools;26.0.2
-platforms;android-26</code></pre>
-</div>
+platforms;android-26</code></pre></div>
 <p><code>bitbucket-pipelines.yml</code>:</p>
 
-<div class="code-container">
-<div class="langspec">Yaml</div>
-<pre class="highlight"><code class="language-yaml"><span class="na">image</span><span class="pi">:</span> <span class="s">java:8</span>
+<div class="code-container"><pre data-langspec="yaml" class="highlight"><code class="language-yaml"><span class="na">image</span><span class="pi">:</span> <span class="s">java:8</span>
 
 <span class="na">pipelines</span><span class="pi">:</span>
   <span class="na">branches</span><span class="pi">:</span>
@@ -127,8 +119,7 @@ platforms;android-26</code></pre>
 
 <span class="na">definitions</span><span class="pi">:</span>
   <span class="na">caches</span><span class="pi">:</span>
-    <span class="na">android-sdk</span><span class="pi">:</span> <span class="s">android-sdk-linux</span></code></pre>
-</div>
+    <span class="na">android-sdk</span><span class="pi">:</span> <span class="s">android-sdk-linux</span></code></pre></div>
 
     </section>
 
