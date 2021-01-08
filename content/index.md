@@ -46,5 +46,5 @@ Available on
 
 ## Notes
 <% notes.each do |note| %>
-* <%= link_to(note[:title], note.path) %>
+* <%= link_to(note[:title], note.path) %> <span class="metadata">(<%= get_pretty_date(note, short: true) %>)</span>
 <% end %>
