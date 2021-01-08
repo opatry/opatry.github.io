@@ -4,9 +4,10 @@ include Nanoc::Helpers::Rendering
 include Nanoc::Helpers::LinkTo
 include Nanoc::Helpers::Blogging
 
-def get_pretty_date(note)
-  # January 5, 2021
-  attribute_to_time(note[:created_at]).strftime('%B %-d, %Y')
+def get_pretty_date(note, short: false)
+  # January 5, 2021 or Jan 5, 2021
+  month_format = short ? '%b' : '%B'
+  attribute_to_time(note[:created_at]).strftime("#{month_format} %-d, %Y")
 end
 
 def get_rss_date(note)
