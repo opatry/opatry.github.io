@@ -4,6 +4,21 @@ kind: note
 created_at: 2017-11-06 21:20:12 +0200
 ---
 
+---
+
+**⚠️** _This “how-to” deserves some love ❤️. The `--package_file` option seems broken right now,
+use a workaround in the meantime (see [https://issuetracker.google.com/issues/66465833](https://issuetracker.google.com/issues/66465833))._
+
+```bash
+# ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | sdkmanager --package_file="${cur_dir}/package_file.txt"
+while read -r pkg; do echo "y" | sdkmanager "${pkg}"; done <"${cur_dir}/package_file.txt" >> /dev/null
+```
+
+(January 8, 2021)
+{: .metadata}
+
+---
+
 BitBucket provides [build pipelines](https://bitbucket.org/product/features/pipelines) to automate the build process when you push
 changes on your repository.
 By default, it comes with a docker image made for Java which is not directly suitable

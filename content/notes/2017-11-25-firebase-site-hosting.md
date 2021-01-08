@@ -4,6 +4,25 @@ kind: note
 created_at: 2017-11-25 20:51:00 +0200
 ---
 
+---
+
+**⚠️** _This “how-to” deserves some love ❤️. Should provide alternative CI setup for the new player in the market,
+[GitHub Actions](https://github.com/features/actions) workflows._
+
+Also, since [v7.1](https://github.com/firebase/firebase-tools/releases/tag/v7.1.0), `firebase` hosting requires a service account to allow CI deployment.
+
+- [FirebaseExtended/action-hosting-deploy/main/docs/service-account.md](https://github.com/FirebaseExtended/action-hosting-deploy/blob/main/docs/service-account.md)
+- [support/guides/service-accounts](https://firebase.google.com/support/guides/service-accounts)
+- [stackoverflow/login-to-firebase-using-gcloud-service-account](https://stackoverflow.com/questions/59053919/login-to-firebase-using-gcloud-service-account)
+- [stackoverflow/firebase-tools-login-as-service-account](https://stackoverflow.com/questions/45437286/firebase-tools-login-as-service-account)
+
+There is also a [🔥🌎 Firebase Hosting GitHub Action](https://github.com/FirebaseExtended/action-hosting-deploy) ready to use to deploy site.
+
+(January 8, 2021)
+{: .metadata}
+
+---
+
 I used to host this website on a cheap FTP server and <%= link_to_item('deploy it using `lftp`', '/notes/2014-04-11-automated-web-site-deployment.*') %>.
 It seems now a bit archaic, I use Firebase to host it these days.
 Here follows the setup to automatically deploy the website using hosted Continuous Integration services such as BitBucket or GitLab Pipelines.

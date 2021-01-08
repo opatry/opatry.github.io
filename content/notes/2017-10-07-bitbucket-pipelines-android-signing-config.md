@@ -4,6 +4,42 @@ kind: note
 created_at: 2017-10-07 21:32:08 +0200
 ---
 
+---
+
+**⚠️** _This “how-to” deserves some love ❤️. These days, I would favor
+[GPG encrypted secrets within repository](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)
+with a decrypt script using key provided by CI secrets capabilities._
+
+```bash
+#!/usr/bin/env bash
+
+# Script to decrypt signing keystore
+# see https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets
+
+set -eu
+
+origin=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd) || exit
+
+tmp_dir=$(mktemp -d -t ci-secrets.XXXXXX)
+mkdir -p "$tmp_dir"
+output_file="${1:-"$tmp_dir/playstore.keystore"}"
+# convert potentially relative path to absolute
+output_file="$(cd "$(dirname "$output_file")"; pwd)/$(basename "$output_file")"
+
+# --batch to prevent interactive command --yes to assume "yes" for questions
+gpg --quiet --batch --yes --decrypt \
+    --passphrase="$PLAYSTORE_SECRET_PASSPHRASE" \
+    --output "$output_file" "$origin/playstore.keystore.gpg"
+
+# output so that caller can retrieve generated output when not provided explicitly
+echo "$output_file"
+```
+
+(January 8, 2021)
+{: .metadata}
+
+---
+
 Building Android release APK can be a bit tedious when it comes to signing it.
 Storing (and sharing to a restricted audience) the signing configuration, should
 be done carefully especially on Open Source projects.
