@@ -5,7 +5,7 @@ layout: home
 
 You are on the personal website of Olivier Patry, working at [MyScript](https://www.myscript.com/) as Apps Team lead.
 
-MyScript is do handwriting recognition for text, math and diagram (see [developer portal](https://developer.myscript.com/)).
+MyScript develops handwriting recognition for text, math and diagram (see [developer portal](https://developer.myscript.com/)) and publishes SDK and Apps that leverage it.
 
 ## Apps
 
