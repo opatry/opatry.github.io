@@ -34,8 +34,8 @@
     <section>
 <hr>
 
-<p><strong>⚠️</strong> <em>This “how-to” deserves some love ❤️. The <code>--package_file</code> option seems broken right now,
-use a workaround in the meantime (see <a href="https://issuetracker.google.com/issues/66465833">https://issuetracker.google.com/issues/66465833</a>).</em></p>
+<p class="disclaimer"><span class="emoji">⚠️</span> This “how-to” deserves some love <span class="emoji">❤️</span>. The <code>--package_file</code> option seems broken right now,
+use a workaround in the meantime (see <a href="https://issuetracker.google.com/issues/66465833">https://issuetracker.google.com/issues/66465833</a>).</p>
 
 <div class="code-container"><pre data-langspec="bash" class="highlight"><code class="language-bash"><span class="c"># ( sleep 5 &amp;&amp; while [ 1 ]; do sleep 1; echo y; done ) | sdkmanager --package_file="${cur_dir}/package_file.txt"</span>
 <span class="k">while </span><span class="nb">read</span> <span class="nt">-r</span> pkg<span class="p">;</span> <span class="k">do </span><span class="nb">echo</span> <span class="s2">"y"</span> | sdkmanager <span class="s2">"</span><span class="k">${</span><span class="nv">pkg</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="k">done</span> &lt;<span class="s2">"</span><span class="k">${</span><span class="nv">cur_dir</span><span class="k">}</span><span class="s2">/package_file.txt"</span> <span class="o">&gt;&gt;</span> /dev/null</code></pre></div>

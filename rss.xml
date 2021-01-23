@@ -10,8 +10,8 @@
         <title>Firebase site hosting</title>
         <description>&lt;hr&gt;
 
-&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This “how-to” deserves some love ❤️. Should provide alternative CI setup for the new player in the market,
-&lt;a href=&quot;https://github.com/features/actions&quot;&gt;GitHub Actions&lt;/a&gt; workflows.&lt;/em&gt;&lt;/p&gt;
+&lt;p class=&quot;disclaimer&quot;&gt;&lt;span class=&quot;emoji&quot;&gt;⚠️&lt;/span&gt; This “how-to” deserves some love &lt;span class=&quot;emoji&quot;&gt;❤️&lt;/span&gt;. Should provide alternative CI setup for the new player in the market,
+&lt;a href=&quot;https://github.com/features/actions&quot;&gt;GitHub Actions&lt;/a&gt; workflows.&lt;/p&gt;
 
 &lt;p&gt;Also, since &lt;a href=&quot;https://github.com/firebase/firebase-tools/releases/tag/v7.1.0&quot;&gt;v7.1&lt;/a&gt;, &lt;code&gt;firebase&lt;/code&gt; hosting requires a service account to allow CI deployment.&lt;/p&gt;
 
@@ -196,8 +196,8 @@ Chris Banes’s article provides CI setup for Circle CI.&lt;/p&gt;
         <title>BitBucket Pipelines for Android</title>
         <description>&lt;hr&gt;
 
-&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This “how-to” deserves some love ❤️. The &lt;code&gt;--package_file&lt;/code&gt; option seems broken right now,
-use a workaround in the meantime (see &lt;a href=&quot;https://issuetracker.google.com/issues/66465833&quot;&gt;https://issuetracker.google.com/issues/66465833&lt;/a&gt;).&lt;/em&gt;&lt;/p&gt;
+&lt;p class=&quot;disclaimer&quot;&gt;&lt;span class=&quot;emoji&quot;&gt;⚠️&lt;/span&gt; This “how-to” deserves some love &lt;span class=&quot;emoji&quot;&gt;❤️&lt;/span&gt;. The &lt;code&gt;--package_file&lt;/code&gt; option seems broken right now,
+use a workaround in the meantime (see &lt;a href=&quot;https://issuetracker.google.com/issues/66465833&quot;&gt;https://issuetracker.google.com/issues/66465833&lt;/a&gt;).&lt;/p&gt;
 
 &lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# ( sleep 5 &amp;amp;&amp;amp; while [ 1 ]; do sleep 1; echo y; done ) | sdkmanager --package_file=&quot;${cur_dir}/package_file.txt&quot;&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-r&lt;/span&gt; pkg&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;y&quot;&lt;/span&gt; | sdkmanager &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pkg&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &amp;lt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cur_dir&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/package_file.txt&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; /dev/null&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -408,9 +408,9 @@ and some content
         <title>BitBucket Pipelines Android Signing Config</title>
         <description>&lt;hr&gt;
 
-&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This “how-to” deserves some love ❤️. These days, I would favor
+&lt;p class=&quot;disclaimer&quot;&gt;&lt;span class=&quot;emoji&quot;&gt;⚠️&lt;/span&gt; This “how-to” deserves some love &lt;span class=&quot;emoji&quot;&gt;❤️&lt;/span&gt;. These days, I would favor
 &lt;a href=&quot;https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets&quot;&gt;GPG encrypted secrets within repository&lt;/a&gt;
-with a decrypt script using key provided by CI secrets capabilities.&lt;/em&gt;&lt;/p&gt;
+with a decrypt script using key provided by CI secrets capabilities.&lt;/p&gt;
 
 &lt;div class=&quot;code-container&quot;&gt;&lt;pre data-langspec=&quot;bash&quot; class=&quot;highlight&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/usr/bin/env bash&lt;/span&gt;
 
@@ -532,8 +532,8 @@ Add 2 new &lt;em&gt;secured&lt;/em&gt; environment variables for user (&lt;code&
         <title>Automated web site deployment</title>
         <description>&lt;hr&gt;
 
-&lt;p&gt;&lt;strong&gt;⚠️&lt;/strong&gt; &lt;em&gt;This “how-to” is outdated. Still relevant if you want to use &lt;code&gt;lftp&lt;/code&gt; but you have now much more
-convenient solution like &lt;a href=&quot;/2017/11/25/firebase-site-hosting/&quot;&gt;Firebase hosting&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p class=&quot;disclaimer&quot;&gt;&lt;span class=&quot;emoji&quot;&gt;⚠️&lt;/span&gt; This “how-to” is outdated. Still relevant if you want to use &lt;code&gt;lftp&lt;/code&gt; but you have now much more
+convenient solution like &lt;a href=&quot;/2017/11/25/firebase-site-hosting/&quot;&gt;Firebase hosting&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p class=&quot;metadata&quot;&gt;(November 25, 2017)&lt;/p&gt;
 

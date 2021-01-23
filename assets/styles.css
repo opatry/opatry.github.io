@@ -16,19 +16,26 @@
   --flatui-belize_hile-color: #2980b9;
 }
 
-
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
 body {
   color: var(--flatui-wet_asphalt-color);
+  background-color: white;
   font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   font-size: 16px;
   margin: 0;
   padding: 0;
   border-top: 5px solid var(--flatui-peter_river-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--flatui-cloud-color);
+    background-color: black;
+  }
 }
 
 .site {
@@ -54,14 +61,21 @@ hr {
   border: 0 none;
 }
 
+@media (prefers-color-scheme: dark) {
+  hr {
+    background-color: var(--flatui-concrete-color);
+  }
+}
+
 h1, h2, h3 {
   color: var(--flatui-wet_asphalt-color);
   font-weight: 300;
 }
 
-.author {
-  color: var(--flatui-midnightblue-color);
-  font-size: 1.5em;
+@media (prefers-color-scheme: dark) {
+  h1, h2, h3 {
+    color: var(--flatui-peter_river-color);
+  }
 }
 
 a, a:link {
@@ -85,6 +99,13 @@ a[href^="http://"]::after {
   color: var(--flatui-wisteria-color);
 }
 
+@media (prefers-color-scheme: dark) {
+  a[href^="https://"]::after,
+  a[href^="http://"]::after {
+    color: var(--flatui-amethyst-color);
+  }
+}
+
 p {
   line-height: 1.5em;
 }
@@ -100,6 +121,12 @@ li > p {
 blockquote {
   color: var(--flatui-abestos-color);
   font-style: italic;
+}
+
+@media (prefers-color-scheme: dark) {
+  blockquote {
+    color: var(--flatui-silver-color);
+  }
 }
 
 pre {
@@ -157,6 +184,14 @@ img[src$=".svg"] {
 
 iframe {
   border: 0 none;
+}
+
+.disclaimer {
+  font-style: italic;
+}
+
+.emoji {
+  font-style: normal !important;
 }
 
 .disabled {
