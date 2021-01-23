@@ -6,8 +6,9 @@ created_at: 2017-11-25 20:51:00 +0200
 
 ---
 
-**⚠️** _This “how-to” deserves some love ❤️. Should provide alternative CI setup for the new player in the market,
-[GitHub Actions](https://github.com/features/actions) workflows._
+<%= e('⚠️') %> This “how-to” deserves some love <%= e('❤️') %>. Should provide alternative CI setup for the new player in the market,
+[GitHub Actions](https://github.com/features/actions) workflows.
+{: .disclaimer }
 
 Also, since [v7.1](https://github.com/firebase/firebase-tools/releases/tag/v7.1.0), `firebase` hosting requires a service account to allow CI deployment.
 

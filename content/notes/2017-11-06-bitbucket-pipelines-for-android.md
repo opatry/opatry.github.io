@@ -6,8 +6,9 @@ created_at: 2017-11-06 21:20:12 +0200
 
 ---
 
-**⚠️** _This “how-to” deserves some love ❤️. The `--package_file` option seems broken right now,
-use a workaround in the meantime (see [https://issuetracker.google.com/issues/66465833](https://issuetracker.google.com/issues/66465833))._
+<%= e('⚠️') %> This “how-to” deserves some love <%= e('❤️') %>. The `--package_file` option seems broken right now,
+use a workaround in the meantime (see [https://issuetracker.google.com/issues/66465833](https://issuetracker.google.com/issues/66465833)).
+{: .disclaimer }
 
 ```bash
 # ( sleep 5 && while [ 1 ]; do sleep 1; echo y; done ) | sdkmanager --package_file="${cur_dir}/package_file.txt"

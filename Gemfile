@@ -37,6 +37,7 @@ gem 'systemu'
 
 # string utils
 gem 'stringex'
+gem 'unicode-emoji'
 
 gem 'sass'
 

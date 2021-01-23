@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-include Nanoc::Helpers::Rendering
-include Nanoc::Helpers::LinkTo
-include Nanoc::Helpers::Blogging
+use_helper Nanoc::Helpers::Rendering
+use_helper Nanoc::Helpers::LinkTo
+use_helper Nanoc::Helpers::Blogging
+
+require 'unicode/emoji'
 
 def get_pretty_date(note, short: false)
   # January 5, 2021 or Jan 5, 2021
@@ -17,6 +19,12 @@ end
 
 def get_xml_schema_date(note)
   note[:created_at].iso8601
+end
+
+# wrap emojis with an HTML span contained in given content
+def e(content, params = {})
+  clazz = params.fetch(:class, 'emoji')
+  content.gsub(Unicode::Emoji::REGEX, '<span class="' + clazz + '">\0</span>')
 end
 
 module NotesHelper

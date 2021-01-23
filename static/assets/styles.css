@@ -186,6 +186,14 @@ iframe {
   border: 0 none;
 }
 
+.disclaimer {
+  font-style: italic;
+}
+
+.emoji {
+  font-style: normal !important;
+}
+
 .disabled {
   color: var(--flatui-silver-color);
 }

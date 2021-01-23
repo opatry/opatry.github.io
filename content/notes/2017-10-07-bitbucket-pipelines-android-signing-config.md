@@ -6,9 +6,10 @@ created_at: 2017-10-07 21:32:08 +0200
 
 ---
 
-**⚠️** _This “how-to” deserves some love ❤️. These days, I would favor
+<%= e('⚠️') %> This “how-to” deserves some love <%= e('❤️') %>. These days, I would favor
 [GPG encrypted secrets within repository](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets)
-with a decrypt script using key provided by CI secrets capabilities._
+with a decrypt script using key provided by CI secrets capabilities.
+{: .disclaimer }
 
 ```bash
 #!/usr/bin/env bash
