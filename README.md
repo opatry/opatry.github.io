@@ -1,4 +1,4 @@
-[![Build, test and deploy Status](https://github.com/opatry/opatry.github.io/workflows/Main/badge.svg)](https://github.com/opatry/opatry.github.io/actions)
+[![Build, test and deploy Status](https://github.com/opatry/opatry.github.io/actions/workflows/build_test_deploy.yml/badge.svg)](https://github.com/opatry/opatry.github.io/actions/workflows/build_test_deploy.yml)
 
 # Olivier Patry
 
