@@ -8,3 +8,4 @@
 *~
 .sass-cache
 bin/
+.firebase/hosting.*.cache

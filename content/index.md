@@ -30,7 +30,7 @@ Available on
  [Windows](https://www.microsoft.com/en-us/p/nebo/9nblggh4nlb0).
 {: .metadata}
 
-<div style="margin: 0 auto; width: 560px; max-width: 100%;">
+<div class="centered-media">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6iNqExuVra4?autoplay=0&amp;rel=0" allowfullscreen=""></iframe>
 </div>
 
