@@ -173,6 +173,12 @@ pre code {
   background: transparent;
 }
 
+.centered-media {
+  margin: 0 auto;
+  width: 560px;
+  max-width: 100%;
+}
+
 img, iframe {
   max-width: 100%;
 }
