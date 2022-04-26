@@ -4,7 +4,7 @@ class FencedCodeBlock < Nanoc::Filter
   require 'htmlentities'
 
   def run(content, _ = {})
-    content.gsub(/(^`{3}\s*(\S*)\s*$([^`]*)^`{3}\s*$)+?/m) { |_|
+    content.gsub(/(^`{3}\s*(\S*)\s*$([^`]*)^`{3}\s*$)+?/m) do |_|
       lang_spec = Regexp.last_match(2)
       code_block = Regexp.last_match(3)
 
@@ -20,6 +20,6 @@ class FencedCodeBlock < Nanoc::Filter
       coder = HTMLEntities.new
       replacement << coder.encode(code_block)
       replacement << '</code></pre></div>'
-    }
+    end
   end
 end
