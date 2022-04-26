@@ -21,7 +21,7 @@ jobs:
 
     - name: Cache bundler gems
       id: cache-bundler
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: .bundler
         key: ${{ runner.os }}-gems-v2-${{ hashFiles('**/Gemfile.lock') }}
@@ -45,7 +45,7 @@ jobs:
 
     - name: Cache nanoc
       id: cache-nanoc
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: output
         key: ${{ runner.os }}-nanoc-prod-v2-${{ hashFiles('content/**', 'Rules', 'nanoc.yaml', 'lib/**', 'layouts/**') }}
