@@ -1,11 +1,26 @@
-# nanoc life
-/tmp/*
-/crash.log
-/output/*
+# system
+.DS_Store
 
-.bundle
-
+# temporary working dirs
 *~
+
+# nanoc
+/tmp
+/output
+*.log
+output.diff
+
+# bundler
+.bundle
+.bundler
+
+# node
+node_modules/
+.npm/
+
+# firebase hosting
+.firebase/*.cache
+
+# tools
 .sass-cache
-bin/
-.firebase/hosting.*.cache
+/bin
