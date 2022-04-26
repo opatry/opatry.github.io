@@ -21,3 +21,10 @@ $ bundle binstubs bundler nanoc ruby-debug-ide
 
 Then, debug launch configuration should work out of the box in VS Code (put a breakpoint (in `Rules#preprocess` for example) then press <kbd>F5</kbd>).
 </details>
+
+## JavaScript development
+
+```bash
+$ npm install && npm install --only=dev
+$ ./node_modules/.bin/eslint --init
+```

@@ -72,11 +72,12 @@ jobs:
       run: |
         bundle exec nanoc check ilinks stale html css mixed_content
 
-    - name: Setup Node 10
+    - name: Setup Node
       if: steps.build.outputs.need_deploy == 0
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
-        node-version: '10.x'
+        node-version: '17'
+        cache: 'npm'
 
     - name: Deploy prod
       if: steps.build.outputs.need_deploy == 0
@@ -84,8 +85,9 @@ jobs:
         GIT_SHA: ${{ github.sha }}
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       run: |
-        npm install --prefix .npm firebase-tools
-        .npm/node_modules/.bin/firebase deploy --only hosting:opatry-website -m "GitHub Actions@${GIT_SHA::8}" --token "$FIREBASE_TOKEN" --non-interactive
+        npm ci
+        cd output
+        node_modules/.bin/firebase deploy --only hosting:opatry-website -m "GitHub Actions@${GIT_SHA::8}" --token "$FIREBASE_TOKEN" --non-interactive
 
     - name: Deploy gh-pages
       if: steps.build.outputs.need_deploy == 0
