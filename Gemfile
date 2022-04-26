@@ -3,7 +3,12 @@
 source 'https://rubygems.org'
 
 # nanoc itself
-gem 'nanoc', '~> 4.0'
+gem 'nanoc', '>= 4.11'
+
+# Since nanoc 4.11.21, clonefile enabled copy-on-write
+# See https://github.com/nanoc/nanoc/pull/1509
+# See https://github.com/nanoc/nanoc/pull/1511
+gem 'clonefile'
 
 # nanoc view
 gem 'adsf'
@@ -22,7 +27,9 @@ gem 'kramdown' # markdown
 gem 'rainpress'
 
 # relativize paths
-gem 'nokogiri'
+# v1.11.0 introduces "faster and more reliable installation: Native Gems for Linux and OSX/Darwin"
+# see https://github.com/sparklemotion/nokogiri/releases/tag/v1.11.0
+gem 'nokogiri', '>= 1.11.0'
 
 # javascript
 gem 'uglifier'
@@ -41,8 +48,11 @@ gem 'unicode-emoji'
 
 gem 'sass'
 
-group 'development' do
+group :development do
+  # debug
   gem 'debase', require: false
   gem 'ruby-debug-ide', require: false
+
+  # lint
   gem 'solargraph', require: false
 end

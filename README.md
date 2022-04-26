@@ -8,6 +8,14 @@ This website is available at https://opatry.net using [🔥 Firebase hosting](ht
 and https://opatry.github.io/ using [📄 GitHub Pages](https://pages.github.com/)
 both thanks to [🤖 GitHub Actions](https://github.com/features/actions). 
 
+## 🛠 Requirements & Initial setup
+
+```bash
+$ gem install bundler
+$ bundle install
+$ bundle exec nanoc compile
+```
+
 ## Debug Ruby code 🔎 💎
 <details>
 <summary>See details…</summary>
