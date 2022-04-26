@@ -74,7 +74,7 @@ jobs:
 
     - name: Setup Node
       if: steps.build.outputs.need_deploy == 0
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: '17'
         cache: 'npm'
