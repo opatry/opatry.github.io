@@ -86,7 +86,6 @@ jobs:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       run: |
         npm ci
-        cd output
         node_modules/.bin/firebase deploy --only hosting:opatry-website -m "GitHub Actions@${GIT_SHA::8}" --token "$FIREBASE_TOKEN" --non-interactive
 
     - name: Deploy gh-pages
