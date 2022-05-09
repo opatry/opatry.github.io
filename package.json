@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "firebase-tools": "^10.7.2"
+    "firebase-tools": "^10.8.0"
   },
   "devDependencies": {
     "eslint": "^8.14.0",
