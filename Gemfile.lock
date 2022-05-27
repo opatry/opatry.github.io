@@ -82,7 +82,7 @@ GEM
       tty-color (~> 0.5)
     public_suffix (4.0.7)
     racc (1.6.0)
-    rack (2.2.3)
+    rack (2.2.3.1)
     rainbow (3.1.1)
     rainpress (1.0.1)
     rake (13.0.6)
