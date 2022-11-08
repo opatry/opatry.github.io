@@ -38,6 +38,8 @@ Available on
 
 <div class="special-links" markdown="1">
 [<span class="icon-twitter"></span>](https://twitter.com/o_patry)
+<a rel="me" href="https://androiddev.social/@opatry"><%= svg_markup(@items['/assets/icons/mastodon.svg']) %></a>
+<span class="icon-mastodon"></span>
 [<span class="icon-github-circled"></span>](https://github.com/opatry)
 [<span class="icon-rss-squared"></span>](/rss.xml)
 </div>
