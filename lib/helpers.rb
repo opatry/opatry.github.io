@@ -71,3 +71,7 @@ end
 def link_to_item(title, identifier)
   link_to(title, @items[identifier].path)
 end
+
+def svg_markup(item)
+  item.compiled_content.dup.delete!("\n")
+end
