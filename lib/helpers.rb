@@ -75,3 +75,7 @@ end
 def svg_markup(item)
   item.compiled_content.dup.delete!("\n")
 end
+
+def svg_icon(item, size)
+  "<span class=\"svg_icon\" style=\"width: #{size}px; height: #{size}px\">#{svg_markup(item)}</span>"
+end

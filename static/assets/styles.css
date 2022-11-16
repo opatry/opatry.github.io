@@ -183,9 +183,11 @@ img, iframe {
   max-width: 100%;
 }
 
-img[src$=".svg"] {
-    margin: 0 6px -6px 0;
-    width: 30px;
+.svg_icon {
+  display: inline-block;
+  margin: 0 6px -6px 0;
+  width: 30px;
+  vertical-align: text-top;
 }
 
 .special-links svg {

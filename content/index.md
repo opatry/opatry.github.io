@@ -9,7 +9,7 @@ MyScript develops handwriting recognition for text, math and diagram (see [devel
 
 ## Apps
 
-### ![](<%= @items['/images/calculator.*'].path %>) [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
+### <%= svg_icon(@items['/assets/icons/calculator.svg'], 32) %> [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
 
 > **The easiest way to calculate**
 
@@ -18,7 +18,7 @@ Available on
   [Android](https://play.google.com/store/apps/details?id=com.myscript.calculator).
 {: .metadata}
 
-### ![](<%= @items['/images/nebo.*'].path %>) [Nebo](https://www.nebo.app/): note taking application
+### <%= svg_icon(@items['/assets/icons/nebo.svg'], 32) %> [Nebo](https://www.nebo.app/): note taking application
 
 > **The future of note‑taking**
 > 
