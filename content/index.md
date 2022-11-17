@@ -10,6 +10,7 @@ MyScript develops handwriting recognition for text, math and diagram (see [devel
 ## Apps
 
 ### <%= svg_icon(@items['/assets/icons/calculator.svg'], 32) %> [Calculator](https://www.myscript.com/calculator/): handwriting calculator application
+{: #calculator}
 
 > **The easiest way to calculate**
 
@@ -19,6 +20,7 @@ Available on
 {: .metadata}
 
 ### <%= svg_icon(@items['/assets/icons/nebo.svg'], 32) %> [Nebo](https://www.nebo.app/): note taking application
+{: #nebo}
 
 > **The future of note‑taking**
 > 
