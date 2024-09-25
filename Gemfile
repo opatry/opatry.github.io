@@ -50,8 +50,8 @@ gem 'sass'
 
 group :development do
   # debug
-  gem 'debase', require: false
-  gem 'ruby-debug-ide', require: false
+  #gem 'debase', require: false
+  #gem 'ruby-debug-ide', require: false
 
   # lint
   gem 'solargraph', require: false
