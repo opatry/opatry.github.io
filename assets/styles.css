@@ -72,6 +72,15 @@ h1, h2, h3 {
   font-weight: 300;
 }
 
+h2, h3 {
+  clear: both;
+}
+
+.subtitle {
+  font-style: italic;
+  font-size: 0.9em;
+}
+
 @media (prefers-color-scheme: dark) {
   h1, h2, h3 {
     color: var(--flatui-peter_river-color);
@@ -97,6 +106,26 @@ a[href^="http://"]::after {
   padding-left: .5em;
   text-decoration: none;
   color: var(--flatui-wisteria-color);
+}
+
+.button {
+  padding: 16px;
+  text-align: center;
+}
+.button a {
+  border-radius: 16px;
+  color: var(--flatui-cloud-color);
+  background-color: var(--flatui-midnightblue-color);
+  padding: 20px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.button a:hover {
+  background-color: var(--flatui-wet_asphalt-color);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+}
+.button a::after {
+  content: '';
 }
 
 @media (prefers-color-scheme: dark) {
@@ -183,6 +212,145 @@ img, iframe {
   max-width: 100%;
 }
 
+.avatar {
+  margin: 0;
+  padding: 0;
+  float: right;
+  border-radius: 100%;
+  border: 1px solid rgba(255, 255, 255, 1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+  overflow: hidden;
+}
+.avatar img {
+  max-height: 150px;
+}
+
+/* TODO responsive grid 1 column */
+/* Insprired by https://www.bestjekyllthemes.com/theme/cloudcannon-vonge-jekyll-bookshop-template/ */
+.project-cards {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 25px;
+}
+
+.project-card {
+  transition: transform .2s ease;
+  max-width: fit-content;
+}
+
+.project-card:hover .project-card-title,
+.project-card:hover .project-card-subtitle {
+  opacity: 1;
+  transform: translateZ(0);
+  transition: transform .4s cubic-bezier(.165, .85, .45, 1) .2s,
+              opacity .4s cubic-bezier(.165, .85, .45, 1) .2s;
+}
+
+.project-card-content {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 250px;
+  min-height: 200px;
+  border-radius: 16px;
+  transform: translate(0);
+  box-shadow: 0 0 30px #2c3e501a;
+  overflow: hidden;
+}
+
+.project-card-content:after {
+  content: "";
+  display: table;
+  padding-top: 110%;
+}
+
+.project-card-image {
+  position: absolute;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  user-select: none;
+  background-color: #d5dce3;
+}
+
+.project-card-image:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  transition: all .4s ease 0s;
+  opacity: 0;
+  visibility: hidden;
+  background: linear-gradient(360deg, #34495e 0%, #2c3e504d 120.95%);
+}
+
+.project-card-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  background-color: #d5dce3;
+  pointer-events: none;
+  transition: all .4s ease 0s;
+  will-change: transform;
+}
+
+.project-card-image:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.project-card-image:hover img {
+  transform: scale(1.05);
+}
+
+.project-card-info {
+  z-index: 1;
+  width: 100%;
+  margin-top: auto;
+  padding: 0 32px 36px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.project-card-info-wrap {
+  overflow: hidden;
+}
+
+.project-card-title {
+  font-size: 28px;
+  line-height: 1.3;
+  margin-bottom: 0;
+  transform: translate3d(0, 100%, 0);
+}
+
+.project-card-subtitle {
+  font-size: 16px;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translate3d(0, -100%, 0);
+}
+
+.project-card-subtitle:hover {
+  opacity: .7;
+}
+
+.project-card-title,
+.project-card-subtitle {
+  color: #fff;
+  opacity: 0;
+  transition: transform .4s cubic-bezier(.165, .85, .45, 1),
+              opacity .4s cubic-bezier(.165, .85, .45, 1);
+}
+
 .svg_icon {
   display: inline-block;
   margin: 0 6px -6px 0;
@@ -245,12 +413,11 @@ footer {
  */
 @font-face {
   font-family: 'opatry';
-  src: url('fonts/opatry.eot?41466537');
-  src: url('fonts/opatry.eot?41466537#iefix') format('embedded-opentype'),
-       url('fonts/opatry.woff2?41466537') format('woff2'),
-       url('fonts/opatry.woff?41466537') format('woff'),
-       url('fonts/opatry.ttf?41466537') format('truetype'),
-       url('fonts/opatry.svg?41466537#opatry') format('svg');
+  src:  url('fonts/opatry.eot?m573nl');
+  src:  url('fonts/opatry.eot?m573nl#iefix') format('embedded-opentype'),
+    url('fonts/opatry.ttf?m573nl') format('truetype'),
+    url('fonts/opatry.woff?m573nl') format('woff'),
+    url('fonts/opatry.svg?m573nl#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -299,7 +466,9 @@ footer {
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
  
-.icon-twitter:before { content: '\f099'; } /* '' */
-.icon-github-circled:before { content: '\f09b'; } /* '' */
-.icon-rss-squared:before { content: '\f143'; } /* '' */
-.icon-linkedin-squared:before { content: '\f30c'; } /* '' */
+.icon-x:before,
+.icon-twitter:before { content: '\e900' }
+.icon-mastodon:before { content: '\e901' }
+.icon-rss2:before { content: '\ea9c' }
+.icon-github:before { content: '\eab0' }
+.icon-linkedin:before { content: '\eac9' }
