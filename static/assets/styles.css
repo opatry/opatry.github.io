@@ -243,8 +243,8 @@ img, iframe {
 .project-card:hover .project-card-subtitle {
   opacity: 1;
   transform: translateZ(0);
-  transition: transform .4s cubibezier(.165,.85,.45,1) .2s,
-              opacity .4s cubibezier(.165,.85,.45,1) .2s;
+  transition: transform .4s cubic-bezier(.165, .85, .45, 1) .2s,
+              opacity .4s cubic-bezier(.165, .85, .45, 1) .2s;
 }
 
 .project-card-content {
@@ -347,8 +347,8 @@ img, iframe {
 .project-card-subtitle {
   color: #fff;
   opacity: 0;
-  transition: transform .4s cubibezier(.165,.85,.45,1),
-              opacity .4s cubibezier(.165,.85,.45,1);
+  transition: transform .4s cubic-bezier(.165, .85, .45, 1),
+              opacity .4s cubic-bezier(.165, .85, .45, 1);
 }
 
 .svg_icon {

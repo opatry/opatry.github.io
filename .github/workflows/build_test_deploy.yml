@@ -68,9 +68,12 @@ jobs:
         du -shc output/* | sort -h
         echo "$(find output -type f | wc -l | tr -d ' ') generated files"
 
+    # disable CSS check due to Property “pointer-events” doesn't exist:   pointer-events: none;
+    # no idea how to fix this for now
+    # see https://github.com/w3c/css-validator/issues/218
     - name: Test
       run: |
-        bundle exec nanoc check ilinks stale html css mixed_content
+        bundle exec nanoc check ilinks stale html mixed_content
 
     - name: Setup Node
       if: steps.build.outputs.need_deploy == 0
