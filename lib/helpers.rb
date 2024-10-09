@@ -84,7 +84,7 @@ def project_card(project_item, illustration, name, subtitle)
   %{
 <div class="project-card">
   <div class="project-card-content">
-    <a class="project-card-image" href="#{project_item.path}"><img src="#{illustration}"></a>
+    <a class="project-card-image" href="#{project_item.path}"><img src="#{illustration}" alt=""></a>
     <div class="project-card-info">
       <div class="project-card-info-wrap">
         <h3 class="project-card-title">#{name}</h3>
@@ -102,7 +102,7 @@ def project_card_illustration(illustration)
   %{
 <div class="project-card centered-media">
   <div class="project-card-content">
-    <img src="#{illustration}">
+    <img src="#{illustration}" alt="">
   </div>
 </div>
 }
