@@ -1,0 +1,15 @@
+  <header class="title">
+    <p>🏠 <a href="<%= @items['/index.*'].path %>">Back to home</a></p>
+  </header>
+
+  <div class="content">
+  <article>
+    <header>
+    <h1><%= item[:title] %></h1>
+    </header>
+
+    <section>
+<%= yield %>
+    </section>
+  </article>
+  </div>

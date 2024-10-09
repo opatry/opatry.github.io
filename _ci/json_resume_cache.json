@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "theme": "macchiato"
+  },
+  "basics": {
+    "name": "Olivier Patry",
+    "label": "Engineering Manager & Senior software engineer",
+    "picture": "https://www.gravatar.com/avatar/3eae340e049abecfb4a117ad7a907bd1?s=256&d=mp",
+    "email": "olivier.patry@gmail.com",
+    "phone": "(+33)6 64 73 35 96",
+    "website": "https://opatry.net",
+    "summary": "Engineering Manager with 15 years of experience, including 8 years leading mobile development teams. Proven track record in delivering high-quality software, and fostering team growth. Expertise in Android development, domain and business logic integration, and release management.",
+    "location": {
+      "address": "17 rue de l'Allouée",
+      "postalCode": "44100",
+      "city": "Nantes",
+      "countryCode": "FR",
+      "region": "Pays de la Loire"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "opatry",
+        "url": "https://www.linkedin.com/in/opatry"
+      },
+      {
+        "network": "Twitter",
+        "username": "o_patry",
+        "url": "https://twitter.com/o_patry"
+      },
+      {
+        "network": "Github",
+        "username": "opatry",
+        "url": "https://github.com/opatry"
+      },
+      {
+        "network": "Mastodon",
+        "username": "androiddev.social/@opatry",
+        "url": "https://androiddev.social/@opatry"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "MyScript",
+      "position": "Head of mobile",
+      "website": "https://www.myscript.com/",
+      "startDate": "2018-04-01",
+      "endDate": "2024-09-13",
+      "summary": "Empowering development teams (10+ people) to achieve challenging roadmap execution for multiple mobile applications.",
+      "highlights": []
+    },
+    {
+      "company": "MyScript",
+      "position": "Engineering Manager",
+      "website": "https://www.myscript.com/",
+      "startDate": "2016-07-01",
+      "endDate": "2018-03-31",
+      "summary": "Leading the development team of MyScript Note-taking application Nebo made for iOS, Android & Windows mobile platforms.",
+      "highlights": []
+    },
+    {
+      "company": "MyScript",
+      "position": "Technical Lead",
+      "website": "https://www.myscript.com/",
+      "startDate": "2013-09-02",
+      "endDate": "2016-06-30",
+      "summary": "Lead the development of Application Toolkit 2.0.",
+      "highlights": []
+    },
+    {
+      "company": "MicroEJ",
+      "position": "Software Engineer",
+      "website": "https://www.microej.com/",
+      "startDate": "2009-04-06",
+      "endDate": "2013-08-30",
+      "summary": "Java framework definition and implementation around HMI and IoT for embedded industry.",
+      "highlights": []
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Université de Nantes",
+      "area": "ALMA, Architectures Logicielles",
+      "studyType": "Master",
+      "startDate": "2007-09-01",
+      "endDate": "2009-06-30",
+      "gpa": "",
+      "courses": []
+    },
+    {
+      "institution": "Université de Caen Basse-Normandie",
+      "area": "Informatique",
+      "studyType": "Licence",
+      "startDate": "2003-09-01",
+      "endDate": "2007-06-30",
+      "gpa": "",
+      "courses": []
+    },
+    {
+      "institution": "Lycée Malherbe de Caen",
+      "area": "S (spé. maths)",
+      "studyType": "Baccalauréat",
+      "startDate": "2003-09-01",
+      "endDate": "2007-06-30",
+      "gpa": "",
+      "courses": []
+    }
+  ],
+  "awards": [
+    {
+      "title": "Mobile Apps Showdown",
+      "date": "2017-01-09",
+      "awarder": "CES",
+      "summary": "Nebo is a breakthrough notetaking application that leverages the power of MyScript’s Interactive Ink technology, and makes handwritten digital document creation both seamless and highly productive."
+    },
+    {
+      "title": "Mobile Apps Showdown",
+      "date": "2013-01-10",
+      "awarder": "CES",
+      "summary": "A brilliant app that instantly solves handwritten equations."
+    }
+  ],
+  "publications": [],
+  "skills": [
+    {
+      "name": "Management",
+      "keywords": [
+        "Problem solving",
+        "Team empowerement",
+        "Collaborative leadership",
+        "Coaching",
+        "Mentoring",
+        "Stakeholder Engagement"
+      ]
+    },
+    {
+      "name": "Project Management",
+      "keywords": [
+        "Agile",
+        "Scrum",
+        "Jira"
+      ]
+    },
+    {
+      "name": "Application Development",
+      "keywords": [
+        "Android",
+        "API Design",
+        "Application Design",
+        "CI",
+        "Test Automation",
+        "Code Review"
+      ]
+    },
+    {
+      "name": "Programming",
+      "keywords": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Reactive Programming",
+        "Java",
+        "C++",
+        "Ruby",
+        "Web"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "French",
+      "fluency": "Native speaker"
+    },
+    {
+      "language": "English",
+      "fluency": "Fluent"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Readings",
+      "keywords": [
+        "https://lecture.opatry.net/"
+      ]
+    },
+    {
+      "name": "Sport",
+      "keywords": [
+        "Soccer",
+        "Futsal",
+        "Badminton",
+        "Running"
+      ]
+    }
+  ],
+  "references": [],
+  "projects": [
+    {
+      "name": "MyScript Nebo",
+      "startDate": "2015-01-15",
+      "endDate": "2024-09-13",
+      "description": "Lectures got you snoozin'? Nebo keeps your brain lit. Draw, highlight, organize - it's like studygram on steroids.",
+      "highlights": [
+        "Won Mobile Apps Showdown award at CES 2017",
+        "Pre-installed on Android tablets by several OEMs like Huawei, Lenovo, Honor, TCL…",
+        "Installed on iPads in Apple stores."
+      ],
+      "url": "https://www.nebo.app"
+    },
+    {
+      "name": "MyScript Calculator",
+      "startDate": "2017-08-01",
+      "endDate": "2019-01-15",
+      "description": "Calculator turns your device into an interactive piece of paper. Simply write a calculation and it gets you the result in real time.",
+      "highlights": [
+        "Won Mobile Apps Showdown award at CES 2013",
+        "Pre-installed on Android tablets by several OEMs like Huawei, Lenovo, Honor, TCL…",
+        "Installed on iPhones in Apple stores."
+      ],
+      "url": "https://www.myscript.com/calculator"
+    },
+    {
+      "name": "Concept Stanza — Dell Innovation | Singapore",
+      "startDate": "2021-08-01",
+      "endDate": "2022-01-15",
+      "description": "Concept Stanza is a new kind of thin, light, port-less 11” companion concept device designed to make the note-taking process easier and smarter. Uses MyScript iink SDK and Nebo components for PDF annotation and keyboard input in a lightweight note-taking application.",
+      "highlights": [
+        "Concept Stanza showcased during CES 2022",
+        "Collaboration between MyScript & Dell Innovation",
+        "https://www.youtube.com/watch?v=apsZKM6rVKs"
+      ],
+      "url": "https://www.dell.com/apsZKM6rVKs"
+    },
+    {
+      "name": "TYDOM — Delta Dore",
+      "startDate": "2012-01-01",
+      "endDate": "2013-01-01",
+      "description": "Smart home automation hub that allows users to control various IoT devices, such as lighting, heating, security, and shutters. MicroEJ’s role involved ensuring the UI could run efficiently on constrained devices, with low memory and processing power, using its embedded platform. My focus was to deliver a highly customizable, lightweight UI toolkit.",
+      "highlights": [
+        "Embedded HMI",
+        "Widget library development"
+      ],
+      "url": "https://www.deltadore.fr/app-tydom"
+    },
+    {
+      "name": "Taskfolio",
+      "startDate": "2024-09-15",
+      "endDate": "2024-10-11",
+      "description": "Taskfolio is a personal project designed to showcase my Android development skills. The app is a lightweight task manager that integrates with Google Tasks.",
+      "highlights": [
+        "Jetpack Compose, Material Design, MVVM, Room, REST, OAuth2"
+      ],
+      "url": "https://opatry.github.io/taskfolio/"
+    }
+  ]
+}
