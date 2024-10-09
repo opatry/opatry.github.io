@@ -56,7 +56,7 @@ format_social_profiles() {
       "$(jq -r '.url' <<< "${profile}")"
   done
   cat << __END
-[<span class="icon-rss2"></span>](/rss.xml)
+[<span class="icon-rss2"></span>](<%= @items['/rss.*'].path %>)
 </div>
 __END
 }
@@ -212,7 +212,7 @@ ${label}
 ## Summary
 ${summary}
 
-See my [resume](/resume.html).
+See my [resume](<%= @items['/resume.*'].path %>).
 {: .metadata}
 
 ## Projects
@@ -249,7 +249,7 @@ ${summary}
 ### Experience
 ${experiences_md}
 
-See some [projects](/projects.html) I worked on.
+See some [projects](<%= @items['/projects.*'].path %>) I worked on.
 {: .metadata}
 __END
 

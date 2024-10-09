@@ -14,7 +14,7 @@ Engineering Manager & Senior software engineer
 ## Summary
 Engineering Manager with 15 years of experience, including 8 years leading mobile development teams. Proven track record in delivering high-quality software, and fostering team growth. Expertise in Android development, domain and business logic integration, and release management.
 
-See my [resume](/resume.html).
+See my [resume](<%= @items['/resume.*'].path %>).
 {: .metadata}
 
 ## Projects
@@ -33,5 +33,5 @@ See my [resume](/resume.html).
 [<span class="icon-twitter" title="o_patry on Twitter"></span>](https://twitter.com/o_patry)
 [<span class="icon-github" title="opatry on Github"></span>](https://github.com/opatry)
 [<span class="icon-mastodon" title="androiddev.social/@opatry on Mastodon"></span>](https://androiddev.social/@opatry)
-[<span class="icon-rss2"></span>](/rss.xml)
+[<span class="icon-rss2"></span>](<%= @items['/rss.*'].path %>)
 </div>

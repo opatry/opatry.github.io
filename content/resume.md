@@ -44,5 +44,5 @@ April 2009 — August 2013
 
 Java framework definition and implementation around HMI and IoT for embedded industry.
 
-See some [projects](/projects.html) I worked on.
+See some [projects](<%= @items['/projects.*'].path %>) I worked on.
 {: .metadata}
