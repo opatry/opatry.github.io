@@ -1,0 +1,20 @@
+---
+title: Taskfolio
+layout: page
+kind: page
+---
+
+
+September 2024 — October 2024
+{: .metadata}
+
+Taskfolio is a personal project designed to showcase my Android development skills. The app is a lightweight task manager that integrates with Google Tasks.
+
+<div class="project-card centered-media">
+  <div class="project-card-content">
+    <img src="https://media.licdn.com/dms/image/v2/D4E2DAQFZPJyRRAWhiw/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1727784135345?e=1729087200&v=beta&t=AUnzfcuFWZU1c_SN5ZUauiJXofslb5QvH13eSI4NqbY">
+  </div>
+</div>
+
+[See project website for more…](https://opatry.github.io/taskfolio/)
+{: .button}
