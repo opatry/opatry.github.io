@@ -157,46 +157,20 @@ ${start_date} — ${end_date}
 
 ${description}
 
-<div class="project-card centered-media">
-  <div class="project-card-content">
-    <img src="${illustration}">
-  </div>
-</div>
+<%= project_card_illustration('${illustration}') %>
 
 [See project website for more…](${url})
 {: .button}
 __END
   elif [ "${mode}" = "card" ]; then
-    # TODO richer effect with title as overlay
-    cat << __END
-<div class="project-card">
-  <div class="project-card-content">
-    <a class="project-card-image" href="/projects/${slug}.html"><img src="${illustration}"></a>
-    <div class="project-card-info">
-      <div class="project-card-info-wrap">
-        <h3 class="project-card-title">${name}</h3>
-      </div>
-      <div class="project-card-info-wrap">
-        <div class="project-card-subtitle">${start_date} — ${end_date}</div>
-      </div>
-    </div>
-  </div>
-</div>
-__END
-# <div class="project-card" markdown="1">
-# ### ${name}
-# {: .project-card-name}
-
-# [![](${illustration})](/projects/${slug})
-# {: .project-card-illustration}
-# </div>
+    echo "<%= project_card(@items['/projects/${slug}.*'], '${illustration}', '${name}', '${start_date} — ${end_date}') %>"
   fi
 }
 
 format_project_cards() {
   local projects="${1}"
 
-  echo '<div class="project-cards" markdown="1">'
+  echo '<div class="project-cards">'
   jq -c '.[]' <<< "${projects}" | while IFS=$'\n' read -r project; do
     # TODO fallback to "present" if no "endDate"
     format_project \

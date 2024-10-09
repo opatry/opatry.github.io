@@ -79,3 +79,31 @@ end
 def svg_icon(item, size)
   "<span class=\"svg_icon\" style=\"width: #{size}px; height: #{size}px\">#{svg_markup(item)}</span>"
 end
+
+def project_card(project_item, illustration, name, subtitle)
+  %{
+<div class="project-card">
+  <div class="project-card-content">
+    <a class="project-card-image" href="#{project_item.path}"><img src="#{illustration}"></a>
+    <div class="project-card-info">
+      <div class="project-card-info-wrap">
+        <h3 class="project-card-title">#{name}</h3>
+      </div>
+      <div class="project-card-info-wrap">
+        <div class="project-card-subtitle">#{subtitle}</div>
+      </div>
+    </div>
+  </div>
+</div>
+}
+end
+
+def project_card_illustration(illustration)
+  %{
+<div class="project-card centered-media">
+  <div class="project-card-content">
+    <img src="#{illustration}">
+  </div>
+</div>
+}
+end
