@@ -216,13 +216,12 @@ img, iframe {
   margin: 0;
   padding: 0;
   float: right;
+  width: 150px;
+  height: 150px;
   border-radius: 100%;
   border: 1px solid rgba(255, 255, 255, 1);
   box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
   overflow: hidden;
-}
-.avatar img {
-  max-height: 150px;
 }
 
 /* TODO responsive grid 1 column */
