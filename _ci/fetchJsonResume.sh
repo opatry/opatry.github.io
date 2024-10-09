@@ -48,7 +48,7 @@ format_social_profile() {
 format_social_profiles() {
   local profiles="${1}"
 
-  echo '<div class="special-links" markdown="1">'
+  echo '<div class="special-links" style="text-align: center; margin-top: 30px;" markdown="1">'
   jq -c '.[]' <<< "${profiles}" | while IFS=$'\n' read -r profile; do
     format_social_profile \
       "$(jq -r '.network' <<< "${profile}")" \
@@ -207,8 +207,6 @@ See my [resume](<%= @items['/resume.*'].path %>).
 
 ## Projects
 ${project_cards_md}
-
----
 
 ${social_profiles_md}
 __END

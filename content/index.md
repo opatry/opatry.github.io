@@ -26,9 +26,7 @@ See my [resume](<%= @items['/resume.*'].path %>).
 <%= project_card('taskfolio', 'Taskfolio', 'September 2024 — October 2024') %>
 </div>
 
----
-
-<div class="special-links" markdown="1">
+<div class="special-links" style="text-align: center; margin-top: 30px;" markdown="1">
 [<span class="icon-linkedin" title="opatry on LinkedIn"></span>](https://www.linkedin.com/in/opatry)
 [<span class="icon-twitter" title="o_patry on Twitter"></span>](https://twitter.com/o_patry)
 [<span class="icon-github" title="opatry on Github"></span>](https://github.com/opatry)
