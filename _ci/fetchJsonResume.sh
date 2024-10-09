@@ -120,27 +120,23 @@ format_project() {
   case "${name,,}" in
     *nebo*)
       slug="nebo"
-      # TODO local save TODO shrink param
-      illustration="https://media.licdn.com/dms/image/v2/D4E2DAQG1-nqXxM7RRA/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1719863863116?e=1729087200&v=beta&t=fR6AI3RjEUNPhAp-TnJdg7b53Hj70B3rL87qIf9l9dg"
+      illustration="@items['/static/assets/projects/nebo.*'].path"
     ;;
     *calculator*)
       slug="calculator"
-      # TODO local save TODO shrink param
-      illustration="https://media.licdn.com/dms/image/v2/D4E2DAQEAHaAN4StYvg/profile-treasury-image-shrink_800_800/profile-treasury-image-shrink_800_800/0/1719864002002?e=1729087200&v=beta&t=75Olil_bG3Kg73-pR5eMwbMdkIucEyqIUZImtMOYvb0"
+      illustration="@items['/static/assets/projects/calculator.*'].path"
     ;;
     *stanza*)
       slug="stanza"
-      illustration="https://www.dell.com/wp-uploads/2021/12/Concept-Stanza-1.png"
+      illustration="@items['/static/assets/projects/stanza.*'].path"
     ;;
     *tydom*)
       slug="tydom"
-      # TODO local save TODO shrink param
-      illustration="https://www.deltadore.fr/uploads/media/FR/fr/3d7aecf9b2a6cbfe888c64012525dffd15548f3d.jpeg"
+      illustration="@items['/static/assets/projects/tydom.*'].path"
     ;;
     *taskfolio*)
       slug="taskfolio"
-      # TODO local save TODO shrink param
-      illustration="https://media.licdn.com/dms/image/v2/D4E2DAQFZPJyRRAWhiw/profile-treasury-image-shrink_1920_1920/profile-treasury-image-shrink_1920_1920/0/1727784135345?e=1729087200&v=beta&t=AUnzfcuFWZU1c_SN5ZUauiJXofslb5QvH13eSI4NqbY"
+      illustration="@items['/static/assets/projects/taskfolio.*'].path"
     ;;
     *)
       echo "Unsupported project, define a slug for it"
@@ -149,7 +145,6 @@ format_project() {
   esac
 
   if [ "${mode}" = "full" ]; then
-    # TODO add a ".button" link style and plug URL on "Visit…" or something
     cat << __END
 
 ${start_date} — ${end_date}
@@ -157,13 +152,13 @@ ${start_date} — ${end_date}
 
 ${description}
 
-<%= project_card_illustration('${illustration}') %>
+<%= project_card_illustration(${illustration}) %>
 
 [See project website for more…](${url})
 {: .button}
 __END
   elif [ "${mode}" = "card" ]; then
-    echo "<%= project_card(@items['/projects/${slug}.*'], '${illustration}', '${name}', '${start_date} — ${end_date}') %>"
+    echo "<%= project_card(@items['/projects/${slug}.*'], ${illustration}, '${name}', '${start_date} — ${end_date}') %>"
   fi
 }
 
