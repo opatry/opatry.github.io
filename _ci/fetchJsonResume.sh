@@ -120,23 +120,18 @@ format_project() {
   case "${name,,}" in
     *nebo*)
       slug="nebo"
-      illustration="@items['/static/assets/projects/nebo.*'].path"
     ;;
     *calculator*)
       slug="calculator"
-      illustration="@items['/static/assets/projects/calculator.*'].path"
     ;;
     *stanza*)
       slug="stanza"
-      illustration="@items['/static/assets/projects/stanza.*'].path"
     ;;
     *tydom*)
       slug="tydom"
-      illustration="@items['/static/assets/projects/tydom.*'].path"
     ;;
     *taskfolio*)
       slug="taskfolio"
-      illustration="@items['/static/assets/projects/taskfolio.*'].path"
     ;;
     *)
       echo "Unsupported project, define a slug for it"
@@ -152,13 +147,13 @@ ${start_date} — ${end_date}
 
 ${description}
 
-<%= project_card_illustration(${illustration}) %>
+<%= project_card_illustration('${slug}') %>
 
 [See project website for more…](${url})
 {: .button}
 __END
   elif [ "${mode}" = "card" ]; then
-    echo "<%= project_card(@items['/projects/${slug}.*'], ${illustration}, '${name}', '${start_date} — ${end_date}') %>"
+    echo "<%= project_card('${slug}', '${name}', '${start_date} — ${end_date}') %>"
   fi
 }
 
