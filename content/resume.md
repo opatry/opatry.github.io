@@ -9,7 +9,7 @@ Engineering Manager & Senior software engineer
 {: .subtitle}
 
 ### Summary
-Engineering Manager with 15 years of experience, including 8 years leading mobile development teams. Proven track record in delivering high-quality software, and fostering team growth. Expertise in Android development, domain and business logic integration, and release management.
+Engineering Manager with 15 years of experience, including 9 years leading mobile development teams. Proven track record in delivering high-quality software, and fostering team growth. Expertise in Android development, domain and business logic integration, and release management.
 
 ### Experience
 
