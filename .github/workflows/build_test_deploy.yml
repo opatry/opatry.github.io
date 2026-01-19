@@ -15,17 +15,17 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
-    - name: Setup Ruby 3.1
+    - name: Setup Ruby 3.4
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.1
+        ruby-version: 3.4
         bundler-cache: true
 
     - name: Cache nanoc
       id: cache-nanoc
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       with:
         path: output
         key: ${{ runner.os }}-nanoc-prod-v2-${{ hashFiles('content/**', 'Rules', 'nanoc.yaml', 'lib/**', 'layouts/**') }}
@@ -73,7 +73,7 @@ jobs:
 
     - name: Deploy gh-pages
       if: steps.build.outputs.need_deploy == 0
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: output
