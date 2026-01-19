@@ -6,7 +6,6 @@ layout: page
 <div class="project-cards">
 <%= project_card('nafix', 'Nafix', 'January 2026 — Present') %>
 <%= project_card('bnpp', 'Mes Comptes / Hello Bank!', 'March 2025 — Present') %>
-<%= project_card('h2go', 'H₂Go!', 'June 2025 — Present') %>
 <%= project_card('taskfolio', 'Taskfolio', 'September 2024 — Present') %>
 <%= project_card('mybookshelf', 'My bookshelf', 'May 2024 — Present') %>
 <%= project_card('nebo', 'MyScript Nebo', 'January 2015 — September 2024') %>
