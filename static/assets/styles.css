@@ -238,6 +238,10 @@ img, iframe {
   max-width: fit-content;
 }
 
+.project-cards .project-card {
+  max-width: initial;
+}
+
 .project-card:hover .project-card-title,
 .project-card:hover .project-card-subtitle {
   opacity: 1;

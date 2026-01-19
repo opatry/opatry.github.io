@@ -28,20 +28,3 @@ site:
   name: Olivier Patry
   description: Personal website of Olivier Patry.
   url: https://opatry.net/
-
-projects:
-  nebo:
-    page_identifier: '/projects/nebo.*'
-    illustration_identifier: '/static/assets/projects/nebo.*'
-  calculator:
-    page_identifier: '/projects/calculator.*'
-    illustration_identifier: '/static/assets/projects/calculator.*'
-  stanza:
-    page_identifier: '/projects/stanza.*'
-    illustration_identifier: '/static/assets/projects/stanza.*'
-  tydom:
-    page_identifier: '/projects/tydom.*'
-    illustration_identifier: '/static/assets/projects/tydom.*'
-  taskfolio:
-    page_identifier: '/projects/taskfolio.*'
-    illustration_identifier: '/static/assets/projects/taskfolio.*'

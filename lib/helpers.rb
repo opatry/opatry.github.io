@@ -81,9 +81,8 @@ def svg_icon(item, size)
 end
 
 def project_card(slug, name, subtitle)
-  project_config = @config[:projects][slug.to_sym]
-  project_item = @items[project_config[:page_identifier]]
-  project_illustration = @items[project_config[:illustration_identifier]]
+  project_item = @items["/projects/#{slug}.*"]
+  project_illustration = @items["/static/assets/projects/#{slug}.*"]
   %{
 <div class="project-card">
   <div class="project-card-content">
@@ -102,8 +101,7 @@ def project_card(slug, name, subtitle)
 end
 
 def project_card_illustration(slug)
-  project_config = @config[:projects][slug.to_sym]
-  project_illustration = @items[project_config[:illustration_identifier]]
+  project_illustration = @items["/static/assets/projects/#{slug}.*"]
   %{
 <div class="project-card centered-media">
   <div class="project-card-content">
