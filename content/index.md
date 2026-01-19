@@ -28,8 +28,6 @@ See my [resume](<%= @items['/resume.*'].path %>).
 
 <div class="special-links" style="text-align: center; margin-top: 30px;" markdown="1">
 [<span class="icon-linkedin" title="opatry on LinkedIn"></span>](https://www.linkedin.com/in/opatry)
-[<span class="icon-twitter" title="o_patry on Twitter"></span>](https://twitter.com/o_patry)
 [<span class="icon-github" title="opatry on Github"></span>](https://github.com/opatry)
-[<span class="icon-mastodon" title="androiddev.social/@opatry on Mastodon"></span>](https://androiddev.social/@opatry)
-[<span class="icon-rss2"></span>](<%= @items['/rss.*'].path %>)
+[<span class="icon-twitter" title="o_patry on Twitter"></span>](https://twitter.com/o_patry)
 </div>
