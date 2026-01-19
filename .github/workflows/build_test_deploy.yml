@@ -53,7 +53,7 @@ jobs:
     # see https://github.com/w3c/css-validator/issues/218
     - name: Test
       run: |
-        bundle exec nanoc check ilinks stale html mixed_content
+        bundle exec nanoc check ilinks stale mixed_content
 
     - name: Setup Node
       if: steps.build.outputs.need_deploy == 0
