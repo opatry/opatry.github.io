@@ -66,10 +66,12 @@ jobs:
       if: steps.build.outputs.need_deploy == 0
       env:
         GIT_SHA: ${{ github.sha }}
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        GOOGLE_APPLICATION_CREDENTIALS_BASE64: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_BASE64 }}
       run: |
         npm ci
-        node_modules/.bin/firebase deploy --only hosting:opatry-website -m "GitHub Actions@${GIT_SHA::8}" --token "$FIREBASE_TOKEN" --non-interactive
+        export GOOGLE_APPLICATION_CREDENTIALS="/tmp/google_creds.json"
+        echo "${GOOGLE_APPLICATION_CREDENTIALS_BASE64}" | base64 -d > "${GOOGLE_APPLICATION_CREDENTIALS}"
+        node_modules/.bin/firebase deploy --only hosting:opatry-website -m "GitHub Actions@${GIT_SHA::8}" --non-interactive
 
     - name: Deploy gh-pages
       if: steps.build.outputs.need_deploy == 0
