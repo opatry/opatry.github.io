@@ -8,11 +8,11 @@ layout: home
 
 # Olivier Patry
 
-Engineering Manager, Technical leader, Senior software engineer (Mobile/Android)
+Engineering Manager, Technical lead, Senior software engineer (Mobile/Android)
 {: .subtitle}
 
 ## Summary
-Engineering Manager & Technical leader with 16 years of experience, including 10 years leading mobile development teams. Proven track record in delivering high-quality software, and fostering team growth. Expertise in Android development, domain and business logic integration, and release management.
+Engineering Manager & Technical lead with 16 years of experience, including 10 years leading mobile development teams. Proven track record in delivering high-quality software, and fostering team growth. Expertise in Android development, domain and business logic integration, and release management.
 
 See my [resume](<%= @items['/resume.*'].path %>).
 {: .metadata}
