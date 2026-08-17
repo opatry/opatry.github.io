@@ -25,6 +25,10 @@ end
 # simply copy other assets
 passthrough '/images/**/*'
 
+compile '/well-known/atproto-did.*' do
+  write '/.well-known/atproto-did'
+end
+
 compile '/notes/**/*' do
   filter :fenced_code_block
   filter :erb
